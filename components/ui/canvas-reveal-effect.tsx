@@ -120,8 +120,8 @@ const DotMatrix: React.FC<DotMatrixProps> = ({
 
   return (
     <Shader
-      source={`
-        precision mediump float;
+      source={
+       ` precision mediump float;
         in vec2 fragCoord;
 
         uniform float u_time;
