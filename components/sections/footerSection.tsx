@@ -7,9 +7,7 @@ import {
   Github, 
   Twitter, 
   Linkedin, 
-  Mail, 
-  Globe,
-  Heart,
+  Mail,
   Instagram
 } from "lucide-react";
 
