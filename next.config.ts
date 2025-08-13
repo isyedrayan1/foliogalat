@@ -1,15 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
- 
- /* config options here */
-eslint: {
+  // config options here
+  eslint: {
     // Warning: This allows production builds to complete even with ESLint errors
     ignoreDuringBuilds: true,
   },
   typescript: {
-    ignoreBuildErrors: true, // 🚨 will build even if TS has errors
+    // 🚨 This will build even if TS has errors
+    ignoreBuildErrors: true,
   },
-
+};
 
 export default nextConfig;
