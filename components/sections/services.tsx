@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { CardSpotlight } from "@/components/ui/card-spotlight";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Eye, Code, Zap, Brain } from "lucide-react";
+import { Code, Zap, Brain } from "lucide-react";
 
 function ServicesSection() {
   const services = [
