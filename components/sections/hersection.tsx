@@ -1,9 +1,8 @@
 import { Scene } from "@/components/ui/hero-section";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+{/*import { Badge } from "@/components/ui/badge";*/}
 import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
 import { 
-  LucideIcon, 
   Users, 
   GitBranch, 
   Target, 
@@ -13,7 +12,6 @@ import {
   Instagram,
   Linkedin,
   Mail,
-  Globe
 } from "lucide-react";
 
 const features = [
