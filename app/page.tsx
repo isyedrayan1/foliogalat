@@ -1,7 +1,7 @@
 import { DemoOne } from "@/components/sections/hersection";
 import { NavbarDemo } from "@/components/sections/site-header";
 import { WhoWeAre } from "@/components/sections/whoweare";
-import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
+{/*import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";*/}
 import {ProjectSection} from "@/components/sections/projectsection";
 import { ServicesSection } from "@/components/sections/services";
 import { FooterSection } from "@/components/sections/footerSection";
