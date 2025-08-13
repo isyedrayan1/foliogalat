@@ -9,8 +9,6 @@ import {
   GitBranch,
   Target,
   Lightbulb,
-  Star,
-  Rocket,
 } from "lucide-react";
 import { Button } from "../ui/button";
 import { TooltipDiv } from "./tootltipdiv";
