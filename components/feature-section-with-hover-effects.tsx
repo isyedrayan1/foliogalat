@@ -1,11 +1,8 @@
 import { cn } from "@/lib/utils";
 import {
-  IconCode,
   IconRobot,
   IconBrandReact,
-  IconDatabase,
   IconBrain,
-  IconDeviceMobile,
 } from "@tabler/icons-react";
 
 export function FeaturesSectionWithHoverEffects() {
