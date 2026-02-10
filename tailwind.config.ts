@@ -57,19 +57,9 @@ export default {
         },
       },
       fontFamily: {
-        // Existing fonts
-        'playfair': ['var(--font-playfair)', 'serif'],
-        'poppins': ['var(--font-poppins)', 'sans-serif'],
-        'laser-flip': ['var(--font-laser-flip)', 'sans-serif'],
-        'brotesque': ['var(--font-brotesque)', 'sans-serif'],
-        'brotesque-hollow': ['var(--font-brotesque-hollow)', 'sans-serif'],
-        
-        // NEW MOZILLA FONTS
-        'mozilla-headline': ['var(--font-mozilla-headline)', 'sans-serif'],
-        'mozilla-condensed': ['var(--font-mozilla-headline-condensed)', 'sans-serif'],
-        
-        // Default
-        'sans': ['var(--font-poppins)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        // Modern fonts for the new design
+        'sans': ['var(--font-inter)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        'mono': ['var(--font-jetbrains-mono)', 'ui-monospace', 'monospace'],
       },
     },
   },

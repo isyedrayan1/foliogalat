@@ -1,73 +1,42 @@
-import { DemoOne } from "@/components/sections/hersection";
-import { NavbarDemo } from "@/components/sections/site-header";
-import { WhoWeAre } from "@/components/sections/whoweare";
-{/*import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";*/}
-import {ProjectSection} from "@/components/sections/projectsection";
-import { ServicesSection } from "@/components/sections/services";
-import { FooterSection } from "@/components/sections/footerSection";
+"use client";
 
-{/*const stickyScrollContent = [
-  {
-    title: "Collaborative Editing",
-    description:
-      "Work together in real time with your team, clients, and stakeholders. Collaborate on documents, share ideas, and make decisions quickly. With our platform, you can streamline your workflow and increase productivity.",
-    content: (
-      <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center text-white">
-        <p>Collaborative Editing</p>
-      </div>
-    ),
-  },
-  {
-    title: "Real time changes",
-    description:
-      "See changes as they happen. With our platform, you can track every modification in real time. No more confusion about the latest version of your project. Say goodbye to the chaos of version control and embrace the simplicity of real-time updates.",
-    content: (
-      <div className="h-full w-full flex items-center justify-center text-white">
-        <img
-          src="/linear.webp"
-          width={300}
-          height={300}
-          className="h-full w-full object-cover"
-          alt="linear board demo"
-        />
-      </div>
-    ),
-  },
-  {
-    title: "Version control",
-    description:
-      "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
-    content: (
-      <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--orange-500),var(--yellow-500))] flex items-center justify-center text-white">
-        <p>Version control</p>
-      </div>
-    ),
-  },
-];*/}
+import { useState, useEffect } from 'react';
+import { CustomCursor } from '@/components/utilities/custom-cursor';
+import { BootSequence } from '@/components/utilities/boot-sequence';
+import { Navigation } from '@/components/sections/navigation';
+import { Hero } from '@/components/sections/hero';
+import { Work } from '@/components/sections/work';
+import { Team } from '@/components/sections/team';
+import { Philosophy } from '@/components/sections/philosophy';
+import { Contact } from '@/components/sections/contact';
 
 export default function HomePage() {
+  const [loading, setLoading] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  if (loading) return <BootSequence onComplete={() => setLoading(false)} />;
+
   return (
-    <div className="w-full overflow-x-hidden">
-      <NavbarDemo />
-      <main className="min-h-screen flex flex-col bg-transparent w-full">
-        <div className="w-full">
-          <DemoOne />
-        </div>
-
-        
-          <WhoWeAre />
-        
-
-          <ProjectSection />
-       
-          <ServicesSection />
-
-
-          {/*<StickyScroll content={stickyScrollContent} />*/}
-
+    <div className="font-sans antialiased text-neutral-400 bg-neutral-950 selection:bg-lime-400 selection:text-black overflow-x-hidden cursor-none">
+      <CustomCursor />
       
-        <FooterSection />
-      </main>
+      {/* Dynamic Grid Background */}
+      <div className="fixed inset-0 pointer-events-none z-0 opacity-10">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] animate-[pulse_8s_infinite]"></div>
+      </div>
+
+      <Navigation scrolled={scrolled} />
+      <Hero />
+      <Work />
+      <Team />
+      <Philosophy />
+      <Contact />
     </div>
   );
 }
