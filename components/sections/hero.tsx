@@ -4,8 +4,8 @@ import { Reveal } from '@/components/utilities/reveal';
 
 export const Hero = () => {
   return (
-    <section className="min-h-[90vh] flex items-center justify-center pt-20 pb-20 relative z-10 w-full">
-      <div className="w-full px-4 sm:px-6 lg:px-8">
+    <section className="min-h-[90vh] flex items-center justify-center pt-20 relative z-10">
+      <div className="max-w-6xl mx-auto px-4 md:px-6 w-full">
         <div className="max-w-4xl">
           <Reveal delay={100}>
             <div className="font-mono text-xs text-lime-400 mb-8 tracking-[0.2em] flex items-center gap-2">

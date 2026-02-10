@@ -5,14 +5,13 @@ import { ArrowRight } from 'lucide-react';
 
 export const Contact = () => {
   return (
-    <footer id="contact" className="py-16 md:py-24 lg:py-32 border-t border-neutral-900 bg-black relative z-10 overflow-hidden w-full">
+    <footer id="contact" className="py-24 md:py-32 border-t border-neutral-900 bg-black relative z-10 overflow-hidden">
       {/* Static Background Text */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-bold text-neutral-900/20 whitespace-nowrap pointer-events-none select-none">
         GALAT
       </div>
 
-      <div className="w-full px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto flex flex-col items-center justify-center text-center relative z-10">
+      <div className="max-w-6xl mx-auto px-4 md:px-6 flex flex-col items-center justify-center text-center relative z-10">
         <Reveal>
           <h2 className="text-4xl md:text-7xl font-bold text-white tracking-tighter mb-8">
             INITIALIZE_CHAT<span className="text-lime-400 animate-pulse">_</span>
@@ -30,7 +29,6 @@ export const Contact = () => {
             <span>Loc: Internet</span>
           </div>
         </Reveal>
-      </div>
       </div>
     </footer>
   );

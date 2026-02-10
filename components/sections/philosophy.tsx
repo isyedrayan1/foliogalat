@@ -4,9 +4,8 @@ import { Reveal } from '@/components/utilities/reveal';
 
 export const Philosophy = () => {
   return (
-    <section id="story" className="py-16 md:py-24 lg:py-32 border-t border-neutral-900 relative z-10 w-full">
-      <div className="w-full px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto text-center">
+    <section id="story" className="py-24 md:py-32 border-t border-neutral-900 relative z-10">
+      <div className="max-w-4xl mx-auto px-4 md:px-6 text-center">
         <Reveal>
           <div className="inline-block px-3 py-1 border border-lime-400/30 rounded-full bg-lime-400/5 text-lime-400 text-[10px] font-mono mb-8">
             MANIFESTO.md
@@ -21,7 +20,6 @@ export const Philosophy = () => {
             <p>{`>`} We build tools to solve our own problems. Then we share them.</p>
           </div>
         </Reveal>
-      </div>
       </div>
     </section>
   );

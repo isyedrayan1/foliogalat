@@ -6,9 +6,8 @@ import { Zap, Terminal } from 'lucide-react';
 
 export const Work = () => {
   return (
-    <section id="work" className="py-16 md:py-24 lg:py-32 border-t border-neutral-900 relative z-10 w-full">
-      <div className="w-full px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
+    <section id="work" className="py-24 md:py-32 border-t border-neutral-900 relative z-10">
+      <div className="max-w-6xl mx-auto px-4 md:px-6">
         <Reveal>
           <div className="flex items-end justify-between mb-20">
             <h2 className="text-xs font-mono text-lime-400 uppercase tracking-[0.2em]">
@@ -101,7 +100,6 @@ export const Work = () => {
             </div>
           </Reveal>
         </div>
-      </div>
       </div>
     </section>
   );
