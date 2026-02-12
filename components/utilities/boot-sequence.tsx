@@ -40,15 +40,15 @@ export const BootSequence: React.FC<BootSequenceProps> = ({ onComplete }) => {
   }, [onComplete]);
 
   return (
-    <div className="fixed inset-0 bg-black z-[999] flex flex-col items-center justify-center font-mono text-lime-400">
+    <div className="fixed inset-0 bg-black z-[999] flex flex-col items-center justify-center font-mono text-neutral-200">
       <div className="w-64 mb-4">
         <div className="flex justify-between text-xs mb-1">
           <span>SYSTEM_BOOT</span>
           <span>{progress}%</span>
         </div>
-        <div className="w-full h-1 bg-neutral-900 rounded-full overflow-hidden">
+        <div className="w-full h-1 bg-black rounded-full overflow-hidden">
           <div 
-            className="h-full bg-lime-400 transition-all duration-75 ease-linear"
+            className="h-full bg-neutral-200 transition-all duration-75 ease-linear"
             style={{ width: `${progress}%` }}
           />
         </div>

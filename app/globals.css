@@ -144,13 +144,7 @@
     -ms-overflow-style: none;
     scrollbar-width: none; 
     @apply text-foreground min-h-screen;
-    background-image: 
-      linear-gradient(rgba(0, 0, 0, 0.7), rgba(26, 36, 40, 0.8)),
-      url('/mainbg.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-color: #000000;
   }
   
   button{
@@ -198,3 +192,69 @@
 .font-brotesque { font-family: 'brotesque', sans-serif; }
 .font-brotesque-italic { font-family: 'brotesque', sans-serif; font-style: italic; }
 .font-brotesque-hollow { font-family: 'brotesque', sans-serif; font-weight: 900; }
+
+.micro-blur {
+  position: relative;
+}
+
+.micro-blur::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.22), transparent 60%),
+    radial-gradient(circle at 80% 70%, rgba(229, 231, 235, 0.18), transparent 55%);
+  opacity: 0;
+  filter: blur(16px);
+  transition: opacity 300ms ease, transform 300ms ease;
+  transform: translateY(6px);
+  pointer-events: none;
+}
+
+.micro-blur:hover::after,
+.micro-blur:focus-within::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn-signature {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #e5e7eb;
+  border-color: #1f2937;
+  transition: background 250ms ease, color 250ms ease, border-color 250ms ease, box-shadow 250ms ease;
+}
+
+.btn-signature:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.95), rgba(229, 231, 235, 0.95));
+  color: #0f172a;
+  border-color: transparent;
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.18);
+  filter: brightness(1.05);
+}
+
+.text-signature {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.95), rgba(229, 231, 235, 0.95));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.line-signature {
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.9), rgba(229, 231, 235, 0.7));
+}
+
+.nav-link {
+  transition: color 250ms ease;
+}
+
+.nav-link:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.95), rgba(229, 231, 235, 0.95));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
