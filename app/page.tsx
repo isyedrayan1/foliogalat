@@ -1,5 +1,7 @@
 import { Navigation } from '@/components/sections/navigation';
 import NeuralBackground from '@/components/ui/flow-field-background';
+import { Sparkles, Ship, ArrowUpRight, Settings, Users, Activity, Heart, Cpu, Zap, Rss } from 'lucide-react';
+import Dither from '@/components/Dither';
 
 export default function HomePage() {
   return (
@@ -8,7 +10,7 @@ export default function HomePage() {
       <main className="bento-shell">
         <div className="bento-frame">
           <section className="bento-card bento-hero bento-full">
-            <div className="bento-kicker">EST. 2024 :: TEAM_BUILD</div>
+            <div className="bento-kicker">TEAM_BUILD</div>
             <h1 className="bento-title">
               WE ARE <span className="text-signature">GALAT</span> FAMILY.
             </h1>
@@ -19,7 +21,6 @@ export default function HomePage() {
               <a className="bento-button" href="#work">
                 VIEW_BUILDS
               </a>
-              <span className="bento-status">STATUS: ACTIVE</span>
             </div>
             <div className="bento-subline">// Plan. Build. Ship. Iterate.</div>
           </section>
@@ -31,19 +32,31 @@ export default function HomePage() {
               A small tech team that builds products, shares knowledge, and treats the name as a long-term identity.
             </p>
             <div className="bento-about-cards">
-              <div className="bento-about-card">
+              <div className="bento-about-card group">
+                <div className="flex items-center gap-2 mb-4">
+                  <Heart className="w-5 h-5 text-signature" />
+                  <div className="bento-kicker !mb-0">IDENTITY</div>
+                </div>
                 <p className="bento-body">
                   We are proud of the name. It stands for a team that ships, documents, and learns together. The identity
                   is long-term, not seasonal.
                 </p>
               </div>
-              <div className="bento-about-card">
+              <div className="bento-about-card group">
+                <div className="flex items-center gap-2 mb-4">
+                  <Cpu className="w-5 h-5 text-signature" />
+                  <div className="bento-kicker !mb-0">FOCUS</div>
+                </div>
                 <p className="bento-body">
                   We build useful systems and keep them clean, reliable, and easy to operate. Our focus is on clarity,
                   durability, and practical outcomes.
                 </p>
               </div>
-              <div className="bento-about-card">
+              <div className="bento-about-card group">
+                <div className="flex items-center gap-2 mb-4">
+                  <Zap className="w-5 h-5 text-signature" />
+                  <div className="bento-kicker !mb-0">STRATEGY</div>
+                </div>
                 <p className="bento-body">
                   We do business when it makes sense, but we stay hands-on with the work. We prefer fewer projects with
                   more depth over many shallow wins.
@@ -163,39 +176,33 @@ export default function HomePage() {
               <article className="bento-team-card">
                 <div className="bento-team-photo bento-team-photo-placeholder" aria-hidden="true" />
                 <div className="bento-team-meta">
-                  <div className="bento-team-role">ROLE: ENGINEERING</div>
                   <h3 className="bento-team-name">Syed Rayan</h3>
-                  <p className="bento-team-tag">SYSTEM_ARCHITECTURE</p>
                   <p>Full-stack development, architecture, and systems.</p>
                   <div className="bento-team-socials">
-                    <span>GitHub</span>
-                    <span>LinkedIn</span>
+                    <a href="#" className="hover:text-signature transition-colors">Portfolio</a>
+                    <a href="#" className="hover:text-signature transition-colors">LinkedIn</a>
                   </div>
                 </div>
               </article>
               <article className="bento-team-card">
                 <div className="bento-team-photo bento-team-photo-placeholder" aria-hidden="true" />
                 <div className="bento-team-meta">
-                  <div className="bento-team-role">ROLE: ENGINEERING</div>
                   <h3 className="bento-team-name">Syed Naseer</h3>
-                  <p className="bento-team-tag">PRODUCT_ENGINEERING</p>
                   <p>Product engineering, UI systems, and delivery flow.</p>
                   <div className="bento-team-socials">
-                    <span>GitHub</span>
-                    <span>LinkedIn</span>
+                    <a href="#" className="hover:text-signature transition-colors">Portfolio</a>
+                    <a href="#" className="hover:text-signature transition-colors">LinkedIn</a>
                   </div>
                 </div>
               </article>
               <article className="bento-team-card">
                 <div className="bento-team-photo bento-team-photo-placeholder" aria-hidden="true" />
                 <div className="bento-team-meta">
-                  <div className="bento-team-role">ROLE: ENGINEERING</div>
                   <h3 className="bento-team-name">Shaik Ayub Hussain</h3>
-                  <p className="bento-team-tag">SYSTEMS_INTEGRATION</p>
                   <p>Build pipelines, tooling, and product integrations.</p>
                   <div className="bento-team-socials">
-                    <span>GitHub</span>
-                    <span>LinkedIn</span>
+                    <a href="#" className="hover:text-signature transition-colors">Portfolio</a>
+                    <a href="#" className="hover:text-signature transition-colors">LinkedIn</a>
                   </div>
                 </div>
               </article>
@@ -207,60 +214,87 @@ export default function HomePage() {
               <div className="bento-kicker">[03] OUR_STORY</div>
               <h2 className="bento-heading">A story told in releases, not slogans.</h2>
               <p className="bento-body">
-                A card-based bento timeline of how the team formed, shipped, and kept building.
+                A record of the team's formation, shipping milestones, and current focus.
               </p>
             </div>
             <div className="bento-story-grid">
-              <article className="bento-story-card bento-story-card--wide">
-                <div>
-                  <div className="bento-kicker">ORIGIN</div>
+              <article className="bento-story-card bento-story-card--wide group">
+                <div className="relative z-10">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Sparkles className="w-5 h-5 text-signature" />
+                    <div className="bento-kicker !mb-0">ORIGIN</div>
+                  </div>
                   <h3 className="bento-heading">A small team with a long runway.</h3>
                   <p className="bento-body">
                     We started with a handful of builds and a promise to keep the work clean and documented.
                   </p>
                 </div>
-                <div className="bento-inline">
-                  <span>2024</span>
+                <div className="bento-inline relative z-10">
                   <span>FORMATION</span>
                 </div>
               </article>
 
-              <article className="bento-story-card bento-story-card--tall">
-                <div>
-                  <div className="bento-kicker">FIRST_SHIP</div>
+              <article className="bento-story-card bento-story-card--tall group">
+                <div className="relative z-10">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Ship className="w-5 h-5 text-signature" />
+                    <div className="bento-kicker !mb-0">FIRST_SHIP</div>
+                  </div>
                   <h3 className="bento-heading">Launches over pitches.</h3>
                   <p className="bento-body">
                     Early releases proved our rhythm: scoped projects, fast feedback, steady upkeep.
                   </p>
+                  <ul className="bento-list mt-8">
+                    <li className="flex items-center gap-2">
+                       <ArrowUpRight className="w-3 h-3 text-signature" />
+                       {`Internal tools shipped`}
+                    </li>
+                    <li className="flex items-center gap-2">
+                       <ArrowUpRight className="w-3 h-3 text-signature" />
+                       {`First public release`}
+                    </li>
+                    <li className="flex items-center gap-2">
+                       <ArrowUpRight className="w-3 h-3 text-signature" />
+                       {`Monthly cadence locked`}
+                    </li>
+                  </ul>
                 </div>
-                <ul className="bento-list">
-                  <li>{`>`} Internal tools shipped</li>
-                  <li>{`>`} First public release</li>
-                  <li>{`>`} Monthly cadence locked</li>
-                </ul>
               </article>
 
-              <article className="bento-story-card bento-story-card--mid bento-story-card--systems">
-                <div className="bento-kicker">SYSTEMS</div>
-                <h3 className="bento-heading">Process stays simple.</h3>
-                <p className="bento-body">Discovery, design, build, launch. Nothing extra.</p>
+              <article className="bento-story-card bento-story-card--mid bento-story-card--systems group">
+                <div className="relative z-10">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Settings className="w-5 h-5 text-signature" />
+                    <div className="bento-kicker !mb-0">SYSTEMS</div>
+                  </div>
+                  <h3 className="bento-heading">Process stays simple.</h3>
+                  <p className="bento-body">Discovery, design, build, launch.</p>
+                </div>
               </article>
 
-              <article className="bento-story-card bento-story-card--mid bento-story-card--community">
-                <div className="bento-kicker">COMMUNITY</div>
-                <h3 className="bento-heading">We share the learnings.</h3>
-                <p className="bento-body">Notes, build logs, and short essays keep the system open.</p>
+              <article className="bento-story-card bento-story-card--mid bento-story-card--community group">
+                <div className="relative z-10">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Users className="w-5 h-5 text-signature" />
+                    <div className="bento-kicker !mb-0">COMMUNITY</div>
+                  </div>
+                  <h3 className="bento-heading">We share the learnings.</h3>
+                  <p className="bento-body">Notes, build logs, and short essays keep the system open.</p>
+                </div>
               </article>
 
-              <article className="bento-story-card bento-story-card--wide-alt">
-                <div>
-                  <div className="bento-kicker">NOW</div>
+              <article className="bento-story-card bento-story-card--wide-alt group">
+                <div className="relative z-10">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Activity className="w-5 h-5 text-signature" />
+                    <div className="bento-kicker !mb-0">NOW</div>
+                  </div>
                   <h3 className="bento-heading">We build what we can support.</h3>
                   <p className="bento-body">
                     Fewer projects, deeper focus, and a long-term identity behind every release.
                   </p>
                 </div>
-                <div className="bento-inline">
+                <div className="bento-inline relative z-10">
                   <span>STABLE_STACK</span>
                   <span>LONG_TERM</span>
                 </div>
@@ -268,42 +302,58 @@ export default function HomePage() {
             </div>
           </section>
 
-          <section id="blog-cta" className="bento-card bento-full bento-cta">
-            <div className="bento-cta-content">
-              <div className="bento-kicker">READ_THE_BLOG</div>
-              <h2 className="bento-heading">Build logs, launches, and what we learned.</h2>
-              <p className="bento-body">
-                Short reads from the team on shipping, tooling, and the decisions behind each release.
-              </p>
-              <div className="bento-actions">
-                <a className="bento-button" href="#">OPEN_BLOG</a>
-                <span className="bento-status">UPDATED: WEEKLY</span>
-              </div>
+          <section id="blog-cta" className="bento-card bento-full bento-blog">
+            <div className="bento-blog-bg" aria-hidden="true">
+              <Dither 
+                waveColor={[0.2, 0.3, 0.5]} 
+                colorNum={3} 
+                pixelSize={3} 
+                waveSpeed={0.03}
+              />
             </div>
-            <div className="bento-cta-panel" aria-hidden="true">
-              <div className="bento-cta-lines"></div>
-              <div className="bento-cta-label">BLOG_FEED</div>
+            <div className="bento-blog-content relative z-10 text-center">
+              <div className="flex flex-col items-center gap-6">
+                <div className="p-4 rounded-full bg-signature/10 border border-signature/20">
+                  <Rss className="w-8 h-8 text-signature" />
+                </div>
+                <div className="bento-kicker !mb-0 text-center">READ_THE_BLOG</div>
+                <h2 className="bento-heading text-3xl md:text-5xl max-w-2xl mx-auto">Build logs, launches, and what we learned.</h2>
+                <p className="bento-body text-lg max-w-xl mx-auto">
+                  Short reads from the team on shipping, tooling, and the decisions behind each release.
+                </p>
+                <div className="bento-actions justify-center">
+                  <a className="bento-button px-10 py-4 text-sm" href="#">OPEN_BLOG</a>
+                </div>
+              </div>
             </div>
           </section>
 
-          <section id="social-cta" className="bento-card bento-full bento-cta bento-cta--social">
-            <div className="bento-cta-content">
-              <div className="bento-kicker">SOCIAL_SIGNAL</div>
-              <h2 className="bento-heading">Follow the shipping trail.</h2>
-              <p className="bento-body">
-                Daily progress notes, launches, and in-between updates from the Galat Family team.
-              </p>
-              <div className="bento-inline">
-                <span>TWITTER</span>
-                <span>LINKEDIN</span>
-                <span>GITHUB</span>
-                <span>YOUTUBE</span>
+          <section id="social-cta" className="bento-card bento-full bento-social">
+            <div className="bento-social-content relative z-10 text-center">
+              <div className="flex flex-col items-center gap-8">
+                <div className="bento-kicker !mb-0 text-center">CONNECT</div>
+                <h2 className="bento-heading text-3xl md:text-5xl max-w-2xl mx-auto">See what we're working on.</h2>
+                <p className="bento-body text-lg max-w-xl mx-auto">
+                  We share our progress, new releases, and occasional thoughts on building software.
+                </p>
+                
+                <div className="flex flex-wrap justify-center gap-6 md:gap-12 py-4">
+                  <a href="#" className="bento-social-link group">
+                    <span className="block text-sm tracking-widest text-neutral-500 group-hover:text-signature transition-colors">X_TWITTER</span>
+                  </a>
+                  <a href="#" className="bento-social-link group">
+                    <span className="block text-sm tracking-widest text-neutral-500 group-hover:text-signature transition-colors">LINKEDIN</span>
+                  </a>
+                  <a href="#" className="bento-social-link group">
+                    <span className="block text-sm tracking-widest text-neutral-500 group-hover:text-signature transition-colors">GITHUB</span>
+                  </a>
+                  <a href="#" className="bento-social-link group">
+                    <span className="block text-sm tracking-widest text-neutral-500 group-hover:text-signature transition-colors">YOUTUBE</span>
+                  </a>
+                </div>
               </div>
             </div>
-            <div className="bento-cta-panel" aria-hidden="true">
-              <div className="bento-cta-orbit"></div>
-              <div className="bento-cta-label">SOCIAL_GRID</div>
-            </div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(100,100,255,0.05),transparent_70%)] pointer-events-none" />
           </section>
 
           <section id="contact" className="bento-card bento-footer-card bento-full">
@@ -313,10 +363,10 @@ export default function HomePage() {
             <div className="bento-footer-inner">
               <div className="bento-kicker">START_A_PROJECT</div>
               <h2 className="bento-footer-title">Start a conversation.</h2>
-              <a className="bento-email" href="mailto:hello@galat.family">
-                hello@galat.family
+              <a className="bento-email" href="mailto:galatfamily@gmail.com">
+                galatfamily@gmail.com
               </a>
-              <p className="bento-footer-meta">GalatFamily © 2024 :: All Systems Operational :: Loc: Internet</p>
+              <p className="bento-footer-meta">© 2024 Galat Family. Building one thing at a time.</p>
             </div>
           </section>
         </div>

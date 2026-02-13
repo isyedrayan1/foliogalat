@@ -11,7 +11,7 @@ export const Hero = () => {
             <Reveal delay={100} variant="blur-up">
               <div className="font-mono text-xs text-neutral-200 mb-8 tracking-[0.2em] flex items-center gap-2">
                 <span className="w-1.5 h-1.5 bg-neutral-200 animate-pulse"></span>
-                EST. 2024 :: TEAM_BUILD
+                TEAM_BUILD
               </div>
             </Reveal>
 
@@ -40,7 +40,6 @@ export const Hero = () => {
                 >
                   VIEW_BUILDS ↓
                 </a>
-                <span className="text-neutral-600 tracking-widest">STATUS: ACTIVE</span>
               </div>
             </Reveal>
 

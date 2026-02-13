@@ -4,30 +4,32 @@ import CardNav from "@/components/CardNav";
 
 const navItems = [
   {
-    label: "WORK",
+    label: "PROFILE",
     bgColor: "#111111",
     textColor: "#f5f5f5",
     links: [
-      { label: "Featured Work", href: "#work", ariaLabel: "Jump to work" },
-      { label: "Storyline", href: "#storyline", ariaLabel: "Jump to storyline" },
+      { label: "About Us", href: "#about", ariaLabel: "Jump to about" },
+      { label: "Our Story", href: "#story", ariaLabel: "Jump to story" },
+      { label: "The Team", href: "#team", ariaLabel: "Jump to team" },
     ],
   },
   {
-    label: "TEAM",
+    label: "BUILDS",
     bgColor: "#0d0d0d",
     textColor: "#f5f5f5",
     links: [
-      { label: "Our Team", href: "#team", ariaLabel: "Jump to team" },
-      { label: "Philosophy", href: "#story", ariaLabel: "Jump to philosophy" },
+      { label: "Featured Work", href: "#work", ariaLabel: "Jump to work" },
+      { label: "The Blog", href: "#blog-cta", ariaLabel: "Jump to blog" },
     ],
   },
   {
-    label: "CONTACT",
+    label: "CONNECT",
     bgColor: "#151515",
     textColor: "#f5f5f5",
     links: [
-      { label: "Start a Project", href: "#contact", ariaLabel: "Jump to contact" },
-      { label: "Say Hello", href: "#contact", ariaLabel: "Jump to contact" },
+      { label: "Social Media", href: "#social-cta", ariaLabel: "Jump to social" },
+      { label: "Get in Touch", href: "#contact", ariaLabel: "Jump to contact" },
+      { label: "Email Us", href: "mailto:galatfamily@gmail.com", ariaLabel: "Send an email" },
     ],
   },
 ];
@@ -50,7 +52,7 @@ export const Navigation = () => {
       menuColor="#e5e5e5"
       buttonBgColor="#f5f5f5"
       buttonTextColor="#0a0a0a"
-      ctaLabel="Start a Project"
+      ctaLabel="GET_IN_TOUCH"
       ctaHref="#contact"
     />
   );

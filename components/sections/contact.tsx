@@ -20,13 +20,13 @@ export const Contact = () => {
           <h2 className="text-4xl md:text-7xl font-bold text-white tracking-tighter mb-8">
             <span className="text-signature">START_A_PROJECT</span><span className="text-neutral-200 animate-pulse">_</span>
           </h2>
-          <a href="mailto:hello@galat.family" className="group relative inline-flex items-center gap-4 text-xl md:text-2xl text-neutral-400 hover:text-blue-200 transition-colors">
-            <span className="border-b border-neutral-800 group-hover:border-blue-300 pb-1 transition-all">hello@galat.family</span>
+          <a href="mailto:galatfamily@gmail.com" className="group relative inline-flex items-center gap-4 text-xl md:text-2xl text-neutral-400 hover:text-blue-200 transition-colors">
+            <span className="border-b border-neutral-800 group-hover:border-blue-300 pb-1 transition-all">galatfamily@gmail.com</span>
             <ArrowRight className="w-5 h-5 -rotate-45 group-hover:rotate-0 transition-transform text-neutral-200 group-hover:text-blue-300" />
           </a>
           
           <div className="mt-32 flex flex-col md:flex-row items-center gap-8 font-mono text-[10px] text-neutral-600 uppercase tracking-widest">
-            <span>GalatFamily © 2024</span>
+            <span>GalatFamily</span>
             <span className="hidden md:inline">::</span>
             <span>All Systems Operational</span>
             <span className="hidden md:inline">::</span>
