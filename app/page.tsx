@@ -202,78 +202,109 @@ export default function HomePage() {
             </div>
           </section>
 
-          <div className="bento-grid">
-          <section id="storyline" className="bento-card">
-            <div className="bento-kicker">[00] THE_STORY</div>
-            <h2 className="bento-heading">Each project has a clear start, middle, and release.</h2>
-            <p className="bento-body">
-              We follow a simple sequence to keep the work focused and predictable.
-            </p>
-            <ol className="bento-steps">
-              <li>
-                <span>01</span>
+          <section id="story" className="bento-card bento-full bento-story">
+            <div className="bento-story-header">
+              <div className="bento-kicker">[03] OUR_STORY</div>
+              <h2 className="bento-heading">A story told in releases, not slogans.</h2>
+              <p className="bento-body">
+                A card-based bento timeline of how the team formed, shipped, and kept building.
+              </p>
+            </div>
+            <div className="bento-story-grid">
+              <article className="bento-story-card bento-story-card--wide">
                 <div>
-                  <strong>Discovery</strong>
-                  <p>We map the workflow and define the real constraints.</p>
+                  <div className="bento-kicker">ORIGIN</div>
+                  <h3 className="bento-heading">A small team with a long runway.</h3>
+                  <p className="bento-body">
+                    We started with a handful of builds and a promise to keep the work clean and documented.
+                  </p>
                 </div>
-              </li>
-              <li>
-                <span>02</span>
-                <div>
-                  <strong>Design</strong>
-                  <p>We align interface and system decisions early.</p>
+                <div className="bento-inline">
+                  <span>2024</span>
+                  <span>FORMATION</span>
                 </div>
-              </li>
-              <li>
-                <span>03</span>
-                <div>
-                  <strong>Build</strong>
-                  <p>Focused sprints with clear scope and milestones.</p>
-                </div>
-              </li>
-              <li>
-                <span>04</span>
-                <div>
-                  <strong>Launch</strong>
-                  <p>Monitor, refine, and support after release.</p>
-                </div>
-              </li>
-            </ol>
-          </section>
+              </article>
 
-          <section id="trajectory" className="bento-card">
-            <div className="bento-kicker">[02] TRAJECTORY</div>
-            <h2 className="bento-heading">A small team with a long runway.</h2>
-            <p className="bento-body">
-              We build products, document decisions, and improve the system over time.
-            </p>
-            <ul className="bento-list">
-              <li>{`>`} 2024: Team formed, internal tools shipped.</li>
-              <li>{`>`} 2025: Public releases and knowledge sharing.</li>
-            </ul>
-          </section>
+              <article className="bento-story-card bento-story-card--tall">
+                <div>
+                  <div className="bento-kicker">FIRST_SHIP</div>
+                  <h3 className="bento-heading">Launches over pitches.</h3>
+                  <p className="bento-body">
+                    Early releases proved our rhythm: scoped projects, fast feedback, steady upkeep.
+                  </p>
+                </div>
+                <ul className="bento-list">
+                  <li>{`>`} Internal tools shipped</li>
+                  <li>{`>`} First public release</li>
+                  <li>{`>`} Monthly cadence locked</li>
+                </ul>
+              </article>
 
-          <section id="story" className="bento-card">
-            <div className="bento-kicker">STANDARDS.md</div>
-            <h2 className="bento-heading">Professional software with clear priorities.</h2>
-            <ul className="bento-list">
-              <li>{`>`} Define scope, ship carefully, iterate with intent.</li>
-              <li>{`>`} Built to support teams and operations.</li>
-            </ul>
-          </section>
+              <article className="bento-story-card bento-story-card--mid bento-story-card--systems">
+                <div className="bento-kicker">SYSTEMS</div>
+                <h3 className="bento-heading">Process stays simple.</h3>
+                <p className="bento-body">Discovery, design, build, launch. Nothing extra.</p>
+              </article>
 
-          <section id="knowledge" className="bento-card">
-            <div className="bento-kicker">[03] KNOWLEDGE</div>
-            <h2 className="bento-heading">Notes, write-ups, and build logs.</h2>
-            <p className="bento-body">
-              We publish short essays, build notes, and technical walkthroughs.
-            </p>
-            <div className="bento-inline">
-              <span>Blog</span>
-              <span>YouTube</span>
+              <article className="bento-story-card bento-story-card--mid bento-story-card--community">
+                <div className="bento-kicker">COMMUNITY</div>
+                <h3 className="bento-heading">We share the learnings.</h3>
+                <p className="bento-body">Notes, build logs, and short essays keep the system open.</p>
+              </article>
+
+              <article className="bento-story-card bento-story-card--wide-alt">
+                <div>
+                  <div className="bento-kicker">NOW</div>
+                  <h3 className="bento-heading">We build what we can support.</h3>
+                  <p className="bento-body">
+                    Fewer projects, deeper focus, and a long-term identity behind every release.
+                  </p>
+                </div>
+                <div className="bento-inline">
+                  <span>STABLE_STACK</span>
+                  <span>LONG_TERM</span>
+                </div>
+              </article>
             </div>
           </section>
-          </div>
+
+          <section id="blog-cta" className="bento-card bento-full bento-cta">
+            <div className="bento-cta-content">
+              <div className="bento-kicker">READ_THE_BLOG</div>
+              <h2 className="bento-heading">Build logs, launches, and what we learned.</h2>
+              <p className="bento-body">
+                Short reads from the team on shipping, tooling, and the decisions behind each release.
+              </p>
+              <div className="bento-actions">
+                <a className="bento-button" href="#">OPEN_BLOG</a>
+                <span className="bento-status">UPDATED: WEEKLY</span>
+              </div>
+            </div>
+            <div className="bento-cta-panel" aria-hidden="true">
+              <div className="bento-cta-lines"></div>
+              <div className="bento-cta-label">BLOG_FEED</div>
+            </div>
+          </section>
+
+          <section id="social-cta" className="bento-card bento-full bento-cta bento-cta--social">
+            <div className="bento-cta-content">
+              <div className="bento-kicker">SOCIAL_SIGNAL</div>
+              <h2 className="bento-heading">Follow the shipping trail.</h2>
+              <p className="bento-body">
+                Daily progress notes, launches, and in-between updates from the Galat Family team.
+              </p>
+              <div className="bento-inline">
+                <span>TWITTER</span>
+                <span>LINKEDIN</span>
+                <span>GITHUB</span>
+                <span>YOUTUBE</span>
+              </div>
+            </div>
+            <div className="bento-cta-panel" aria-hidden="true">
+              <div className="bento-cta-orbit"></div>
+              <div className="bento-cta-label">SOCIAL_GRID</div>
+            </div>
+          </section>
 
           <section id="contact" className="bento-card bento-footer-card bento-full">
             <div className="bento-footer-bg" aria-hidden="true">

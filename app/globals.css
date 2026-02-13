@@ -371,6 +371,97 @@
   padding-top: 0;
 }
 
+.bento-story {
+  display: grid;
+  gap: 18px;
+  padding: 28px;
+}
+
+.bento-story-header {
+  display: grid;
+  gap: 10px;
+  max-width: 520px;
+}
+
+.bento-story-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.bento-story-card {
+  border: 1px solid var(--bento-line);
+  border-radius: 14px;
+  padding: 18px;
+  background: rgba(8, 8, 10, 0.92);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 160px;
+  gap: 14px;
+}
+
+.bento-story-card .bento-kicker {
+  margin-bottom: 10px;
+}
+
+.bento-cta {
+  display: grid;
+  gap: 18px;
+  padding: 30px;
+  align-items: center;
+  grid-template-columns: minmax(0, 1fr);
+  background: rgba(7, 7, 10, 0.94);
+}
+
+.bento-cta-content {
+  display: grid;
+  gap: 12px;
+  max-width: 560px;
+}
+
+.bento-cta-panel {
+  position: relative;
+  border-radius: 16px;
+  border: 1px solid var(--bento-line);
+  min-height: 180px;
+  overflow: hidden;
+  background: radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.25), transparent 60%),
+    radial-gradient(circle at 80% 80%, rgba(229, 231, 235, 0.22), transparent 55%);
+}
+
+.bento-cta-lines {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 18px 18px;
+  opacity: 0.6;
+}
+
+.bento-cta-orbit {
+  position: absolute;
+  inset: 12px;
+  border-radius: 999px;
+  border: 1px dashed rgba(200, 200, 200, 0.35);
+  box-shadow: 0 0 40px rgba(59, 130, 246, 0.2) inset;
+}
+
+.bento-cta-label {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  font-family: var(--font-jetbrains-mono);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  color: rgba(230, 230, 230, 0.8);
+}
+
+.bento-cta--social .bento-cta-panel {
+  background: radial-gradient(circle at 50% 30%, rgba(120, 140, 180, 0.3), transparent 60%),
+    radial-gradient(circle at 80% 80%, rgba(200, 200, 200, 0.2), transparent 50%);
+}
+
 .bento-card {
   position: relative;
   background: rgba(6, 6, 8, 0.94);
@@ -759,6 +850,43 @@
 
   .bento-projects-main {
     grid-column: span 2;
+  }
+
+  .bento-story-grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-auto-rows: 140px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "origin origin origin ship ship ship ship ship ship systems systems systems"
+      "community community community community community community now now now now now now";
+  }
+
+  .bento-story-card--wide {
+    grid-area: origin;
+  }
+
+  .bento-story-card--tall {
+    grid-area: ship;
+  }
+
+  .bento-story-card--mid {
+    grid-row: span 1;
+  }
+
+  .bento-story-card--systems {
+    grid-area: systems;
+  }
+
+  .bento-story-card--community {
+    grid-area: community;
+  }
+
+  .bento-story-card--wide-alt {
+    grid-area: now;
+  }
+
+  .bento-cta {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
   }
 }
 
