@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "../components/CardNav.css";
 import { inter, jetbrainsMono } from "@/lib/fonts";
 
 export const metadata: Metadata = {
