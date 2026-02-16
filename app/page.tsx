@@ -168,13 +168,13 @@ export default function HomePage() {
 
           <section id="team" className="bento-team-row">
             <div className="bento-kicker">[02] OUR_TEAM</div>
-            <h2 className="bento-heading">Three developers, one team.</h2>
+            <h2 className="bento-heading">Two developers, one team.</h2>
             <p className="bento-body">
               We build, ship, and maintain our products together.
             </p>
             <div className="bento-team-row-grid">
               <article className="bento-team-card">
-                <div className="bento-team-photo bento-team-photo-placeholder" aria-hidden="true" />
+                <img src="/Syed rayan.jpg" alt="Syed Rayan" className="bento-team-photo" />
                 <div className="bento-team-meta">
                   <h3 className="bento-team-name">Syed Rayan</h3>
                   <p>Full-stack development, architecture, and systems.</p>
@@ -185,21 +185,10 @@ export default function HomePage() {
                 </div>
               </article>
               <article className="bento-team-card">
-                <div className="bento-team-photo bento-team-photo-placeholder" aria-hidden="true" />
+                <img src="/syed naseer.png.jpg" alt="Syed Naseer" className="bento-team-photo" />
                 <div className="bento-team-meta">
                   <h3 className="bento-team-name">Syed Naseer</h3>
                   <p>Product engineering, UI systems, and delivery flow.</p>
-                  <div className="bento-team-socials">
-                    <a href="#" className="hover:text-signature transition-colors">Portfolio</a>
-                    <a href="#" className="hover:text-signature transition-colors">LinkedIn</a>
-                  </div>
-                </div>
-              </article>
-              <article className="bento-team-card">
-                <div className="bento-team-photo bento-team-photo-placeholder" aria-hidden="true" />
-                <div className="bento-team-meta">
-                  <h3 className="bento-team-name">Shaik Ayub Hussain</h3>
-                  <p>Build pipelines, tooling, and product integrations.</p>
                   <div className="bento-team-socials">
                     <a href="#" className="hover:text-signature transition-colors">Portfolio</a>
                     <a href="#" className="hover:text-signature transition-colors">LinkedIn</a>

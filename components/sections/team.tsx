@@ -18,56 +18,58 @@ export const Team = () => {
           </div>
         </Reveal>
 
-        <div className="grid md:grid-cols-2 gap-px bg-neutral-800 border border-neutral-800">
-          {/* Member 1 */}
-          <Reveal variant="slide-left" className="bg-black p-8 md:p-12 hover:bg-black transition-colors duration-500 group border-r border-neutral-800 micro-blur">
-            <div className="relative mb-8 overflow-hidden rounded-lg aspect-[4/5] border border-neutral-800 group-hover:border-neutral-500/30 transition-colors">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-neutral-800 border border-neutral-800">
+          {/* Syed Rayan */}
+          <Reveal variant="slide-left" className="bg-black p-6 sm:p-8 md:p-12 hover:bg-black transition-colors duration-500 group border-b md:border-b md:border-r border-neutral-800 micro-blur">
+            <div className="relative mb-8 overflow-hidden rounded-lg aspect-[3/5] sm:aspect-[3/5.5] md:aspect-[3/6] border border-neutral-800 group-hover:border-neutral-500/30 transition-colors">
               <div className="absolute inset-0 bg-neutral-400/10 opacity-0 group-hover:opacity-20 transition-opacity z-10 mix-blend-overlay"></div>
               
               <img 
                 src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=800" 
-                alt="Dev One" 
+                alt="Syed Rayan" 
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
               />
               
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 to-transparent z-20">
-                <div className="font-mono text-xs text-neutral-200 mb-1">ROLE: ENGINEERING</div>
+                <div className="font-mono text-xs text-neutral-200 mb-1">ROLE: FOUNDER</div>
               </div>
             </div>
             
-            <h3 className="text-2xl font-bold text-white mb-2">Engineering</h3>
-            <p className="text-xs font-mono text-neutral-500 mb-6 tracking-widest uppercase">System_Architecture</p>
+            <h3 className="text-xl sm:text-2xl md:text-2xl font-bold text-white mb-2">Syed Rayan</h3>
+            <p className="text-xs font-mono text-neutral-500 mb-6 tracking-widest uppercase">Vision_Strategy</p>
             <p className="text-neutral-400 text-sm leading-relaxed mb-8 border-l-2 border-neutral-500/30 pl-4">
-              Platform design, data systems, and reliability at scale.
+              Visionary leader driving innovation and strategic direction.
             </p>
             <div className="flex gap-6">
               <Github size={20} className="text-neutral-600 hover:text-white transition-colors cursor-pointer" />
+              <Linkedin size={20} className="text-neutral-600 hover:text-white transition-colors cursor-pointer" />
               <Twitter size={20} className="text-neutral-600 hover:text-white transition-colors cursor-pointer" />
             </div>
           </Reveal>
 
-          {/* Member 2 */}
-          <Reveal variant="slide-right" className="bg-black p-8 md:p-12 hover:bg-black transition-colors duration-500 group micro-blur">
-            <div className="relative mb-8 overflow-hidden rounded-lg aspect-[4/5] border border-neutral-800 group-hover:border-neutral-500/30 transition-colors">
+          {/* Syed Naseer */}
+          <Reveal variant="slide-right" className="bg-black p-6 sm:p-8 md:p-12 hover:bg-black transition-colors duration-500 group border-b md:border-b-0 border-neutral-800 micro-blur">
+            <div className="relative mb-8 overflow-hidden rounded-lg aspect-[3/5] sm:aspect-[3/5.5] md:aspect-[3/6] border border-neutral-800 group-hover:border-neutral-500/30 transition-colors">
               <div className="absolute inset-0 bg-neutral-400/10 opacity-0 group-hover:opacity-20 transition-opacity z-10 mix-blend-overlay"></div>
               
               <img 
                 src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800" 
-                alt="Dev Two" 
+                alt="Syed Naseer" 
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
               />
               
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 to-transparent z-20">
-                <div className="font-mono text-xs text-neutral-200 mb-1">ROLE: PRODUCT</div>
+                <div className="font-mono text-xs text-neutral-200 mb-1">ROLE: CO-FOUNDER</div>
               </div>
             </div>
 
-            <h3 className="text-2xl font-bold text-white mb-2">Product</h3>
-            <p className="text-xs font-mono text-neutral-500 mb-6 tracking-widest uppercase">Design_Experience</p>
+            <h3 className="text-xl sm:text-2xl md:text-2xl font-bold text-white mb-2">Syed Naseer</h3>
+            <p className="text-xs font-mono text-neutral-500 mb-6 tracking-widest uppercase">Operations_Growth</p>
             <p className="text-neutral-400 text-sm leading-relaxed mb-8 border-l-2 border-neutral-500/30 pl-4">
-              Product strategy, design systems, and user experience.
+              Driving operational excellence and sustainable growth initiatives.
             </p>
             <div className="flex gap-6">
+              <Github size={20} className="text-neutral-600 hover:text-white transition-colors cursor-pointer" />
               <Linkedin size={20} className="text-neutral-600 hover:text-white transition-colors cursor-pointer" />
               <Twitter size={20} className="text-neutral-600 hover:text-white transition-colors cursor-pointer" />
             </div>
