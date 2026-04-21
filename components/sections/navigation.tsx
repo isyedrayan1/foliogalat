@@ -29,7 +29,7 @@ const navItems = [
     links: [
       { label: "Social Media", href: "#social-cta", ariaLabel: "Jump to social" },
       { label: "Get in Touch", href: "#contact", ariaLabel: "Jump to contact" },
-      { label: "Email Us", href: "mailto:galatfamily@gmail.com", ariaLabel: "Send an email" },
+      { label: "Email Us", href: "mailto:contact.galatfamily@gmail.com", ariaLabel: "Send an email" },
     ],
   },
 ];

@@ -20,8 +20,8 @@ export const Contact = () => {
           <h2 className="text-4xl md:text-7xl font-bold text-white tracking-tighter mb-8">
             <span className="text-signature">START_A_PROJECT</span><span className="text-neutral-200 animate-pulse">_</span>
           </h2>
-          <a href="mailto:galatfamily@gmail.com" className="group relative inline-flex items-center gap-4 text-xl md:text-2xl text-neutral-400 hover:text-blue-200 transition-colors">
-            <span className="border-b border-neutral-800 group-hover:border-blue-300 pb-1 transition-all">galatfamily@gmail.com</span>
+          <a href="mailto:contact.galatfamily@gmail.com" className="group relative inline-flex items-center gap-4 text-xl md:text-2xl text-neutral-400 hover:text-blue-200 transition-colors">
+            <span className="border-b border-neutral-800 group-hover:border-blue-300 pb-1 transition-all">contact.galatfamily@gmail.com</span>
             <ArrowRight className="w-5 h-5 -rotate-45 group-hover:rotate-0 transition-transform text-neutral-200 group-hover:text-blue-300" />
           </a>
           
