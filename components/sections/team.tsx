@@ -1,7 +1,7 @@
 "use client";
 
 import { Reveal } from '@/components/utilities/reveal';
-import { Github, Twitter, Linkedin } from 'lucide-react';
+import { Github, Linkedin } from 'lucide-react';
 
 export const Team = () => {
   return (
@@ -41,9 +41,12 @@ export const Team = () => {
               Visionary leader driving innovation and strategic direction.
             </p>
             <div className="flex gap-6">
-              <Github size={20} className="text-neutral-600 hover:text-white transition-colors cursor-pointer" />
-              <Linkedin size={20} className="text-neutral-600 hover:text-white transition-colors cursor-pointer" />
-              <Twitter size={20} className="text-neutral-600 hover:text-white transition-colors cursor-pointer" />
+              <a href="#" target="_blank" rel="noreferrer" aria-label="Syed Rayan GitHub">
+                <Github size={20} className="text-neutral-600 hover:text-white transition-colors cursor-pointer" />
+              </a>
+              <a href="https://linkedin.com/in/isyedrayan" target="_blank" rel="noreferrer" aria-label="Syed Rayan LinkedIn">
+                <Linkedin size={20} className="text-neutral-600 hover:text-white transition-colors cursor-pointer" />
+              </a>
             </div>
           </Reveal>
 
@@ -69,9 +72,12 @@ export const Team = () => {
               Driving operational excellence and sustainable growth initiatives.
             </p>
             <div className="flex gap-6">
-              <Github size={20} className="text-neutral-600 hover:text-white transition-colors cursor-pointer" />
-              <Linkedin size={20} className="text-neutral-600 hover:text-white transition-colors cursor-pointer" />
-              <Twitter size={20} className="text-neutral-600 hover:text-white transition-colors cursor-pointer" />
+              <a href="#" target="_blank" rel="noreferrer" aria-label="Syed Naseer GitHub">
+                <Github size={20} className="text-neutral-600 hover:text-white transition-colors cursor-pointer" />
+              </a>
+              <a href="https://www.linkedin.com/in/syed-naseer-66bb0231b" target="_blank" rel="noreferrer" aria-label="Syed Naseer LinkedIn">
+                <Linkedin size={20} className="text-neutral-600 hover:text-white transition-colors cursor-pointer" />
+              </a>
             </div>
           </Reveal>
         </div>

@@ -179,8 +179,8 @@ export default function HomePage() {
                   <h3 className="bento-team-name">Syed Rayan</h3>
                   <p>Full-stack development, architecture, and systems.</p>
                   <div className="bento-team-socials">
-                    <a href="#" className="hover:text-signature transition-colors">Portfolio</a>
-                    <a href="#" className="hover:text-signature transition-colors">LinkedIn</a>
+                    <a href="https://isyedrayan.in" target="_blank" rel="noreferrer" className="hover:text-signature transition-colors">Portfolio</a>
+                    <a href="https://linkedin.com/in/isyedrayan" target="_blank" rel="noreferrer" className="hover:text-signature transition-colors">LinkedIn</a>
                   </div>
                 </div>
               </article>
@@ -190,8 +190,8 @@ export default function HomePage() {
                   <h3 className="bento-team-name">Syed Naseer</h3>
                   <p>Product engineering, UI systems, and delivery flow.</p>
                   <div className="bento-team-socials">
-                    <a href="#" className="hover:text-signature transition-colors">Portfolio</a>
-                    <a href="#" className="hover:text-signature transition-colors">LinkedIn</a>
+                    <a href="https://itsnaseersyed.dev" target="_blank" rel="noreferrer" className="hover:text-signature transition-colors">Portfolio</a>
+                    <a href="https://www.linkedin.com/in/syed-naseer-66bb0231b" target="_blank" rel="noreferrer" className="hover:text-signature transition-colors">LinkedIn</a>
                   </div>
                 </div>
               </article>
@@ -311,7 +311,7 @@ export default function HomePage() {
                   Short reads from the team on shipping, tooling, and the decisions behind each release.
                 </p>
                 <div className="bento-actions justify-center">
-                  <a className="bento-button px-10 py-4 text-sm" href="#">OPEN_BLOG</a>
+                  <a className="bento-button px-10 py-4 text-sm" href="/blog">OPEN_BLOG</a>
                 </div>
               </div>
             </div>
@@ -327,11 +327,8 @@ export default function HomePage() {
                 </p>
                 
                 <div className="flex flex-wrap justify-center gap-6 md:gap-12 py-4">
-                  <a href="#" className="bento-social-link group">
-                    <span className="block text-sm tracking-widest text-neutral-500 group-hover:text-signature transition-colors">X_TWITTER</span>
-                  </a>
-                  <a href="#" className="bento-social-link group">
-                    <span className="block text-sm tracking-widest text-neutral-500 group-hover:text-signature transition-colors">LINKEDIN</span>
+                  <a href="https://instagram.com/thegalatfamily" target="_blank" rel="noreferrer" className="bento-social-link group">
+                    <span className="block text-sm tracking-widest text-neutral-500 group-hover:text-signature transition-colors">INSTAGRAM</span>
                   </a>
                   <a href="#" className="bento-social-link group">
                     <span className="block text-sm tracking-widest text-neutral-500 group-hover:text-signature transition-colors">GITHUB</span>
@@ -352,8 +349,8 @@ export default function HomePage() {
             <div className="bento-footer-inner">
               <div className="bento-kicker">START_A_PROJECT</div>
               <h2 className="bento-footer-title">Start a conversation.</h2>
-              <a className="bento-email" href="mailto:galatfamily@gmail.com">
-                galatfamily@gmail.com
+              <a className="bento-email" href="mailto:contact.galatfamily@gmail.com">
+                contact.galatfamily@gmail.com
               </a>
               <p className="bento-footer-meta">© 2024 Galat Family. Building one thing at a time.</p>
             </div>
