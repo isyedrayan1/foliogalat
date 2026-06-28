@@ -2,8 +2,14 @@ import { Navigation } from '@/components/sections/navigation';
 import NeuralBackground from '@/components/ui/flow-field-background';
 import { getAllPosts } from '@/lib/markdown';
 import Link from 'next/link';
-import { ArrowRight, Calendar, User, Clock, BookOpen } from 'lucide-react';
+import { ArrowRight, Clock, BookOpen } from 'lucide-react';
 import Dither from '@/components/Dither';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Engineering Logs | Galat Family",
+  description: "Read our latest articles, guides, and engineering notes. Sharing what we build, learn, and document.",
+};
 
 export default function BlogPage() {
   const posts = getAllPosts();
@@ -145,7 +151,7 @@ export default function BlogPage() {
               {/* Quick Stats / Info Bento Card (TOP) */}
               <div className="flex-1 border border-neutral-800/80 rounded-2xl bg-neutral-950/40 p-6 md:p-8 flex flex-col justify-between hover:border-neutral-700/60 transition-all duration-300 relative overflow-hidden group">
                 <div>
-                  <span className="font-mono text-xs text-neutral-500 tracking-widest block mb-4 uppercase">// STATISTICS</span>
+                  <span className="font-mono text-xs text-neutral-500 tracking-widest block mb-4 uppercase">{"// STATISTICS"}</span>
                   <div className="grid grid-cols-2 gap-4 my-2">
                     <div className="bg-neutral-900/50 border border-neutral-800/60 rounded-xl p-3 text-center">
                       <div className="text-2xl font-bold text-white font-mono">{posts.length}</div>
@@ -166,7 +172,7 @@ export default function BlogPage() {
               <div className="flex-1 border border-neutral-800/80 rounded-2xl bg-neutral-950/40 p-6 md:p-8 flex flex-col justify-between hover:border-neutral-700/60 transition-all duration-300 relative overflow-hidden group">
                 <div className="absolute inset-0 bg-gradient-to-tr from-neutral-900/50 via-transparent to-transparent pointer-events-none" />
                 <div>
-                  <span className="font-mono text-xs text-neutral-500 tracking-widest block mb-4 uppercase">// NEWSLETTER</span>
+                  <span className="font-mono text-xs text-neutral-500 tracking-widest block mb-4 uppercase">{"// NEWSLETTER"}</span>
                   <h3 className="text-xl font-bold text-white tracking-tight leading-snug mb-3">
                     Stay updated with our builds.
                   </h3>

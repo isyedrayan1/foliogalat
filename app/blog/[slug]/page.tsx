@@ -8,8 +8,34 @@ import { TableOfContents } from '@/components/table-of-contents';
 import { MermaidRenderer } from '@/components/mermaid-renderer';
 import { CodeCopy } from '@/components/code-copy';
 
+import type { Metadata } from 'next';
+
 interface BlogPostProps {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: BlogPostProps): Promise<Metadata> {
+  const resolvedParams = await params;
+  const post = getPaginatedPost(resolvedParams.slug);
+
+  if (!post) {
+    return {
+      title: 'Post Not Found | Galat Family',
+    };
+  }
+
+  const title = `${post.title} | Galat Family`;
+  const description = post.excerpt || `Read "${post.title}", a guide and engineering log from the Galat Family team.`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'article',
+    },
+  };
 }
 
 export async function generateStaticParams() {
@@ -120,9 +146,10 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
                 <h3 className="text-base font-bold text-white">{post.author}</h3>
               </div>
               <div className="flex justify-center sm:justify-start gap-4 text-[11px] font-mono">
-                <a href="https://isyedrayan.in" target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-signature transition-colors">Portfolio</a>
+                <a href="https://isyedrayan1.netlify.app" target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-signature transition-colors">Portfolio</a>
                 <a href="https://github.com/isyedrayan1" target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-signature transition-colors">GitHub</a>
                 <a href="https://linkedin.com/in/isyedrayan" target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-signature transition-colors">LinkedIn</a>
+                <a href="https://instagram.com/isyedrayan" target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-signature transition-colors">Instagram</a>
               </div>
             </div>
           </article>

@@ -2,17 +2,18 @@ import { Navigation } from '@/components/sections/navigation';
 import NeuralBackground from '@/components/ui/flow-field-background';
 import Dither from '@/components/Dither';
 import { 
-  BookOpen, 
   Terminal, 
   Cpu, 
   Code2, 
   Layers, 
-  ArrowUpRight, 
-  Flame, 
-  ShieldAlert, 
-  Workflow,
-  ExternalLink 
+  Workflow
 } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "System Specs & Guides | Galat Family",
+  description: "Detailed blueprints, architectural decisions, and integration references. Sharing what we build and document.",
+};
 
 export default function DocsPage() {
   return (
@@ -101,7 +102,7 @@ export default function DocsPage() {
               <div>
                 <div className="flex items-center gap-2 mb-6">
                   <Workflow className="w-5 h-5 text-signature" />
-                  <span className="font-mono text-xs text-neutral-400 tracking-widest uppercase">// ARCHITECTURE</span>
+                  <span className="font-mono text-xs text-neutral-400 tracking-widest uppercase">{"// ARCHITECTURE"}</span>
                 </div>
                 <h3 className="text-xl font-bold text-white tracking-tight mb-4">Core Principles</h3>
                 <p className="text-neutral-400 text-sm leading-relaxed mb-4">
@@ -120,7 +121,7 @@ export default function DocsPage() {
               <div>
                 <div className="flex items-center gap-2 mb-6">
                   <Layers className="w-5 h-5 text-signature" />
-                  <span className="font-mono text-xs text-neutral-400 tracking-widest uppercase">// SYSTEM_STACK</span>
+                  <span className="font-mono text-xs text-neutral-400 tracking-widest uppercase">{"// SYSTEM_STACK"}</span>
                 </div>
                 <h3 className="text-xl font-bold text-white tracking-tight mb-4">Components & Modules</h3>
                 <p className="text-neutral-400 text-sm leading-relaxed mb-4">
@@ -139,7 +140,7 @@ export default function DocsPage() {
               <div>
                 <div className="flex items-center gap-2 mb-6">
                   <Cpu className="w-5 h-5 text-signature" />
-                  <span className="font-mono text-xs text-neutral-400 tracking-widest uppercase">// INTEGRATIONS</span>
+                  <span className="font-mono text-xs text-neutral-400 tracking-widest uppercase">{"// INTEGRATIONS"}</span>
                 </div>
                 <h3 className="text-xl font-bold text-white tracking-tight mb-4">API References</h3>
                 <p className="text-neutral-400 text-sm leading-relaxed mb-4">
@@ -160,7 +161,7 @@ export default function DocsPage() {
             <div className="max-w-3xl">
               <div className="flex items-center gap-2 mb-4">
                 <Code2 className="w-5 h-5 text-signature" />
-                <span className="font-mono text-xs text-neutral-400 tracking-widest">// INTERNAL_GUIDE</span>
+                <span className="font-mono text-xs text-neutral-400 tracking-widest">{"// INTERNAL_GUIDE"}</span>
               </div>
               <h2 className="text-2xl font-bold text-white tracking-tight mb-6">Unitsend: Large File Uplink Protocol</h2>
               
@@ -169,7 +170,7 @@ export default function DocsPage() {
               </p>
 
               <div className="my-6 border-l-2 border-signature pl-4 italic text-neutral-400 text-sm">
-                "By decoupling chunk upload from main thread loops, we maintain 60 FPS on client UIs during active 2GB uploads."
+                &quot;By decoupling chunk upload from main thread loops, we maintain 60 FPS on client UIs during active 2GB uploads.&quot;
               </div>
 
               <h4 className="text-sm font-mono text-white mb-3 tracking-wide">UPLOADER_CODE_PATTERN:</h4>

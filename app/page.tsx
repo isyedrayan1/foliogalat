@@ -2,6 +2,8 @@ import { Navigation } from '@/components/sections/navigation';
 import NeuralBackground from '@/components/ui/flow-field-background';
 import { Sparkles, Ship, ArrowUpRight, Settings, Users, Activity, Heart, Cpu, Zap, Rss } from 'lucide-react';
 import Dither from '@/components/Dither';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export default function HomePage() {
   return (
@@ -21,11 +23,11 @@ export default function HomePage() {
               <a className="bento-button" href="#work">
                 VIEW_BUILDS
               </a>
-              <a className="bento-button" href="/blog">
+              <Link className="bento-button" href="/blog">
                 READ_BLOGS
-              </a>
+              </Link>
             </div>
-            <div className="bento-subline">// Plan. Build. Ship. Iterate.</div>
+            <div className="bento-subline">{"// Plan. Build. Ship. Iterate."}</div>
           </section>
 
           <section id="about" className="bento-about">
@@ -177,18 +179,34 @@ export default function HomePage() {
             </p>
             <div className="bento-team-row-grid">
               <article className="bento-team-card">
-                <img src="/Syed rayan.jpg" alt="Syed Rayan" className="bento-team-photo" />
+                <div className="bento-team-photo w-full h-[280px]">
+                  <Image 
+                    src="/Syed rayan.jpg" 
+                    alt="Syed Rayan" 
+                    fill 
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority
+                  />
+                </div>
                 <div className="bento-team-meta">
                   <h3 className="bento-team-name">Syed Rayan</h3>
                   <p>Full-stack development, architecture, and systems.</p>
                   <div className="bento-team-socials">
-                    <a href="https://isyedrayan.in" target="_blank" rel="noreferrer" className="hover:text-signature transition-colors">Portfolio</a>
+                    <a href="https://isyedrayan1.netlify.app" target="_blank" rel="noreferrer" className="hover:text-signature transition-colors">Portfolio</a>
                     <a href="https://linkedin.com/in/isyedrayan" target="_blank" rel="noreferrer" className="hover:text-signature transition-colors">LinkedIn</a>
+                    <a href="https://instagram.com/isyedrayan" target="_blank" rel="noreferrer" className="hover:text-signature transition-colors">Instagram</a>
                   </div>
                 </div>
               </article>
               <article className="bento-team-card">
-                <img src="/syed naseer.png.jpg" alt="Syed Naseer" className="bento-team-photo" />
+                <div className="bento-team-photo w-full h-[280px]">
+                  <Image 
+                    src="/syed naseer.png.jpg" 
+                    alt="Syed Naseer" 
+                    fill 
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
                 <div className="bento-team-meta">
                   <h3 className="bento-team-name">Syed Naseer</h3>
                   <p>Product engineering, UI systems, and delivery flow.</p>
@@ -206,7 +224,7 @@ export default function HomePage() {
               <div className="bento-kicker">[03] OUR_STORY</div>
               <h2 className="bento-heading">A story told in releases, not slogans.</h2>
               <p className="bento-body">
-                A record of the team's formation, shipping milestones, and current focus.
+                A record of the team&apos;s formation, shipping milestones, and current focus.
               </p>
             </div>
             <div className="bento-story-grid">
@@ -314,7 +332,7 @@ export default function HomePage() {
                   Short reads from the team on shipping, tooling, and the decisions behind each release.
                 </p>
                 <div className="bento-actions justify-center">
-                  <a className="bento-button px-10 py-4 text-sm" href="/blog">OPEN_BLOG</a>
+                  <Link className="bento-button px-10 py-4 text-sm" href="/blog">OPEN_BLOG</Link>
                 </div>
               </div>
             </div>
@@ -324,7 +342,7 @@ export default function HomePage() {
             <div className="bento-social-content relative z-10 text-center">
               <div className="flex flex-col items-center gap-8">
                 <div className="bento-kicker !mb-0 text-center">CONNECT</div>
-                <h2 className="bento-heading text-3xl md:text-5xl max-w-2xl mx-auto">See what we're working on.</h2>
+                <h2 className="bento-heading text-3xl md:text-5xl max-w-2xl mx-auto">See what we&apos;re working on.</h2>
                 <p className="bento-body text-lg max-w-xl mx-auto">
                   We share our progress, new releases, and occasional thoughts on building software.
                 </p>

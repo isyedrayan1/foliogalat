@@ -4,8 +4,8 @@ import "../components/CardNav.css";
 import { inter, jetbrainsMono } from "@/lib/fonts";
 
 export const metadata: Metadata = {
-  title: "Galat Family - We Build Software",
-  description: "Just two engineers building software we care about. No managers. No overhead. Just Code.",
+  title: "Galat Family",
+  description: "A team focused on learning, collaborating, and building software. Sharing what we build, write, and document along the way.",
 };
 
 export default function RootLayout({

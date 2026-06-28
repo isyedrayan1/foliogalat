@@ -1,6 +1,7 @@
 "use client";
 
 import { Reveal } from '@/components/utilities/reveal';
+import Link from 'next/link';
 
 export const Hero = () => {
   return (
@@ -27,7 +28,7 @@ export const Hero = () => {
               <p className="mt-8 text-lg md:text-xl text-neutral-400 font-light leading-relaxed max-w-xl">
                 We shape products from signal to system, turning complex workflows into memorable software.
                 <span className="block mt-3 font-mono text-xs text-neutral-600 uppercase tracking-widest">
-                  // Discovery. Design. Build. Launch.
+                  {"// Discovery. Design. Build. Launch."}
                 </span>
               </p>
             </Reveal>
@@ -40,12 +41,12 @@ export const Hero = () => {
                 >
                   VIEW_BUILDS ↓
                 </a>
-                <a
+                <Link
                   href="/blog"
                   className="px-6 py-3 border border-neutral-800 rounded transition-all cursor-pointer btn-signature"
                 >
                   READ_BLOGS →
-                </a>
+                </Link>
               </div>
             </Reveal>
 
