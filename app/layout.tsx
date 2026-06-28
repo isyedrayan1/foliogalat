@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "../components/CardNav.css";
 import { inter, jetbrainsMono } from "@/lib/fonts";
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata: Metadata = {
   title: "Galat Family",
@@ -20,6 +21,7 @@ export default function RootLayout({
         style={{ fontFamily: 'var(--font-inter)' }}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
