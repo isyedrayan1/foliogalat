@@ -127,7 +127,24 @@ credit_card_approval_project/
 │   └── script.js
 ├── notebook.ipynb
 └── app.py
-```
+# Part 5: Downloading and Understanding the Dataset
+
+## 8. Finding a Dataset
+
+### 8.1 Where to Download Datasets
+For this project, we utilize the official [Kaggle Credit Card Dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud). Kaggle is an online database platform hosting millions of open datasets for model builders.
+
+### 8.2 Choosing the Correct Dataset
+We select a tabular credit card application dataset containing applicant demographics (income, gender, employment status) and a target binary label column (`Approved`) indicating approval status.
+
+### 8.3 Downloading the Dataset
+1. Open the [Kaggle Credit Card Dataset Link](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud) in your browser.
+2. Sign in and download the dataset archive.
+3. Extract the downloaded folder to extract the `creditcard_data.csv` application file.
+
+### 8.4 Placing the Dataset Inside the Project
+Create a folder named `data` inside your root project folder. Move the extracted file inside, naming it exactly:
+`credit_card_approval_project/data/creditcard_data.csv`
 
 ---
 
@@ -150,7 +167,7 @@ pip install numpy pandas matplotlib seaborn scikit-learn xgboost joblib flask
 
 ---
 
-# Part 5: Interactive Notebook - Importing Libraries & Loading Data
+# Part 6: Interactive Notebook - Importing Libraries & Loading Data
 
 ### 7.3 [JUPYTER CELL 1] Importing Core Libraries
 Open your `notebook.ipynb` file, create a new code cell, paste the following code, and execute it:
@@ -173,7 +190,7 @@ print("Dataset loaded. Number of rows:", len(df))
 
 ---
 
-# Part 6: Interactive Notebook - Exploratory Data Analysis (EDA)
+# Part 7: Interactive Notebook - Exploratory Data Analysis (EDA)
 
 Follow along step-by-step. Each of the following steps must be run in a separate cell inside your Jupyter Notebook to inspect the outputs clearly.
 
@@ -283,7 +300,7 @@ plt.show()
 
 ---
 
-# Part 7: Interactive Notebook - Preprocessing & Feature Engineering
+# Part 8: Interactive Notebook - Preprocessing & Feature Engineering
 
 ### 9.1 [JUPYTER CELL 16] Handling Missing Values
 Create a new cell and run:
@@ -310,7 +327,7 @@ df.head()
 
 ---
 
-# Part 8: Interactive Notebook - Training & Multi-Model Comparison
+# Part 9: Interactive Notebook - Training & Multi-Model Comparison
 
 ### 10.1 [JUPYTER CELL 18] Splitting Features & Target Data
 Create a new cell and run:
@@ -379,7 +396,7 @@ print("Model file successfully written into models/ folder!")
 
 ---
 
-# Part 9: Python Script - Flask Application Server
+# Part 10: Python Script - Flask Application Server
 
 The following code is not run in Jupyter. You must copy it and save it as a Python script named `app.py` in your project folder.
 
@@ -420,7 +437,7 @@ if __name__ == '__main__':
 
 ---
 
-# Part 10: Web Application Frontend Files
+# Part 11: Web Application Frontend Files
 
 ### 12.1 Creating templates/index.html Layout
 ```html
@@ -512,7 +529,7 @@ document.getElementById('predictionForm').addEventListener('submit', async (e) =
 });
 ```
 
-# Part 11: Understanding the Complete Workflow
+# Part 12: Understanding the Complete Workflow
 
 ## 25. End to End Project Flow
 
@@ -529,7 +546,7 @@ By building this flow, you have designed a full production-ready template. The f
 
 ---
 
-# Part 12: Common Errors and Fixes
+# Part 13: Common Errors and Fixes
 
 ## 26. Troubleshooting Guide
 
@@ -574,7 +591,7 @@ By building this flow, you have designed a full production-ready template. The f
 
 ---
 
-# Part 13: Applying This Workflow to Other Projects
+# Part 14: Applying This Workflow to Other Projects
 
 ## 27. Using This Same Workflow for Any ML Project
 You can apply this exact end-to-end blueprint to any tabular classification project:
@@ -587,7 +604,7 @@ You can apply this exact end-to-end blueprint to any tabular classification proj
 
 ---
 
-# Part 14: Final Project
+# Part 15: Final Project
 
 ## 28. Complete Project Folder Structure
 ```text

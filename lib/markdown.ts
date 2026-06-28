@@ -86,6 +86,17 @@ export function markdownToHtml(markdown: string): string {
     return `<ul class="list-disc list-inside text-neutral-300 my-4 pl-4">${items}</ul>`;
   });
 
+  // Ordered list items: 1. item or 2. item
+  // Capture contiguous blocks of numbered list items and wrap them in ol
+  html = html.replace(/^(?:\d+\.\s+(.+)\r?\n?)+/gm, (match) => {
+    const items = match
+      .split('\n')
+      .filter(line => line.trim())
+      .map(line => `  <li class="mb-2 pl-1">${line.replace(/^\d+\.\s+/, '')}</li>`)
+      .join('\n');
+    return `<ol class="list-decimal list-inside text-neutral-300 my-4 pl-4">${items}</ol>`;
+  });
+
   // Paragraphs: separate double newlines into p blocks, skipping divs, lists, and preblocks
   const paragraphs = html.split(/\r?\n\r?\n/);
   html = paragraphs
@@ -93,12 +104,15 @@ export function markdownToHtml(markdown: string): string {
       const trimmed = p.trim();
       if (!trimmed) return '';
       // If it already looks like a block-level HTML structure, return as is
-      if (trimmed.startsWith('<pre') || trimmed.startsWith('<ul') || trimmed.startsWith('<h') || trimmed.startsWith('<blockquote') || trimmed.startsWith('<hr')) {
+      if (trimmed.startsWith('<pre') || trimmed.startsWith('<ul') || trimmed.startsWith('<ol') || trimmed.startsWith('<h') || trimmed.startsWith('<blockquote') || trimmed.startsWith('<hr')) {
         return trimmed;
       }
       return `<p class="leading-relaxed text-neutral-300 mb-6">${trimmed}</p>`;
     })
     .join('\n');
+
+  // Images: ![alt](url)
+  html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" class="w-full max-w-2xl mx-auto rounded-xl border border-neutral-850 my-6 shadow-lg" />');
 
   // Links: [text](url)
   html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-signature hover:underline transition-all" target="_blank" rel="noopener noreferrer">$1</a>');
@@ -135,6 +149,84 @@ export function getAllPosts(): PostMetadata[] {
   return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
+export interface PartContent {
+  title: string;
+  slug: string;
+  contentHtml: string;
+}
+
+export interface PaginatedPost extends PostMetadata {
+  parts: PartContent[];
+}
+
+export function getPaginatedPost(slug: string): PaginatedPost | null {
+  try {
+    const fullPath = path.join(docsDirectory, `${slug}.md`);
+    if (!fs.existsSync(fullPath)) return null;
+
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const { metadata, content } = parseFrontmatter(fileContents);
+
+    // Split by Part headers: # Part <number>: <title>
+    const partsRaw = content.split(/^(?=# Part\s+\d+)/gm);
+    const parts: PartContent[] = [];
+
+    partsRaw.forEach((partText, index) => {
+      const trimmedText = partText.trim();
+      if (!trimmedText) return;
+
+      // Extract title from the first heading line
+      const match = /^#\s+(Part\s+\d+:\s+.*?)$/m.exec(trimmedText);
+      let title = "Introduction";
+      let slugName = "introduction";
+
+      if (match) {
+        title = match[1];
+        // Clean title for URL slug (e.g. "part-1")
+        const partNumberMatch = /Part\s+(\d+)/i.exec(title);
+        if (partNumberMatch) {
+          slugName = `part-${partNumberMatch[1]}`;
+        }
+      } else {
+        // If it's intro text before any "# Part"
+        title = "Introduction";
+        slugName = "introduction";
+      }
+
+      // Convert content to HTML
+      const contentHtml = markdownToHtml(trimmedText);
+      parts.push({
+        title,
+        slug: slugName,
+        contentHtml,
+      });
+    });
+
+    // If there is only one part and it was not matched as an intro/part, fall back
+    if (parts.length === 0) {
+      parts.push({
+        title: "Introduction",
+        slug: "introduction",
+        contentHtml: markdownToHtml(content),
+      });
+    }
+
+    return {
+      slug,
+      title: metadata.title || 'Untitled Post',
+      date: metadata.date || '2026-06-28',
+      excerpt: metadata.excerpt || '',
+      author: metadata.author || 'Galat Family',
+      kicker: metadata.kicker || 'ARTICLE',
+      readTime: metadata.readTime || '3 min read',
+      parts,
+    };
+  } catch (error) {
+    console.error(`Error reading paginated post with slug ${slug}:`, error);
+    return null;
+  }
+}
+
 export function getPostBySlug(slug: string): Post | null {
   try {
     const fullPath = path.join(docsDirectory, `${slug}.md`);
@@ -159,3 +251,4 @@ export function getPostBySlug(slug: string): Post | null {
     return null;
   }
 }
+

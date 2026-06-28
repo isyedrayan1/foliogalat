@@ -9,14 +9,24 @@ import { MermaidRenderer } from '@/components/mermaid-renderer';
 import { CodeCopy } from '@/components/code-copy';
 
 interface BlogPostProps {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; part: string }>;
 }
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  const paths: { slug: string; part: string }[] = [];
+
+  for (const post of posts) {
+    const fullPost = getPaginatedPost(post.slug);
+    if (fullPost && fullPost.parts.length > 1) {
+      // Exclude introduction (index 0) since it is resolved by base slug path
+      fullPost.parts.slice(1).forEach((p) => {
+        paths.push({ slug: post.slug, part: p.slug });
+      });
+    }
+  }
+
+  return paths;
 }
 
 export default async function BlogPostPage({ params }: BlogPostProps) {
@@ -27,10 +37,18 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
     notFound();
   }
 
-  // Base slug URL shows the first part (index 0)
-  const activePartIndex = 0;
+  // Resolve active part from part param
+  const activePartIndex = post.parts.findIndex((p) => p.slug === resolvedParams.part);
+
+  if (activePartIndex === -1) {
+    notFound();
+  }
+
   const activePart = post.parts[activePartIndex];
-  const nextPart = post.parts.length > 1 ? post.parts[1] : null;
+
+  // Pagination navigation links
+  const prevPart = activePartIndex > 0 ? post.parts[activePartIndex - 1] : null;
+  const nextPart = activePartIndex < post.parts.length - 1 ? post.parts[activePartIndex + 1] : null;
 
   return (
     <div className="bento-page font-sans antialiased text-neutral-300 selection:bg-neutral-200 selection:text-neutral-900">
@@ -47,14 +65,14 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
               <span>BACK_TO_LOGS</span>
             </Link>
             <span className="font-mono text-xs text-neutral-500">
-              {post.parts.length > 1 ? `// STEP_1_OF_${post.parts.length}` : '// READ_MODE'}
+              {post.parts.length > 1 ? `// STEP_${activePartIndex + 1}_OF_${post.parts.length}` : '// READ_MODE'}
             </span>
           </div>
 
           {/* Sticky Table of Contents Dropdown */}
           {post.parts.length > 1 && (
             <TableOfContents 
-              headings={post.parts.map((p) => ({ id: p.slug, text: p.title, active: p.slug === 'introduction' }))}
+              headings={post.parts.map((p) => ({ id: p.slug, text: p.title, active: p.slug === resolvedParams.part }))}
               slug={post.slug}
             />
           )}
@@ -101,15 +119,31 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
             />
 
             {/* Step Pagination Nav Row */}
-            {post.parts.length > 1 && nextPart && (
-              <div className="mt-12 pt-8 border-t border-neutral-900 flex justify-end font-mono">
-                <Link
-                  href={`/blog/${post.slug}/${nextPart.slug}`}
-                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3 bg-neutral-200 hover:bg-white text-neutral-900 font-bold rounded-xl text-xs md:text-xs transition-colors"
-                >
-                  <span>NEXT: {nextPart.title.split(':')[0]}</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
+            {post.parts.length > 1 && (
+              <div className="mt-12 pt-8 border-t border-neutral-900 flex flex-row items-center justify-between gap-3 font-mono">
+                {prevPart ? (
+                  <Link
+                    href={activePartIndex === 1 ? `/blog/${post.slug}` : `/blog/${post.slug}/${prevPart.slug}`}
+                    className="flex-1 flex items-center justify-center gap-2 px-3 py-3 border border-neutral-850 bg-neutral-900/40 hover:border-neutral-750 rounded-xl text-xs text-neutral-300 hover:text-white transition-colors text-center truncate"
+                  >
+                    <ArrowLeft className="w-3.5 h-3.5 flex-shrink-0" />
+                    <span className="truncate">PREV: {prevPart.title.split(':')[0]}</span>
+                  </Link>
+                ) : (
+                  <div className="flex-1 hidden sm:block" />
+                )}
+
+                {nextPart ? (
+                  <Link
+                    href={`/blog/${post.slug}/${nextPart.slug}`}
+                    className="flex-1 flex items-center justify-center gap-2 px-3 py-3 bg-neutral-200 hover:bg-white text-neutral-900 font-bold rounded-xl text-xs transition-colors text-center truncate"
+                  >
+                    <span className="truncate">NEXT: {nextPart.title.split(':')[0]}</span>
+                    <ArrowRight className="w-3.5 h-3.5 flex-shrink-0" />
+                  </Link>
+                ) : (
+                  <div className="flex-1 hidden sm:block" />
+                )}
               </div>
             )}
 
