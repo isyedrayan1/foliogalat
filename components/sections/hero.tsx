@@ -40,6 +40,12 @@ export const Hero = () => {
                 >
                   VIEW_BUILDS ↓
                 </a>
+                <a
+                  href="/blog"
+                  className="px-6 py-3 border border-neutral-800 rounded transition-all cursor-pointer btn-signature"
+                >
+                  READ_BLOGS →
+                </a>
               </div>
             </Reveal>
 

@@ -21,6 +21,9 @@ export default function HomePage() {
               <a className="bento-button" href="#work">
                 VIEW_BUILDS
               </a>
+              <a className="bento-button" href="/blog">
+                READ_BLOGS
+              </a>
             </div>
             <div className="bento-subline">// Plan. Build. Ship. Iterate.</div>
           </section>
