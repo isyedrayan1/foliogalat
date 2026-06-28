@@ -840,6 +840,43 @@
   }
 }
 
+@media (max-width: 768px) {
+  .bento-shell {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 6.5rem;
+    padding-bottom: 4rem;
+    gap: 12px;
+  }
+
+  .bento-frame {
+    padding: 12px;
+    gap: 12px;
+    border-radius: 12px;
+  }
+
+  .bento-about,
+  .bento-projects-row,
+  .bento-team-row,
+  .bento-story,
+  .bento-cta,
+  .bento-blog,
+  .bento-social {
+    padding: 16px;
+    border-radius: 10px;
+  }
+
+  .bento-card,
+  .bento-about-card,
+  .bento-project-card,
+  .bento-side-card,
+  .bento-story-card {
+    padding: 14px 12px;
+    border-radius: 8px;
+  }
+}
+
+
 @media (min-width: 768px) {
   .bento-grid {
     column-count: 2;
