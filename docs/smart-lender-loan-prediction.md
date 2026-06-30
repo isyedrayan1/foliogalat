@@ -1,3 +1,12 @@
+---
+title: "Smart Lender: AI-Powered Loan Approval Prediction System ML Guide"
+date: "2026-06-30"
+excerpt: "A comprehensive step-by-step handbook to build the Smart Lender Loan Approval Prediction System from scratch—covering Kaggle downloads, Jupyter Notebook EDA, Production Python Model training, Flask API backend, and HTML/CSS/JS frontend."
+author: "Rayan Syed"
+kicker: "HANDBOOK_GUIDE"
+readTime: "50 min read"
+---
+
 # Smart Lender: AI-Powered Loan Approval Prediction System
 
 ## 1. Introduction
