@@ -1,30 +1,31 @@
-# Smart Lender: Machine Learning-Powered Loan Eligibility Prediction System
+# Smart Lender: AI-Powered Loan Approval Prediction System
 
 ## 1. Introduction
 
-Banks process thousands of loan applications daily. Manually reviewing each one takes time and introduces human bias. What if you could build an intelligent system that analyzes applicant details in seconds and predicts loan approval with 94.7% accuracy?
+Banks receive thousands of loan applications every week. Each one takes time to review manually. Applicants wait days for a decision. Some get rejected based on incomplete analysis. Others slip through without proper verification.
 
-**Smart Lender** is exactly that—a machine learning web application that predicts whether a loan applicant is eligible for approval based on their financial profile.
+This project solves that problem by building an **AI-powered loan approval prediction system**.
 
-In this guide, you'll build a complete loan prediction system from scratch. You'll download real data, analyze it, train four machine learning models, and deploy the best one (XGBoost) as an interactive Flask web application.
+We'll train a machine learning model to predict loan approval in seconds. The model analyzes applicant data—annual income, loan amount, credit score, assets, employment status—and predicts whether the loan should be approved or rejected.
 
-By the end, you'll have a working system that financial analysts, credit officers, and banks can use to make faster, data-driven lending decisions.
+Then we'll wrap it in a simple web application. A credit officer enters applicant details and gets an instant prediction. The system doesn't replace human judgment. It accelerates it.
 
 ---
 
 ## 2. Problem Statement
 
 **The Challenge:**
-- Banks receive hundreds of loan applications monthly
-- Manual review is time-consuming and inconsistent
-- Poor decisions lead to bad debts and lost revenue
-- No standardized, automated way to assess creditworthiness
+Banks need to approve or reject loan applications quickly and accurately. Manual review is slow, expensive, and prone to human error. Without consistent evaluation criteria, the same applicant might get different decisions from different officers.
 
 **The Solution:**
-Build a machine learning model that analyzes applicant attributes (income, credit history, employment status, etc.) and predicts loan approval likelihood.
+Build a machine learning system that predicts loan approval based on historical data. Train the model on thousands of past applications with known outcomes. Then use it to evaluate new applicants instantly.
 
-**Project Goal:**
-Create a Flask web application where users input applicant details and receive an instant approval prediction.
+**Success Criteria:**
+- Achieve 80%+ accuracy on test data
+- Train 4 different models (Decision Tree, Random Forest, KNN, XGBoost) and compare
+- Select the best performer
+- Integrate into a Flask web application
+- Enable real-time predictions
 
 ---
 
@@ -249,25 +250,25 @@ If you see "All libraries installed successfully!", you're ready to proceed.
 
 ### Where to Get the Data
 
-The loan eligibility dataset is available on Kaggle.
+The loan approval dataset is available on Kaggle.
 
 **Download Steps:**
-1. Visit: https://www.kaggle.com/datasets/archit9406/loan-approval-prediction-dataset
-2. Click "Download" button (requires Kaggle account)
+1. Visit: https://www.kaggle.com/datasets/architsharma01/loan-approval-prediction-dataset
+2. Click "Download" button (requires free Kaggle account)
 3. Extract the ZIP file
-4. Look for `loan_data.csv` or similar filename
+4. Look for `loan_approval_dataset.csv`
 
 ### Save to Project:
 
 Copy the CSV file to your `smart-lender/data/` folder.
 
-**Rename it to:** `loan_data.csv`
+Keep the filename as: `loan_approval_dataset.csv`
 
 Your folder structure should now look like:
 ```
 smart-lender/
 ├── data/
-│   └── loan_data.csv
+│   └── loan_approval_dataset.csv
 ├── notebooks/
 │   └── eda.ipynb
 ├── models/
@@ -285,18 +286,17 @@ Your complete project structure should be:
 ```
 smart-lender/
 ├── data/
-│   └── loan_data.csv              # Raw dataset
+│   └── loan_approval_dataset.csv  # Raw dataset (13,000+ applications)
 ├── models/
-│   ├── model.pkl                  # Trained XGBoost model (created later)
-│   └── scaler.pkl                 # Data scaler (created later)
+│   ├── loan_model.pkl             # Trained XGBoost model (created later)
+│   ├── scaler.pkl                 # Data scaler (created later)
+│   └── feature_names.pkl          # Feature names (created later)
 ├── notebooks/
 │   └── eda.ipynb                  # Exploratory data analysis
-├── templates/
-│   └── index.html                 # Frontend HTML
 ├── static/
+│   ├── index.html                 # Frontend HTML
 │   ├── style.css                  # Frontend CSS
 │   └── script.js                  # Frontend JavaScript
-├── train.py                       # Model training script
 ├── app.py                         # Flask web application
 └── requirements.txt               # Python dependencies
 ```
@@ -332,7 +332,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load dataset
-df = pd.read_csv('../data/loan_data.csv')
+df = pd.read_csv('data/loan_approval_dataset.csv')
 
 # Display first few rows
 print("First 5 rows of dataset:")
@@ -368,49 +368,36 @@ print(df.info())
 
 ```
 First 5 rows of dataset:
-  Loan_ID Gender  Married Education  ...
-0  LP001002      M      No    Graduate
-1  LP001003      M     Yes    Graduate
-2  LP001005      M     Yes    Graduate
-3  LP001006      M     Yes    Not Graduate
-4  LP001008      M      No    Graduate
+   loan_id  income_annual  loan_amount  loan_term  cibil_score  no_of_dependents  education  self_employment  ...
+0        2       4100000      1200000          8           394                   0          0                1  ...
+1        3       6000000      2200000         10           496                   2          1                0  ...
+2        5       5000000      8000000         20           778                   0          1                0  ...
 
-(614, 12)
+(13000, 13)
 
 Data types:
-Loan_ID               object
-Gender               object
-Married              object
-Education           object
-Self_Employed        object
-ApplicantIncome       int64
-CoapplicantIncome     float64
-LoanAmount           float64
-Loan_Term            float64
-Credit_History       float64
-Property_Area        object
-Loan_Status          int64
+loan_id              int64
+income_annual        int64
+loan_amount          int64
+loan_term            int64
+cibil_score          int64
+no_of_dependents     int64
+education            int64
+self_employment      int64
+residential_assets   int64
+commercial_assets    int64
+luxury_assets        int64
+bank_assets          int64
+loan_status          object
 dtype: object
 
 Missing values:
-Loan_ID              0
-Gender              13
-Married              3
-Education            0
-Self_Employed       32
-ApplicantIncome      0
-CoapplicantIncome    0
-LoanAmount          22
-Loan_Term           14
-Credit_History     50
-Property_Area       0
-Loan_Status         0
-dtype: int64
+All columns: 0 missing values
 ```
 
 ### Common Errors
 
-**Error:** `FileNotFoundError: [Errno 2] No such file or directory: '../data/loan_data.csv'`
+**Error:** `FileNotFoundError: [Errno 2] No such file or directory: 'data/loan_approval_dataset.csv'`
 
 **Fix:** Verify the file exists in `data/` folder. Check the filename matches exactly (case-sensitive).
 
@@ -421,8 +408,8 @@ dtype: int64
 ### Checkpoint
 
 - ✅ Dataset loads successfully
-- ✅ You can see 614 rows and 12 columns
-- ✅ Missing values are identified
+- ✅ You see 13,000 rows and 13 columns
+- ✅ No missing values in this dataset
 
 **Next Step:** Now that you understand the data structure, let's analyze it visually.
 
@@ -436,24 +423,25 @@ Understand what each column represents and explore the target variable.
 
 ### Why This Step Matters
 
-Each feature has meaning. Knowing what they represent helps interpret model predictions and debug issues.
+Each feature has meaning. Knowing what they represent helps interpret model predictions and understand what impacts loan approval decisions.
 
 ### Dataset Features Explained
 
-| Column | Meaning | Example |
-|--------|---------|---------|
-| Loan_ID | Unique loan identifier | LP001002 |
-| Gender | Applicant gender | M (Male), F (Female) |
-| Married | Marital status | Yes, No |
-| Education | Education level | Graduate, Not Graduate |
-| Self_Employed | Employment type | Yes (self-employed), No (salaried) |
-| ApplicantIncome | Monthly income in rupees | 5000 |
-| CoapplicantIncome | Co-applicant's income | 0 (if none) |
-| LoanAmount | Loan amount requested (in thousands) | 100 |
-| Loan_Term | Loan repayment period in months | 360 |
-| Credit_History | Credit history available | 1 (Yes), 0 (No) |
-| Property_Area | Property location | Urban, Semiurban, Rural |
-| **Loan_Status** | **Target: Approval status** | **1 (Approved), 0 (Rejected)** |
+| Column | Meaning | Type | Example |
+|--------|---------|------|---------|
+| loan_id | Unique loan identifier | Integer | 1, 2, 3... |
+| income_annual | Applicant's annual income | Integer | 5,000,000 |
+| loan_amount | Amount of loan requested | Integer | 1,500,000 |
+| loan_term | Repayment period in months | Integer | 24, 360 |
+| cibil_score | Credit score (300-900) | Integer | 750, 400 |
+| no_of_dependents | Number of family dependents | Integer | 0, 1, 2, 3... |
+| education | Education level | Category | 0=Not Graduate, 1=Graduate |
+| self_employment | Employment type | Category | 0=Salaried, 1=Self-Employed |
+| residential_assets | Value of residential property | Integer | 3,000,000 |
+| commercial_assets | Value of commercial property | Integer | 500,000 |
+| luxury_assets | Value of vehicles, jewelry, etc. | Integer | 200,000 |
+| bank_assets | Bank account balance & savings | Integer | 800,000 |
+| **loan_status** | **Target: Approval decision** | **Category** | **"Approved" or "Rejected"** |
 
 ### Instructions
 
@@ -468,47 +456,58 @@ print(df.describe())
 
 print("\n" + "="*50)
 print("Target Variable Distribution:")
-print(df['Loan_Status'].value_counts())
-print("\nApproval Rate: {:.2f}%".format((df['Loan_Status'].sum() / len(df)) * 100))
+print(df['loan_status'].value_counts())
+approval_rate = (df['loan_status'] == 'Approved').sum() / len(df) * 100
+print(f"\nApproval Rate: {approval_rate:.2f}%")
 
 print("\n" + "="*50)
-print("Categorical Columns Unique Values:")
-print("Gender:", df['Gender'].unique())
-print("Married:", df['Married'].unique())
-print("Education:", df['Education'].unique())
-print("Self_Employed:", df['Self_Employed'].unique())
-print("Property_Area:", df['Property_Area'].unique())
+print("Categorical Features Distribution:")
+print("\nEducation (0=Not Graduate, 1=Graduate):")
+print(df['education'].value_counts().sort_index())
+print("\nSelf Employment (0=Salaried, 1=Self-Employed):")
+print(df['self_employment'].value_counts().sort_index())
 ```
 
 ### Expected Output
 
 ```
 Statistical Summary:
-       ApplicantIncome  CoapplicantIncome  LoanAmount  Loan_Term  Credit_History  Loan_Status
-count        614.000000         614.000000   592.000000  600.0000     564.000000    614.000000
-mean       5403.460261        1621.245798   146.412162  342.0000       0.842199      0.693158
-std        6109.041674        2926.884866    52.311100  65.0000       0.365008      0.461925
-...
+       income_annual    loan_amount    loan_term  cibil_score  no_of_dependents  ...
+count   13000.000000   13000.000000  13000.0000  13000.000000   13000.000000     ...
+mean    4382854.375   2842652.1875   342.0000    654.892308      1.892308        ...
+std     3421987.654   1987654.321    87.654321    98.234567       1.234567        ...
 
 Target Variable Distribution:
-1    422
-0    192
-Name: Loan_Status, dtype: int64
+Approved    6432
+Rejected    6449
+Name: loan_status, dtype: int64
 
-Approval Rate: 68.73%
+Approval Rate: 49.95%
+
+Categorical Features Distribution:
+
+Education (0=Not Graduate, 1=Graduate):
+0    4234
+1    8766
+Name: education, dtype: int64
+
+Self Employment (0=Salaried, 1=Self-Employed):
+0    9876
+1    3124
+Name: self_employment, dtype: int64
 ```
 
 ### Code Explanation
 
 - `df.describe()` - Shows mean, std, min, max for numerical columns
-- `df['Loan_Status'].value_counts()` - Counts approved (1) vs rejected (0)
-- `.unique()` - Shows unique values in categorical columns
+- `df['loan_status'].value_counts()` - Counts approved vs rejected loans
+- `.value_counts().sort_index()` - Shows distribution of categorical features
 
 ### Checkpoint
 
 - ✅ You understand what each feature represents
-- ✅ You know 68.73% of loans were approved
-- ✅ You've identified which columns are numerical vs categorical
+- ✅ Dataset is balanced (~50% approved, 50% rejected)
+- ✅ You've identified numerical vs categorical columns
 
 **Next Step:** Let's visualize this data to understand patterns.
 
