@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import MarkdownIt from 'markdown-it';
 
 export interface PostMetadata {
   slug: string;
@@ -46,78 +47,93 @@ export function parseFrontmatter(fileContent: string) {
   return { metadata, content };
 }
 
-// Simple markdown-to-html parser
+// Create configured MarkdownIt instance
+const md = new MarkdownIt({
+  html: true,
+  linkify: true,
+  typographer: true,
+});
+
+// Customize links to add target="_blank", rel="noopener noreferrer", and custom styling classes
+const defaultLinkOpenRender = md.renderer.rules.link_open || function(tokens, idx, options, env, self) {
+  return self.renderToken(tokens, idx, options);
+};
+md.renderer.rules.link_open = function(tokens, idx, options, env, self) {
+  const token = tokens[idx];
+  const aIndex = token.attrIndex('target');
+  if (aIndex < 0) {
+    token.attrPush(['target', '_blank']);
+  } else {
+    token.attrs![aIndex][1] = '_blank';
+  }
+  const relIndex = token.attrIndex('rel');
+  if (relIndex < 0) {
+    token.attrPush(['rel', 'noopener noreferrer']);
+  } else {
+    token.attrs![relIndex][1] = 'noopener noreferrer';
+  }
+  const classIndex = token.attrIndex('class');
+  const classVal = 'text-signature hover:underline transition-all';
+  if (classIndex < 0) {
+    token.attrPush(['class', classVal]);
+  } else {
+    token.attrs![classIndex][1] = classVal;
+  }
+  return defaultLinkOpenRender(tokens, idx, options, env, self);
+};
+
+// Customize blockquotes to match portfolio branding
+md.renderer.rules.blockquote_open = () => {
+  return '<blockquote class="border-l-2 border-signature pl-4 italic text-neutral-450 my-4">';
+};
+
+// Customize code fence blocks (pre/code)
+md.renderer.rules.fence = (tokens, idx, options, env, self) => {
+  const token = tokens[idx];
+  const lang = token.info.trim();
+  const code = token.content;
+  const escapedCode = code.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return `<pre class="bg-neutral-900 border border-neutral-800 rounded-lg p-4 my-6 font-mono text-sm overflow-x-auto text-neutral-350"><code class="language-${lang}">${escapedCode}</code></pre>\n`;
+};
+
+// Customize code inline blocks
+md.renderer.rules.code_inline = (tokens, idx, options, env, self) => {
+  const token = tokens[idx];
+  const escapedCode = token.content.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return `<code class="bg-neutral-900 border border-neutral-800 px-1.5 py-0.5 rounded font-mono text-xs text-signature">${escapedCode}</code>`;
+};
+
+// Customize headers to map matching branding tags
+md.renderer.rules.heading_open = (tokens, idx, options, env, self) => {
+  const token = tokens[idx];
+  const level = token.tag;
+  let classes = '';
+  if (level === 'h1') classes = 'text-3xl font-bold text-white mt-12 mb-6 font-sans';
+  if (level === 'h2') classes = 'text-2xl font-bold text-white mt-10 mb-4 border-b border-neutral-800 pb-2 font-sans';
+  if (level === 'h3') classes = 'text-xl font-bold text-neutral-100 mt-8 mb-4 border-b border-neutral-800 pb-2 font-sans';
+  if (level === 'h4') classes = 'text-lg font-bold text-neutral-200 mt-6 mb-3 font-sans';
+  return `<${level} class="${classes}">`;
+};
+
+// Customize images to support sizing and border frames
+const defaultImageRender = md.renderer.rules.image || function(tokens, idx, options, env, self) {
+  return self.renderToken(tokens, idx, options);
+};
+md.renderer.rules.image = function(tokens, idx, options, env, self) {
+  const token = tokens[idx];
+  const classIndex = token.attrIndex('class');
+  const classVal = 'w-full max-w-2xl mx-auto rounded-xl border border-neutral-850 my-6 shadow-lg';
+  if (classIndex < 0) {
+    token.attrPush(['class', classVal]);
+  } else {
+    token.attrs![classIndex][1] = classVal;
+  }
+  return defaultImageRender(tokens, idx, options, env, self);
+};
+
+// Main html converter
 export function markdownToHtml(markdown: string): string {
-  let html = markdown;
-
-  // Horizontal rules: ---
-  html = html.replace(/^---$/gm, '<hr class="border-t border-neutral-800/80 my-8" />');
-
-  // Code blocks: ```js ... ```
-  html = html.replace(/```(\w*)\r?\n([\s\S]*?)```/g, (_, lang, code) => {
-    return `<pre class="bg-neutral-900 border border-neutral-800 rounded-lg p-4 my-6 font-mono text-sm overflow-x-auto text-neutral-300"><code class="language-${lang}">${code.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>`;
-  });
-
-  // Inline code: `code`
-  html = html.replace(/`([^`\n]+)`/g, '<code class="bg-neutral-900 border border-neutral-800 px-1.5 py-0.5 rounded font-mono text-xs text-signature">$1</code>');
-
-  // Headings
-  html = html.replace(/^### (.*$)/gim, '<h4 class="text-lg font-bold text-neutral-200 mt-6 mb-3 font-sans">$1</h4>');
-  html = html.replace(/^## (.*$)/gim, '<h3 class="text-xl font-bold text-neutral-100 mt-8 mb-4 border-b border-neutral-800 pb-2 font-sans">$1</h3>');
-  html = html.replace(/^# (.*$)/gim, '<h2 class="text-2xl font-bold text-white mt-10 mb-4 font-sans">$1</h2>');
-
-  // Bold text: **text**
-  html = html.replace(/\*\*([^*]+)\*\*/g, '<strong class="text-white font-semibold">$1</strong>');
-
-  // Italics: *text* or _text_
-  html = html.replace(/\*([^*]+)\*/g, '<em class="italic text-neutral-400">$1</em>');
-
-  // Blockquotes: > text
-  html = html.replace(/^> (.*$)/gim, '<blockquote class="border-l-2 border-signature pl-4 italic text-neutral-400 my-4">$1</blockquote>');
-
-  // Unordered list items: - item or * item
-  // Capture contiguous blocks of list items and wrap them in ul
-  html = html.replace(/^(?:[-*]\s+(.+)\r?\n?)+/gm, (match) => {
-    const items = match
-      .split('\n')
-      .filter(line => line.trim())
-      .map(line => `  <li class="mb-2 pl-1">${line.replace(/^[-*]\s+/, '')}</li>`)
-      .join('\n');
-    return `<ul class="list-disc list-inside text-neutral-300 my-4 pl-4">${items}</ul>`;
-  });
-
-  // Ordered list items: 1. item or 2. item
-  // Capture contiguous blocks of numbered list items and wrap them in ol
-  html = html.replace(/^(?:\d+\.\s+(.+)\r?\n?)+/gm, (match) => {
-    const items = match
-      .split('\n')
-      .filter(line => line.trim())
-      .map(line => `  <li class="mb-2 pl-1">${line.replace(/^\d+\.\s+/, '')}</li>`)
-      .join('\n');
-    return `<ol class="list-decimal list-inside text-neutral-300 my-4 pl-4">${items}</ol>`;
-  });
-
-  // Paragraphs: separate double newlines into p blocks, skipping divs, lists, and preblocks
-  const paragraphs = html.split(/\r?\n\r?\n/);
-  html = paragraphs
-    .map((p) => {
-      const trimmed = p.trim();
-      if (!trimmed) return '';
-      // If it already looks like a block-level HTML structure, return as is
-      if (trimmed.startsWith('<pre') || trimmed.startsWith('<ul') || trimmed.startsWith('<ol') || trimmed.startsWith('<h') || trimmed.startsWith('<blockquote') || trimmed.startsWith('<hr')) {
-        return trimmed;
-      }
-      return `<p class="leading-relaxed text-neutral-300 mb-6">${trimmed}</p>`;
-    })
-    .join('\n');
-
-  // Images: ![alt](url)
-  html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" class="w-full max-w-2xl mx-auto rounded-xl border border-neutral-850 my-6 shadow-lg" />');
-
-  // Links: [text](url)
-  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-signature hover:underline transition-all" target="_blank" rel="noopener noreferrer">$1</a>');
-
-  return html;
+  return md.render(markdown);
 }
 
 export function getAllPosts(): PostMetadata[] {

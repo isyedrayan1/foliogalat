@@ -113,7 +113,7 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
           <CodeCopy />
 
           {/* Article Card */}
-          <article className="border border-neutral-800/80 rounded-2xl bg-neutral-950/40 p-6 md:p-12 relative overflow-hidden">
+          <article id="blog-content" className="border border-neutral-800/80 rounded-2xl bg-neutral-950/40 p-6 md:p-12 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-96 h-96 bg-signature/5 blur-[120px] rounded-full pointer-events-none" />
             
             {/* Header */}
@@ -152,7 +152,7 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
               <div className="mt-12 pt-8 border-t border-neutral-900 flex flex-row items-center justify-between gap-3 font-mono">
                 {prevPart ? (
                   <Link
-                    href={activePartIndex === 1 ? `/blog/${post.slug}` : `/blog/${post.slug}/${prevPart.slug}`}
+                    href={activePartIndex === 1 ? `/blog/${post.slug}#blog-content` : `/blog/${post.slug}/${prevPart.slug}#blog-content`}
                     className="flex-1 flex items-center justify-center gap-2 px-3 py-3 border border-neutral-850 bg-neutral-900/40 hover:border-neutral-750 rounded-xl text-xs text-neutral-300 hover:text-white transition-colors text-center truncate"
                   >
                     <ArrowLeft className="w-3.5 h-3.5 flex-shrink-0" />
@@ -164,7 +164,7 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
 
                 {nextPart ? (
                   <Link
-                    href={`/blog/${post.slug}/${nextPart.slug}`}
+                    href={`/blog/${post.slug}/${nextPart.slug}#blog-content`}
                     className="flex-1 flex items-center justify-center gap-2 px-3 py-3 bg-neutral-200 hover:bg-white text-neutral-900 font-bold rounded-xl text-xs transition-colors text-center truncate"
                   >
                     <span className="truncate">NEXT: {nextPart.title.split(':')[0]}</span>

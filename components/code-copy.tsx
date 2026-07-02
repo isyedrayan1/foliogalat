@@ -37,7 +37,7 @@ export function CodeCopy() {
       `;
 
       button.addEventListener('click', async () => {
-        const codeText = codeBlock.innerText;
+        const codeText = codeBlock.textContent || codeBlock.innerText;
         try {
           // Check if Clipboard API is supported, otherwise run fallback
           if (navigator.clipboard && navigator.clipboard.writeText) {

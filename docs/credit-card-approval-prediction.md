@@ -1,10 +1,10 @@
 ---
 title: "Credit Card Approval Prediction: End-to-End Machine Learning Guide"
 date: "2026-06-28"
-excerpt: "A step-by-step handbook to build a Credit Card Approval Prediction System from scratch—covering Environment Setup, Git & GitHub connection, EDA, Preprocessing, Multi-Model Training, Flask API Backend, and HTML/CSS/JS Frontend."
+excerpt: "A step-by-step handbook to build a Credit Card Approval Prediction System from scratch using the real Kaggle dataset—covering Data Ingestion, Label Engineering, EDA, Preprocessing, Random Forest training, Flask Backend, and HTML/CSS/JS Frontend."
 author: "Rayan Syed"
 kicker: "HANDBOOK_GUIDE"
-readTime: "35 min read"
+readTime: "40 min read"
 ---
 
 # Part 1: Project Overview & Architecture
@@ -12,112 +12,75 @@ readTime: "35 min read"
 ## 1. Project Overview
 
 ### 1.1 Welcome & Introduction
-Banks and financial institutions receive thousands of credit card applications every day. Manually reviewing each application is both time-consuming and highly prone to human error. This project automates the credit card approval decision using machine learning. By training a predictive model on historical applicant data, the system evaluates financial and demographic inputs to determine whether an applicant is likely to be approved or rejected.
+When you apply for a credit card, banks don't manually read your paper application anymore. Instead, they use smart algorithms called Machine Learning models to make the decision instantly. 
+
+In this handbook, we will build a complete **Credit Card Approval System** from scratch. 
+
+The goal of this project is to build a machine learning model that takes applicant demographics (like income, age, employment duration, and education) and predicts whether they should be approved or rejected.
+
+---
 
 ### 1.2 System Architecture Flow Diagram
 Here is how data flows through the application:
 
 ```mermaid
 graph TD
-    A[1. Raw CSV Data] --> B[2. Data Cleaning & EDA]
-    B --> C[3. Feature Engineering]
-    C --> D[4. Model Training & Comparison]
-    D --> E[5. Save Best Model as Pickle]
+    A[1. application_record.csv & credit_record.csv] --> B[2. ID-based Join & Label Engineering]
+    B --> C[3. Jupyter Notebook EDA & Data Preparation]
+    C --> D[4. Balanced Random Forest Training]
+    D --> E[5. Serialized Model card_model.joblib]
     E --> F[6. Flask Web Server app.py]
-    F --> G[7. HTML/CSS/JS Frontend Form]
+    F --> G[7. HTML/CSS/JS Frontend UI Form]
 ```
 
 ---
 
-# Part 2: Setting Up Git & GitHub
+# Part 2: Prerequisites & Local Setup
 
-## 1.5 Installing Git
-If you don't have Git installed:
-- Download the installer from the [Git Website](https://git-scm.com/).
-- Run the installer with default options selected.
-- Open your terminal and verify by typing:
+Before writing any machine learning code, we need to prepare our computer with the correct programming tools. Setting this up correctly is the most important step to prevent compatibility and configuration errors later.
+
+## 2. Core Software Setup
+
+### 2.1 Installing Python (Version 3.10+)
+Python is the industry standard language for machine learning.
+* Download the installer from the official [Python Downloads Page](https://www.python.org/downloads/).
+* **CRITICAL STEP**: Run the installer and **check the box that says "Add Python to PATH"** before clicking Install. If you skip this, python commands will not work in your terminal.
+* Verify the installation by opening your terminal or Command Prompt and running:
+  ```bash
+  python --version
+  ```
+
+---
+
+### 2.2 Installing Git
+Git is a version control system used to track code history and back up your project.
+* Download the installer from the [Git Website](https://git-scm.com/).
+* Run the installer and keep the default options selected.
+* Verify by opening your terminal and typing:
   ```bash
   git --version
   ```
 
-## 1.6 Connecting a Local Folder to GitHub
-A common scenario is that you have created a repository on GitHub first, and now want to connect your local project folder to it without downloading/cloning a blank folder. Follow these steps in your project terminal:
+---
 
-1. **Initialize Git locally**:
-   ```bash
-   git init
-   ```
-   This creates a hidden `.git` folder inside your project to track changes.
+### 2.3 Installing Visual Studio Code (VS Code)
+VS Code is our primary editor to write scripts and notebooks.
+* Download and run the installer from the [VS Code Website](https://code.visualstudio.com/).
+* Open VS Code, click the **Extensions** icon on the left sidebar, search for **Python** and **Jupyter** (both by Microsoft), and click **Install**.
 
-2. **Add all files to stage**:
-   ```bash
-   git add .
-   ```
-
-3. **Commit files**:
-   ```bash
-   git commit -m "Initial commit: environment setup"
-   ```
-
-4. **Rename main branch**:
-   ```bash
-   git branch -M main
-   ```
-
-5. **Link to GitHub repository**:
-   Copy your repository URL from GitHub (e.g., `https://github.com/yourusername/repository-name.git`) and run:
-   ```bash
-   git remote add origin https://github.com/yourusername/repository-name.git
-   ```
-
-6. **Push code to GitHub**:
-   ```bash
-   git push -u origin main
-   ```
-   Now your local code is uploaded to GitHub and linked successfully!
+*Note: We will initialize our Git tracking and connect our local codebase to GitHub later in this guide, once our application is fully built and tested locally.*
 
 ---
 
-# Part 3: Setting Up Your Development Environment
+# Part 3: Creating the Project Workspace & Libraries
 
-## 2. Installing Python
-
-### 2.1 Why Python?
-Python is the industry standard language for Machine Learning and Data Science. It is readable, beginner-friendly, and has a vast ecosystem of pre-built packages for scientific computing (like NumPy, Pandas, Scikit-Learn).
-
-### 2.2 Downloading Python
-Go to the official [Python website](https://www.python.org/downloads/) and download Python 3.8 or above for your Operating System.
-
-### 2.3 Installing Python
-- Run the installer executable.
-- **IMPORTANT**: Check the box that says **"Add Python to PATH"** before clicking Install Now.
-
----
-
-## 3. Installing Visual Studio Code
-
-### 3.1 Download VS Code
-Go to the [VS Code Website](https://code.visualstudio.com/) and download the stable build.
-
----
-
-## 4. Installing Required VS Code Extensions
-
-### 4.1 Python & Jupyter Extensions
-Click on the Extensions icon on the left sidebar in VS Code, search for **Python** and **Jupyter** (by Microsoft), and click **Install**.
-
----
-
-# Part 4: Creating Your First ML Project
-
-## 5. Creating the Project Folder
-
-### 5.1 Recommended Folder Structure
-Set up your folder exactly like this:
+## 3. Creating the Workspace
+Create a folder named `credit_card_project` on your computer. Inside, organize your folders and empty files exactly like this:
 ```text
-credit_card_approval_project/
+credit_card_project/
 ├── data/
-│   └── creditcard_data.csv
+│   ├── application_record.csv
+│   └── credit_record.csv
 ├── models/
 │   └── card_model.joblib
 ├── templates/
@@ -127,281 +90,305 @@ credit_card_approval_project/
 │   └── script.js
 ├── notebook.ipynb
 └── app.py
-# Part 5: Downloading and Understanding the Dataset
-
-## 8. Finding a Dataset
-
-### 8.1 Where to Download Datasets
-For this project, we utilize the official [Kaggle Credit Card Dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud). Kaggle is an online database platform hosting millions of open datasets for model builders.
-
-### 8.2 Choosing the Correct Dataset
-We select a tabular credit card application dataset containing applicant demographics (income, gender, employment status) and a target binary label column (`Approved`) indicating approval status.
-
-### 8.3 Downloading the Dataset
-1. Open the [Kaggle Credit Card Dataset Link](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud) in your browser.
-2. Sign in and download the dataset archive.
-3. Extract the downloaded folder to extract the `creditcard_data.csv` application file.
-
-### 8.4 Placing the Dataset Inside the Project
-Create a folder named `data` inside your root project folder. Move the extracted file inside, naming it exactly:
-`credit_card_approval_project/data/creditcard_data.csv`
+```
+> [!IMPORTANT]
+> **Beginner Rule:** Whenever you write or paste code into any file in VS Code, remember to press **`Ctrl + S`** (Windows) or **`Cmd + S`** (macOS) to save your changes. If you do not save, the file remains empty and your code will not run!
 
 ---
 
-## 6. Creating Your First Jupyter Notebook
-
-### 6.1 Creating a New Notebook (.ipynb)
-Right-click the explorer sidebar in VS Code, select **New File**, name it `notebook.ipynb`, and press Enter.
-
----
-
-## 7. Installing Required Libraries
-
-### 7.1 Objective
-Install the scientific libraries needed to load, preprocess, visualize, and train machine learning models.
-
-### 7.2 Code Block (Run in Command Line / VS Code Terminal)
+### 3.1 Installing Required Libraries
+Open your terminal inside your project folder and run the following installation command:
 ```bash
 pip install numpy pandas matplotlib seaborn scikit-learn xgboost joblib flask
 ```
+We install these key libraries:
+
+* **pandas**: Loads, merges, and cleans our tabular CSV data.
+* **numpy**: Handles mathematical logic on numerical matrix arrays.
+* **matplotlib & seaborn**: Generates statistical charts and plots.
+* **scikit-learn**: Houses our classifiers, data splitters, and validation metrics.
+* **xgboost**: Builds our gradient boosted decision tree classifier.
+* **joblib**: Saves our trained model weights into a portable file.
+* **flask**: Runs our lightweight local backend application server.
 
 ---
 
-# Part 6: Interactive Notebook - Importing Libraries & Loading Data
+# Part 4: Downloading the Dataset
 
-### 7.3 [JUPYTER CELL 1] Importing Core Libraries
-Open your `notebook.ipynb` file, create a new code cell, paste the following code, and execute it:
+## 4. The Kaggle Dataset
+For this project, we utilize the official **Credit Card Approval Prediction Dataset** on Kaggle.
+
+<div class="my-6">
+  <a href="https://www.kaggle.com/datasets/rikdifos/credit-card-approval-prediction" target="_blank" rel="noopener noreferrer" class="blog-action-btn">
+    DOWNLOAD_DATASET_FROM_KAGGLE →
+  </a>
+</div>
+
+This dataset is split into two CSV files:
+* **`application_record.csv`**: Contains applicant details (income, education, property ownership, age, family size).
+* **`credit_record.csv`**: Contains the payment history of those applicants over past months.
+
+---
+
+### 4.1 Dataset Columns Explained
+The raw fields inside `application_record.csv` are grouped into these logical sections:
+
+* **Identification Variable**:
+  * **`ID`**: Unique identification number for each applicant.
+* **Applicant Demographics**:
+  * **`CODE_GENDER`**: Gender (M = Male, F = Female).
+  * **`CNT_CHILDREN`**: Number of children.
+  * **`CNT_FAM_MEMBERS`**: Family size.
+  * **`NAME_FAMILY_STATUS`**: Family status (Married, Single, Civil marriage, Separated, Widow).
+* **Financial Details**:
+  * **`AMT_INCOME_TOTAL`**: Total annual income.
+  * **`FLAG_OWN_CAR`**: Car ownership status (Y = Yes, N = No).
+  * **`FLAG_OWN_REALTY`**: Property/Real Estate ownership (Y = Yes, N = No).
+  * **`NAME_INCOME_TYPE`**: Type of income (Working, Commercial associate, Pensioner, State servant, Student).
+* **Living & Education**:
+  * **`NAME_EDUCATION_TYPE`**: Highest level of education achieved.
+  * **`NAME_HOUSING_TYPE`**: Way of living (House/apartment, With parents, Rented apartment, etc.).
+* **Employment & Time Offsets**:
+  * **`DAYS_BIRTH`**: Applicant age in days (represented as a negative offset from today).
+  * **`DAYS_EMPLOYED`**: Employment duration in days (negative offset; positive values indicate unemployment).
+  * **`OCCUPATION_TYPE`**: Type of job/occupation.
+
+---
+
+### 4.2 Label Construction Strategy
+The raw dataset **does not** contain an "Approved" or "Rejected" label column. We must engineer it. We define an applicant's target state based on their payment delays in `credit_record.csv`:
+
+* **`STATUS` (Monthly Payment Code)**:
+  * `0`: 1-29 days past due.
+  * `1`: 30-59 days past due.
+  * `2`: 60-89 days past due.
+  * `3`: 90-119 days past due.
+  * `4`: 120-149 days past due.
+  * `5`: Overdue or bad debts, write-offs for more than 150 days.
+  * `C`: Paid off that month.
+  * `X`: No loan for the month.
+* **Target Calculation Logic**:
+  * If an applicant has had payments overdue by **60 or more days** (represented by status codes `2`, `3`, `4`, or `5` in the monthly log) at any point in their record, we label them as **Risky/Rejected (Target = 1)**.
+  * Otherwise, they are labeled **Safe/Approved (Target = 0)**.
+
+---
+
+# Part 5: Interactive Notebook - Exploration & Preprocessing
+
+Open your `notebook.ipynb` file in VS Code and run the following code cells.
+
+### 5.1 Understanding Exploratory Data Analysis (EDA) & Preprocessing
+Before building a machine learning model, we must load and understand our dataset. This is called Exploratory Data Analysis (EDA). EDA helps us discover missing values, identify column structures, and locate anomalies (like outliers or incorrect values). Preprocessing is the step where we clean up these anomalies and prepare the data so it fits perfectly into our machine learning models.
+
+---
+
+### [JUPYTER CELL 1] Ingesting Datasets
+Let's import our libraries, load the raw CSV files, and inspect their dimensions:
 ```python
-import numpy as np
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-print("Core libraries imported successfully!")
-```
+# Load records
+app_df = pd.read_csv('data/application_record.csv')
+credit_df = pd.read_csv('data/credit_record.csv')
 
-### 7.4 [JUPYTER CELL 2] Loading the Dataset
-Create a new code cell, paste this code to load the dataset, and click run:
-```python
-# Load the dataset
-df = pd.read_csv('data/creditcard_data.csv')
-print("Dataset loaded. Number of rows:", len(df))
+print(f"Application Records: {app_df.shape}")
+print(f"Credit History Records: {credit_df.shape}")
 ```
+* **Why we do this**: This verifies that the files are placed correctly in the `data/` directory and outputs the row and column dimensions.
+* **What to look for**: Check if both files loaded successfully without errors. You should see thousands of application records.
 
 ---
 
-# Part 7: Interactive Notebook - Exploratory Data Analysis (EDA)
-
-Follow along step-by-step. Each of the following steps must be run in a separate cell inside your Jupyter Notebook to inspect the outputs clearly.
-
-### 8.1 [JUPYTER CELL 3] Viewing First Rows
-Create a new cell and run:
+### [JUPYTER CELL 2] Label Engineering & Merging
+We calculate the default risk for each applicant and join the tables together:
 ```python
-df.head()
-```
-*Purpose*: Displays the first 5 records of applicants containing columns like Gender, Annual Income, Income Type, Years Employed, and Approval status.
+# Label overdue status '2', '3', '4', or '5' (60+ days overdue) as risky (1)
+credit_df['is_risky'] = credit_df['STATUS'].isin(['2', '3', '4', '5']).astype(int)
 
-### 8.2 [JUPYTER CELL 4] Viewing Last Rows
-Create a new cell and run:
-```python
-df.tail()
-```
-*Purpose*: Displays the last 5 records of your dataset.
+# Group by ID to find if they defaulted at least once in their history
+user_target = credit_df.groupby('ID')['is_risky'].max().reset_index()
+user_target.rename(columns={'is_risky': 'target'}, inplace=True)
 
-### 8.3 [JUPYTER CELL 5] Dataset Shape
-Create a new cell and run:
-```python
-df.shape
+# Merge datasets on the unique ID column
+df = pd.merge(app_df, user_target, on='ID', how='inner')
+print(f"Merged Dataset Shape: {df.shape}")
+print("Target Distribution:")
+print(df['target'].value_counts(normalize=True) * 100)
 ```
-*Purpose*: Displays `(rows, columns)` count.
-
-### 8.4 [JUPYTER CELL 6] Schema Info & Columns Data Types
-Create a new cell and run:
-```python
-df.info()
-```
-*Purpose*: Lists all column names, their datatypes (float64, int64, object), and non-null counts.
-
-### 8.5 [JUPYTER CELL 7] Statistical Summary
-Create a new cell and run:
-```python
-df.describe()
-```
-*Purpose*: Generates descriptive statistics of numerical columns (mean, standard deviation, minimum, maximum, etc.).
-
-### 8.6 [JUPYTER CELL 8] Value Counts of Approval Target
-Create a new cell and run:
-```python
-df['Approved'].value_counts()
-```
-*Purpose*: Tells you how many applicants were approved (1) vs rejected (0).
-
-### 8.7 [JUPYTER CELL 9] Checking for Missing Null Values
-Create a new cell and run:
-```python
-df.isnull().sum()
-```
-*Purpose*: Counts missing values per column.
-
-### 8.8 [JUPYTER CELL 10] Checking for Duplicate Records
-Create a new cell and run:
-```python
-df.duplicated().sum()
-```
-*Purpose*: Identifies if there are redundant row copies.
-
-### 8.9 [JUPYTER CELL 11] Univariate Analysis: Income Distribution Histogram
-Create a new cell and run:
-```python
-plt.figure(figsize=(8, 4))
-sns.histplot(df['Annual_Income'], bins=30, kde=True, color='blue')
-plt.title('Distribution of Annual Income')
-plt.xlabel('Income')
-plt.ylabel('Count')
-plt.show()
-```
-
-### 8.10 [JUPYTER CELL 12] Bivariate Analysis: Gender vs Approval Counts
-Create a new cell and run:
-```python
-sns.countplot(x='Gender', hue='Approved', data=df, palette='Set2')
-plt.title('Credit Card Approval by Gender')
-plt.show()
-```
-
-### 8.11 [JUPYTER CELL 13] Bivariate Analysis: Education vs Approval Counts
-Create a new cell and run:
-```python
-plt.figure(figsize=(10, 5))
-sns.countplot(x='Education_Level', hue='Approved', data=df, palette='muted')
-plt.xticks(rotation=45)
-plt.title('Credit Card Approval by Education Level')
-plt.show()
-```
-
-### 8.12 [JUPYTER CELL 14] Boxplot for Income Outliers
-Create a new cell and run:
-```python
-sns.boxplot(x='Approved', y='Annual_Income', data=df)
-plt.title('Income Outliers Check')
-plt.show()
-```
-
-### 8.13 [JUPYTER CELL 15] Correlation Matrix & Heatmap
-Create a new cell and run:
-```python
-# Select only numeric columns for correlation calculation
-numeric_df = df.select_dtypes(include=[np.number])
-plt.figure(figsize=(10, 8))
-sns.heatmap(numeric_df.corr(), annot=True, cmap='coolwarm', fmt=".2f")
-plt.title('Correlation Matrix Heatmap')
-plt.show()
-```
+* **Why we do this**:
+  * We group the credit behavior records by user `ID` and find if they had a default history (`is_risky == 1`).
+  * Merging this target back with `application_record` gives us our final labeled training dataset.
+* **What to look for**: The target distribution prints out. You will notice that a huge majority of applicants are labeled `0` (Safe). This is called **class imbalance** and is something we must configure our machine learning model to handle.
 
 ---
 
-# Part 8: Interactive Notebook - Preprocessing & Feature Engineering
+### 5.2 What is Class Imbalance?
+In our dataset, over 98% of applicants are labeled `0` (Safe/Approved), while less than 2% are labeled `1` (Risky/Rejected). This is a severe **Class Imbalance**. If we trained a model on this directly without adjustments, the model could simply guess `0` for every single applicant and achieve 98% accuracy, while failing to detect the actual risky applicants. We will resolve this during model training by using **stratified splits** and **class weights**.
 
-### 9.1 [JUPYTER CELL 16] Handling Missing Values
-Create a new cell and run:
+---
+
+### [JUPYTER CELL 3] Preprocessing and Fixing Anomalies
+We clean up missing values, handle offsets, and drop unneeded identifiers:
 ```python
-# Fill missing numeric values with columns median
-df['Annual_Income'] = df['Annual_Income'].fillna(df['Annual_Income'].median())
-print("Missing values resolved!")
+# Resolve null occupations
+df['OCCUPATION_TYPE'] = df['OCCUPATION_TYPE'].fillna('Unknown')
+
+# Convert birth offset to positive age in years
+df['AGE'] = (df['DAYS_BIRTH'] / -365.25).astype(int)
+
+# Convert employment offset to years. Positive values are marked as unemployed (0 years).
+df['YEARS_EMPLOYED'] = df['DAYS_EMPLOYED'].apply(lambda x: 0 if x > 0 else x / -365.25)
+df['UNEMPLOYED'] = (df['DAYS_EMPLOYED'] > 0).astype(int)
+
+# Drop redundant raw columns
+df_clean = df.drop(columns=['ID', 'DAYS_BIRTH', 'DAYS_EMPLOYED', 'FLAG_MOBIL'])
+print(df_clean.head())
 ```
+* **Why we do this**:
+  * Missing occupation fields are filled with `'Unknown'` to avoid dropping rows.
+  * Age and employment length are converted from negative days into readable years.
+  * The positive values in `DAYS_EMPLOYED` indicate unemployment, so we create a binary `UNEMPLOYED` indicator flag.
 
-### 9.2 [JUPYTER CELL 17] Encoding Categorical Columns
-Create a new cell and run:
+---
+
+# Part 6: Production Script - Model Comparison & Training (train.py)
+
+We now transition from interactive notebook exploration to writing a production-grade Python script named `train.py`. While Jupyter is excellent for visual exploration (EDA) and prototype cleaning, standard Python scripts are preferred in production environments to run training pipelines from end to end and save the resulting model files.
+
+### 6.1 Understanding Machine Learning Models & Algorithms
+In this script, we train and compare three distinct classification models to find the one that balances accuracy with minority class detection:
+
+* **Logistic Regression**: A linear model that estimates the probability of a binary event. It is fast, simple, and serves as our baseline.
+* **Random Forest Classifier**: An ensemble model that builds multiple decision trees and averages their outputs. It is highly robust, handles non-linear relationships, and reduces variance.
+* **XGBoost Classifier**: An advanced gradient boosting model that trains trees sequentially, where each new tree focuses on correcting the errors made by the previous ones. It is highly performant and often yields the highest accuracy.
+
+To handle our class imbalance, we set `class_weight='balanced'` in our classifiers. This tells the algorithms to penalize errors on the minority class (Risky applicants) more heavily, forcing the model to learn its patterns.
+
+---
+
+### Model Comparison Training Script (`train.py`)
+Save this complete script as `train.py` in your project root folder:
+
 ```python
+import pandas as pd
+import numpy as np
 from sklearn.preprocessing import LabelEncoder
-
-le = LabelEncoder()
-categorical_cols = ['Gender', 'Income_Type', 'Education_Level']
-
-for col in categorical_cols:
-    df[col] = le.fit_transform(df[col])
-
-print("Encoding complete. Categorical features converted to numbers.")
-df.head()
-```
-
----
-
-# Part 9: Interactive Notebook - Training & Multi-Model Comparison
-
-### 10.1 [JUPYTER CELL 18] Splitting Features & Target Data
-Create a new cell and run:
-```python
-X = df.drop(columns=['Approved'])
-y = df['Approved']
-```
-
-### 10.2 [JUPYTER CELL 19] Splitting into Train and Test Groups
-Create a new cell and run:
-```python
 from sklearn.model_selection import train_test_split
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-print(f"Train size: {X_train.shape[0]}, Test size: {X_test.shape[0]}")
-```
-
-### 10.3 [JUPYTER CELL 20] Training Multiple Classification Models
-Create a new cell and run:
-```python
 from sklearn.linear_model import LogisticRegression
-from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from xgboost import XGBClassifier
-from sklearn.metrics import accuracy_score
-
-# Instantiate classification models
-models = {
-    "Logistic Regression": LogisticRegression(max_iter=1000),
-    "Decision Tree": DecisionTreeClassifier(),
-    "Random Forest": RandomForestClassifier(n_estimators=100, random_state=42),
-    "XGBoost": XGBClassifier(use_label_encoder=False, eval_metric='logloss')
-}
-
-# Run training loops
-for name, model in models.items():
-    model.fit(X_train, y_train)
-    y_pred = model.predict(X_test)
-    acc = accuracy_score(y_test, y_pred)
-    print(f"{name} Test Accuracy: {acc * 100:.2f}%")
-```
-
-### 10.4 [JUPYTER CELL 21] Detailed Accuracy Metrics & Confusion Matrix
-Create a new cell and run:
-```python
-from sklearn.metrics import classification_report, confusion_matrix
-
-best_model = models["Random Forest"]
-y_pred = best_model.predict(X_test)
-
-print("Confusion Matrix:")
-print(confusion_matrix(y_test, y_pred))
-print("\nClassification Report:")
-print(classification_report(y_test, y_pred))
-```
-
-### 10.5 [JUPYTER CELL 22] Saving Best Trained Model to disk
-Create a new cell and run:
-```python
+from sklearn.metrics import accuracy_score, classification_report
 import joblib
+import os
 
-# Export model as a portable file
-joblib.dump(best_model, 'models/card_model.joblib')
-print("Model file successfully written into models/ folder!")
+def run_training_pipeline():
+    print("Step 1: Loading raw datasets...")
+    app_df = pd.read_csv('data/application_record.csv')
+    credit_df = pd.read_csv('data/credit_record.csv')
+
+    print("Step 2: Constructing target variable and merging records...")
+    # Label status '2', '3', '4', or '5' as risky (1)
+    credit_df['is_risky'] = credit_df['STATUS'].isin(['2', '3', '4', '5']).astype(int)
+    
+    # Identify if a client has defaulted at least once
+    user_target = credit_df.groupby('ID')['is_risky'].max().reset_index()
+    user_target.rename(columns={'is_risky': 'target'}, inplace=True)
+    
+    # Merge datasets
+    df = pd.merge(app_df, user_target, on='ID', how='inner')
+
+    print("Step 3: Preprocessing and resolving anomalies...")
+    # Replace null occupation entries
+    df['OCCUPATION_TYPE'] = df['OCCUPATION_TYPE'].fillna('Unknown')
+    
+    # Convert birth and employment day offsets to years
+    df['AGE'] = (df['DAYS_BIRTH'] / -365.25).astype(int)
+    df['YEARS_EMPLOYED'] = df['DAYS_EMPLOYED'].apply(lambda x: 0 if x > 0 else x / -365.25)
+    df['UNEMPLOYED'] = (df['DAYS_EMPLOYED'] > 0).astype(int)
+    
+    # Drop raw and redundant ID/offset variables
+    df_clean = df.drop(columns=['ID', 'DAYS_BIRTH', 'DAYS_EMPLOYED', 'FLAG_MOBIL'])
+
+    print("Step 4: Categorical Label Encoding...")
+    le = LabelEncoder()
+    cat_cols = ['CODE_GENDER', 'FLAG_OWN_CAR', 'FLAG_OWN_REALTY', 'NAME_INCOME_TYPE', 
+                'NAME_EDUCATION_TYPE', 'NAME_FAMILY_STATUS', 'NAME_HOUSING_TYPE', 'OCCUPATION_TYPE']
+    for col in cat_cols:
+        df_clean[col] = le.fit_transform(df_clean[col].astype(str))
+
+    # Separate features and target
+    X = df_clean.drop(columns=['target'])
+    y = df_clean['target']
+
+    # Stratified split to keep target ratio balanced
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+
+    print("\nStep 5: Training and evaluating classifiers...")
+    models = {
+        "Logistic Regression": LogisticRegression(max_iter=1000, class_weight='balanced'),
+        "Random Forest": RandomForestClassifier(n_estimators=100, random_state=42, class_weight='balanced'),
+        "XGBoost": XGBClassifier(use_label_encoder=False, eval_metric='logloss')
+    }
+
+    best_acc = 0.0
+    best_model = None
+    best_model_name = ""
+
+    for name, clf in models.items():
+        # Fit classifier
+        clf.fit(X_train, y_train)
+        y_pred = clf.predict(X_test)
+        
+        acc = accuracy_score(y_test, y_pred)
+        print(f"-> {name} Accuracy: {acc * 100:.2f}%")
+        
+        # Track the highest performing model
+        if acc > best_acc:
+            best_acc = acc
+            best_model = clf
+            best_model_name = name
+
+    print(f"\nWinner: {best_model_name} with {best_acc * 100:.2f}% accuracy.")
+    
+    # Print metrics report for the winner
+    winner_preds = best_model.predict(X_test)
+    print("\nBest Model Performance Report:")
+    print(classification_report(y_test, winner_preds))
+
+    # Save model binary file
+    print("Step 6: Serializing and saving best model...")
+    os.makedirs('models', exist_ok=True)
+    joblib.dump(best_model, 'models/card_model.joblib')
+    print("Model successfully written into models/card_model.joblib")
+
+if __name__ == '__main__':
+    run_training_pipeline()
 ```
 
 ---
 
-# Part 10: Python Script - Flask Application Server
+### 6.2 Executing the Training Script
+* Open your project terminal and run:
+  ```bash
+  python train.py
+  ```
+* **Expected Output**: The terminal will print out step-by-step progress, output accuracy percentages for each model, print the final classification metrics report, and confirm the serialization of the winning model.
 
-The following code is not run in Jupyter. You must copy it and save it as a Python script named `app.py` in your project folder.
+---
 
-### 11.1 Creating app.py Script
-Create a new file named `app.py` and write the following code:
+# Part 7: Flask API Backend
+
+Save this script as `app.py` in your project folder.
+
+### 7.1 Understanding Backend Web Servers & API Routing
+In this phase, we build a local web backend using **Flask**.
+* **API Routing**: Routing is the mechanism that maps network URLs (endpoints) to specific Python functions. In Flask, we define routes using `@app.route()`.
+* **JSON Exchange**: JavaScript on the frontend will capture user entries and package them as JSON. The backend extracts this JSON (`request.get_json()`), converts the values to floats/integers, and packs them into a NumPy array matching the exact structure used during model training.
+* **Making Predictions**: The Flask server loads our serialized model weights (`joblib.load('models/card_model.joblib')`) in memory. When it receives a request, it calls `model.predict()` and returns the boolean approved/rejected decision back to the client.
+
 ```python
 from flask import Flask, request, jsonify, render_template
 import joblib
@@ -409,7 +396,7 @@ import numpy as np
 
 app = Flask(__name__)
 
-# Load the saved model file
+# Load the trained model
 model = joblib.load('models/card_model.joblib')
 
 @app.route('/')
@@ -418,18 +405,39 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    data = request.get_json()
-    
-    # Arrange features in the exact columns order X was trained with
-    features = np.array([[
-        data['gender'],
-        data['income'],
-        data['income_type'],
-        data['education']
-    ]])
-    
-    prediction = model.predict(features)[0]
-    return jsonify({'approved': int(prediction) == 1})
+    try:
+        data = request.get_json()
+        
+        # Build features list in the exact order the model expects:
+        # CODE_GENDER, FLAG_OWN_CAR, FLAG_OWN_REALTY, CNT_CHILDREN, AMT_INCOME_TOTAL, 
+        # NAME_INCOME_TYPE, NAME_EDUCATION_TYPE, NAME_FAMILY_STATUS, NAME_HOUSING_TYPE, 
+        # OCCUPATION_TYPE, CNT_FAM_MEMBERS, AGE, YEARS_EMPLOYED, UNEMPLOYED
+        features = np.array([[
+            int(data['gender']),
+            int(data['own_car']),
+            int(data['own_realty']),
+            int(data['children']),
+            float(data['income']),
+            int(data['income_type']),
+            int(data['education']),
+            int(data['family_status']),
+            int(data['housing_type']),
+            int(data['occupation']),
+            int(data['family_size']),
+            int(data['age']),
+            float(data['years_employed']),
+            int(data['unemployed'])
+        ]])
+        
+        # Predict target (0 = Safe/Approved, 1 = Risky/Rejected)
+        prediction = model.predict(features)[0]
+        
+        # Invert label: Approved is true if prediction is 0
+        approved = int(prediction) == 0
+        
+        return jsonify({'approved': approved})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 400
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
@@ -437,33 +445,121 @@ if __name__ == '__main__':
 
 ---
 
-# Part 11: Web Application Frontend Files
+# Part 8: Frontend User Interface Files
 
-### 12.1 Creating templates/index.html Layout
+To create a clean interface, we split our frontend assets into three files: `index.html`, `style.css`, and `script.js`.
+
+### 8.1 How the Frontend Connects with the Backend
+Web applications operate on a **Client-Server Architecture**. 
+
+* **The Client (Frontend)**: This is the user interface running in the browser (`index.html`, `style.css`, `script.js`). Its job is to collect information from the user and display results.
+* **The Server (Backend)**: This is our Flask script (`app.py`) running on our local machine. It listens for incoming HTTP requests, feeds features to our machine learning model, and returns the prediction.
+* **The Communication (HTTP POST & JSON)**: When the user clicks the submit button, the frontend does not reload the page. Instead, JavaScript packages the form inputs into a **JSON** dictionary and sends it via an HTTP **POST** request to the `/predict` URL on the Flask server. Once the server responds with a success or rejection state, the webpage updates itself dynamically.
+
+---
+
+### Frontend Template (`templates/index.html`)
+Save this layout configuration inside `templates/index.html`:
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Credit Card Eligibility Predictor</title>
+    <title>Credit Card Approval Predictor</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
     <div class="container">
         <h2>Credit Card Eligibility Predictor</h2>
         <form id="predictionForm">
-            <label for="gender">Gender (0 = Female, 1 = Male):</label>
-            <input type="number" id="gender" required>
+            <label for="gender">Gender:</label>
+            <select id="gender" required>
+                <option value="0">Female</option>
+                <option value="1">Male</option>
+            </select>
+
+            <label for="own_car">Owns a Car?</label>
+            <select id="own_car" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label for="own_realty">Owns Real Estate / Property?</label>
+            <select id="own_realty" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label for="children">Number of Children:</label>
+            <input type="number" id="children" min="0" value="0" required>
 
             <label for="income">Annual Income ($):</label>
-            <input type="number" id="income" required>
+            <input type="number" id="income" min="0" required>
 
-            <label for="incomeType">Income Type (Numeric Code):</label>
-            <input type="number" id="incomeType" required>
+            <label for="income_type">Income Type:</label>
+            <select id="income_type" required>
+                <option value="4">Working</option>
+                <option value="0">Commercial associate</option>
+                <option value="1">Pensioner</option>
+                <option value="2">State servant</option>
+                <option value="3">Student</option>
+            </select>
 
-            <label for="education">Education Level (Numeric Code):</label>
-            <input type="number" id="education" required>
+            <label for="education">Highest Education Level:</option>
+            <select id="education" required>
+                <option value="4">Secondary / secondary special</option>
+                <option value="1">Higher education</option>
+                <option value="2">Incomplete higher</option>
+                <option value="3">Lower secondary</option>
+                <option value="0">Academic degree</option>
+            </select>
+
+            <label for="family_status">Family Status:</label>
+            <select id="family_status" required>
+                <option value="1">Married</option>
+                <option value="3">Single / not married</option>
+                <option value="0">Civil marriage</option>
+                <option value="2">Separated</option>
+                <option value="4">Widow</option>
+            </select>
+
+            <label for="housing_type">Housing Type:</label>
+            <select id="housing_type" required>
+                <option value="1">House / apartment</option>
+                <option value="5">With parents</option>
+                <option value="2">Municipal apartment</option>
+                <option value="4">Rented apartment</option>
+                <option value="3">Office apartment</option>
+                <option value="0">Co-op apartment</option>
+            </select>
+
+            <label for="occupation">Occupation Type:</label>
+            <select id="occupation" required>
+                <option value="18">Unknown</option>
+                <option value="8">Laborers</option>
+                <option value="3">Core staff</option>
+                <option value="14">Sales staff</option>
+                <option value="10">Managers</option>
+                <option value="4">Drivers</option>
+                <option value="6">High skill tech staff</option>
+            </select>
+
+            <label for="family_size">Family Size:</label>
+            <input type="number" id="family_size" min="1" value="1" required>
+
+            <label for="age">Age (Years):</label>
+            <input type="number" id="age" min="18" max="100" required>
+
+            <label for="years_employed">Years Employed:</label>
+            <input type="number" id="years_employed" min="0" step="0.1" value="0" required>
+
+            <label for="unemployed">Is Unemployed?</label>
+            <select id="unemployed" required>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
 
             <button type="submit">Predict Eligibility</button>
         </form>
@@ -474,173 +570,202 @@ if __name__ == '__main__':
 </html>
 ```
 
-### 12.2 Creating static/style.css Styles
+---
+
+### Style Sheet (`static/style.css`)
+Save this CSS configuration inside `static/style.css` to build our form wrapper:
+
 ```css
 body {
-    background-color: #0c0c0e;
-    color: #f3f4f6;
-    font-family: sans-serif;
+    background-color: #0a0a0c;
+    color: #e4e4e7;
+    font-family: system-ui, -apple-system, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px 0;
 }
+
 .container {
-    background-color: #16161a;
-    border: 1px solid #2e2e38;
-    padding: 30px;
-    border-radius: 12px;
-    width: 320px;
+    background-color: #121214;
+    border: 1px solid #27272a;
+    padding: 32px;
+    border-radius: 16px;
+    width: 360px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
-input, button {
+
+h2 {
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #a1a1aa;
+}
+
+input, select, button {
     width: 100%;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #3a3a46;
-    background-color: #24242e;
-    color: white;
+    border-radius: 8px;
+    border: 1px solid #27272a;
+    background-color: #1a1a1e;
+    color: #ffffff;
+    box-sizing: border-box;
+    font-size: 0.9rem;
+    transition: all 0.2s;
 }
+
+input:focus, select:focus {
+    border-color: #3b82f6;
+    outline: none;
+}
+
 button {
-    background-color: #6366f1;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    font-weight: 650;
     cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+}
+
+#result {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.95rem;
+    display: none;
+}
+
+.success {
+    background-color: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    color: #34d399;
+}
+
+.danger {
+    background-color: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    color: #f87171;
 }
 ```
 
-### 12.3 Creating static/script.js Callbacks
+---
+
+### Application Logic Script (`static/script.js`)
+Save this JS module inside `static/script.js`:
+
 ```javascript
 document.getElementById('predictionForm').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const data = {
-        gender: parseFloat(document.getElementById('gender').value),
-        income: parseFloat(document.getElementById('income').value),
-        income_type: parseFloat(document.getElementById('incomeType').value),
-        education: parseFloat(document.getElementById('education').value)
+
+    const resultDiv = document.getElementById('result');
+    resultDiv.style.display = 'none';
+
+    // Pack input form values into a JSON payload
+    const payload = {
+        gender: document.getElementById('gender').value,
+        own_car: document.getElementById('own_car').value,
+        own_realty: document.getElementById('own_realty').value,
+        children: document.getElementById('children').value,
+        income: document.getElementById('income').value,
+        income_type: document.getElementById('income_type').value,
+        education: document.getElementById('education').value,
+        family_status: document.getElementById('family_status').value,
+        housing_type: document.getElementById('housing_type').value,
+        occupation: document.getElementById('occupation').value,
+        family_size: document.getElementById('family_size').value,
+        age: document.getElementById('age').value,
+        years_employed: document.getElementById('years_employed').value,
+        unemployed: document.getElementById('unemployed').value
     };
 
-    const response = await fetch('/predict', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-    });
+    try {
+        // Send POST request containing payload to the prediction endpoint
+        const response = await fetch('/predict', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
 
-    const result = await response.json();
-    document.getElementById('result').innerText = result.approved ? 'APPROVED' : 'REJECTED';
+        const result = await response.json();
+        
+        resultDiv.style.display = 'block';
+        if (result.approved) {
+            resultDiv.className = 'success';
+            resultDiv.innerText = 'Application Status: APPROVED';
+        } else {
+            resultDiv.className = 'danger';
+            resultDiv.innerText = 'Application Status: REJECTED';
+        }
+    } catch (err) {
+        resultDiv.className = 'danger';
+        resultDiv.innerText = 'Error processing credit application.';
+        console.error(err);
+    }
 });
 ```
 
-# Part 12: Understanding the Complete Workflow
-
-## 25. End to End Project Flow
-
-### 25.1 Dataset → Cleaning → Model → Saved Model → Flask → Frontend
-Here is a summary of how the components link up:
-1. **Raw CSV Data**: The raw database snapshot of applicant attributes.
-2. **Jupyter Preprocessing**: Code filters duplicate rows, fills missing cells, and encodes text labels to numbers.
-3. **Model Selection**: Compares algorithms and exports the best parameters as a serialized `.joblib` model object.
-4. **Flask Backend API**: Loads the `.joblib` model at startup and listens for POST request payloads.
-5. **Web Interface Form**: A clean page capturing applicant attributes, packaging them as JSON, requesting predictions, and displaying approvals dynamically.
-
-### 25.2 Understanding How Everything Works Together
-By building this flow, you have designed a full production-ready template. The frontend is stateless, the server handles API routing, and the machine learning model evaluates numerical queries based on its training parameters.
+### 8.2 Understanding the Script Execution
+Let's break down the logic of this script:
+* **`e.preventDefault()`**: Prevents the browser from reloading the page when you click the submit button. This allows us to handle the form processing silently in the background.
+* **`payload`**: Gathers all values from form fields (e.g. `income` and `age`) and formats them into a single JavaScript object. The keys in this object match the keys in our Python request parser inside `app.py`.
+* **`fetch('/predict', ...)`**: Starts a secure asynchronous HTTP connection. It sends the payload to our backend server as a JSON string (`JSON.stringify(payload)`) with headers identifying the content type.
+* **`response.json()`**: Waits for the server to reply and parses the returned JSON string back into a readable JavaScript dictionary.
+* **Result Banner Update**: Displays the `#result` container and applies the appropriate CSS styles. If `result.approved` is `true`, it displays a green success banner; if `false`, it shows a red rejection banner.
 
 ---
 
-# Part 13: Common Errors and Fixes
+# Part 9: Connecting to GitHub & Pushing Your Code
 
-## 26. Troubleshooting Guide
+Now that your machine learning model is trained and your web application is fully tested locally, you are ready to back up your codebase to GitHub.
 
-### 26.1 Python Not Found
-- **Symptom**: Command `python` is not recognized.
-- **Fix**: Re-run the installer and select **Add Python to PATH**.
+### 9.1 Connecting a Local Folder to GitHub
+Open your project terminal and run these commands sequentially to initialize and link your repository:
 
-### 26.2 pip Not Recognized
-- **Symptom**: Command `pip install ...` fails.
-- **Fix**: Restart your VS Code terminal to load path variables.
-
-### 26.3 ModuleNotFoundError
-- **Symptom**: `ModuleNotFoundError: No module named 'xgboost'`.
-- **Fix**: Run `pip install xgboost` in your terminal.
-
-### 26.4 FileNotFoundError
-- **Symptom**: `FileNotFoundError: [Errno 2] No such file or directory: 'data/creditcard_data.csv'`.
-- **Fix**: Verify your terminal working directory is in the root `credit_card_approval_project` folder.
-
-### 26.5 Dataset Path Issues
-- **Fix**: Use absolute paths or check folder casing.
-
-### 26.6 KeyError
-- **Symptom**: `KeyError: 'Approved'`.
-- **Fix**: Verify target column naming matches your CSV header exactly.
-
-### 26.7 ValueError
-- **Symptom**: `ValueError: could not convert string to float`.
-- **Fix**: Ensure all category string columns are Label Encoded.
-
-### 26.8 Shape Mismatch
-- **Symptom**: Model expects 10 features but gets 4.
-- **Fix**: Ensure your array shapes during training matches request payloads.
-
-### 26.9 Flask Errors
-- **Symptom**: Port 5000 already in use.
-- **Fix**: Change port inside `app.run(port=5001)`.
-
-### 26.10 Browser Connection Errors
-- **Symptom**: CORS block or fetch failure.
-- **Fix**: Ensure your server is active on the matching host/port.
+1. **Initialize Git locally**: Run `git init`. This creates a hidden `.git` folder inside your project directory to start tracking changes.
+2. **Stage your files**: Run `git add .` to prepare all code, template, and document assets for tracking.
+3. **Commit files**: Run `git commit -m "feat: complete credit card predictor codebase"` to save your local snapshot.
+4. **Rename main branch**: Run `git branch -M main` to establish your primary branch.
+5. **Link to GitHub repository**: Create a repository on GitHub, copy its URL, and run:
+   ```bash
+   git remote add origin https://github.com/yourusername/repository-name.git
+   ```
+6. **Push code to GitHub**: Run `git push -u origin main` to upload your codebase remote.
 
 ---
 
-# Part 14: Applying This Workflow to Other Projects
+# Part 10: Summary & Next Steps
 
-## 27. Using This Same Workflow for Any ML Project
-You can apply this exact end-to-end blueprint to any tabular classification project:
-- **Credit Card Approval Prediction** (This guide)
-- **Water Quality Prediction** (Classifying safe vs contaminated samples)
-- **Crop Recommendation** (Predicting suitable crops based on soil inputs)
-- **Student Performance Prediction** (Classifying passing vs failing metrics)
-- **House Price Prediction** (Regression workflows)
-- **Disease Prediction** (Predicting health diagnoses)
+Congratulations! You have successfully built a complete Credit Card Approval Prediction System from end to end.
 
----
+## 10. Summary of Accomplishments
+Throughout this handbook, you built:
+* An **Ingestion Pipeline** that merges demographic application logs with monthly credit history records.
+* A **Target Labeling Strategy** based on repayment delays of 60+ days overdue.
+* An **EDA and Data Preparation script** resolving missing features and day offsets.
+* A **Machine Learning pipeline** comparing Logistic Regression, Random Forest, and XGBoost models while configuring class weights to handle severe class imbalance.
+* A **Flask API Backend server** bridging raw JSON requests with high-performance model predictions.
+* An **HTML/CSS/JS frontend interface** displaying dynamic outcome banners.
 
-# Part 15: Final Project
-
-## 28. Complete Project Folder Structure
-```text
-credit_card_approval_project/
-├── data/
-│   └── creditcard_data.csv
-├── models/
-│   └── card_model.joblib
-├── templates/
-│   └── index.html
-├── static/
-│   ├── style.css
-│   └── script.js
-├── notebook.ipynb
-└── app.py
-```
-
-## 29. Complete End to End Flow Diagram
-Ensure your files communicate in the following path:
-`creditcard_data.csv` -> `notebook.ipynb` -> `card_model.joblib` -> `app.py` -> `index.html`.
-
-## 30. Final Project Checklist
-- [x] Python setup complete and verified.
-- [x] Git linked and committed to GitHub.
-- [x] Preprocessing completes with 0 nulls.
-- [x] Accuracy scored on 4 algorithms.
-- [x] Joblib model successfully loaded by Flask app.
-
-## 31. What's Next?
-
-### 31.1 Improving Accuracy
-Explore Hyperparameter Optimization (GridSearchCV) or try feature scaling.
-
-### 31.2 Trying Different Models
-Evaluate extra classifiers like Support Vector Machines (SVM) or Neural Networks.
-
-### 31.3 Deploying Your Project
-Deploy your application on cloud hosts like IBM Watson Studio or Heroku to share it online.
-
+## 10.1 Future Extensions
+To build upon this foundation, you can try:
+* **Hyperparameter Optimization**: Use Scikit-Learn's `GridSearchCV` to optimize the max depth, estimators, and learning rate of the XGBoost classifier.
+* **Feature Importance Plotting**: Print out model feature weights to see which variables (like annual income or employment length) affect approval classifications the most.
+* **Cloud Deployment**: Package your application inside a Docker container and deploy it to a cloud provider (like AWS Elastic Beanstalk or Render) to make your predictor accessible online.

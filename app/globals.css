@@ -1036,3 +1036,74 @@
   background-clip: text;
   color: transparent;
 }
+
+/* Action button for blogs/handbooks */
+.blog-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 12, 0.4);
+  color: #e4e4e7; /* text-neutral-200 */
+  border: 1px solid #27272a; /* border-neutral-800 */
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: border-color 300ms ease, color 300ms ease;
+  cursor: pointer;
+}
+
+.blog-action-btn:hover {
+  border-color: #3b82f6; /* Brand blue border */
+  color: #3b82f6; /* Brand blue text */
+  background: rgba(10, 10, 12, 0.4); /* Keep background transparent/unfilled */
+}
+
+/* Custom typography styles to restore lists (since @tailwindcss/typography is not used) */
+.prose ul {
+  list-style-type: disc !important;
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
+  padding-left: 1.5rem !important;
+  display: block !important;
+}
+
+.prose ol {
+  list-style-type: decimal !important;
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
+  padding-left: 1.5rem !important;
+  display: block !important;
+}
+
+.prose li {
+  margin-bottom: 0.5rem !important;
+  list-style-position: outside !important;
+  display: list-item !important;
+}
+
+/* Support nested lists indentation and styles */
+.prose ul ul, 
+.prose ol ul {
+  list-style-type: circle !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+  padding-left: 1.5rem !important;
+}
+
+.prose ul ul ul,
+.prose ol ol ul {
+  list-style-type: square !important;
+  padding-left: 1.5rem !important;
+}
+
+.prose ol ol,
+.prose ul ol {
+  list-style-type: lower-alpha !important;
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+  padding-left: 1.5rem !important;
+}

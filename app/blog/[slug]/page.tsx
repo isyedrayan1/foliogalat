@@ -92,7 +92,7 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
           <CodeCopy />
 
           {/* Article Card */}
-          <article className="border border-neutral-800/80 rounded-2xl bg-neutral-950/40 p-6 md:p-12 relative overflow-hidden">
+          <article id="blog-content" className="border border-neutral-800/80 rounded-2xl bg-neutral-950/40 p-6 md:p-12 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-96 h-96 bg-signature/5 blur-[120px] rounded-full pointer-events-none" />
             
             {/* Header */}
@@ -130,7 +130,7 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
             {post.parts.length > 1 && nextPart && (
               <div className="mt-12 pt-8 border-t border-neutral-900 flex justify-end font-mono">
                 <Link
-                  href={`/blog/${post.slug}/${nextPart.slug}`}
+                  href={`/blog/${post.slug}/${nextPart.slug}#blog-content`}
                   className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3 bg-neutral-200 hover:bg-white text-neutral-900 font-bold rounded-xl text-xs md:text-xs transition-colors"
                 >
                   <span>NEXT: {nextPart.title.split(':')[0]}</span>
