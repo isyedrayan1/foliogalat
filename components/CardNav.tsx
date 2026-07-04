@@ -2,7 +2,7 @@
 
 import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { gsap } from "gsap";
-import { GoArrowUpRight } from "react-icons/go";
+import { ArrowUpRight } from "lucide-react";
 
 type CardNavLink = {
   label: string;
@@ -224,7 +224,7 @@ const CardNav = ({
                     href={link.href}
                     aria-label={link.ariaLabel}
                   >
-                    <GoArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
+                    <ArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
                     {link.label}
                   </a>
                 ))}
