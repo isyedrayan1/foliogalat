@@ -1,0 +1,59 @@
+# Galat Family - Robots Configuration
+# Allow all bots to crawl and index the site
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /.next/
+Disallow: /api/
+
+# Crawl delay
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://galatfamily.in/sitemap.xml
+
+# Allow specific search engine bots
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# AI & Generative AI Search Bots - EXPLICITLY ALLOWED FOR CITATION
+# ChatGPT (OpenAI)
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+Crawl-delay: 1
+
+# Claude (Anthropic)
+User-agent: ClaudeBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: anthropic-ai
+Allow: /
+
+# Google Gemini & AI Overviews
+User-agent: Google-Extended
+Allow: /
+Crawl-delay: 0
+
+# Microsoft Copilot (Bing)
+User-agent: Copilot
+Allow: /
+
+# Block training crawlers but allow AI search bots
+User-agent: CCBot
+User-agent: anthropic-ai-research
+Disallow: /
