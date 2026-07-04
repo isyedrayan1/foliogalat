@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "../components/CardNav.css";
-import { outfit, jetbrainsMono } from "@/lib/fonts";
+import { outfit, jetbrainsMono, bricolageGrotesque, spaceGrotesk } from "@/lib/fonts";
 import { Analytics } from '@vercel/analytics/next';
 
 export const metadata: Metadata = {
@@ -107,7 +107,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${outfit.variable} ${jetbrainsMono.variable} antialiased min-h-screen`}
+        className={`${outfit.variable} ${jetbrainsMono.variable} ${bricolageGrotesque.variable} ${spaceGrotesk.variable} antialiased min-h-screen`}
         style={{ fontFamily: 'var(--font-outfit)' }}
       >
         {children}

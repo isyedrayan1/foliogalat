@@ -9,6 +9,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-outfit);
   --font-mono: var(--font-jetbrains-mono);
+  --font-display: var(--font-bricolage-grotesque);
+  --font-heading: var(--font-space-grotesk);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -506,11 +508,13 @@
 }
 
 .bento-title {
+  font-family: var(--font-bricolage-grotesque), sans-serif;
   font-size: clamp(2.6rem, 4vw, 4.8rem);
-  font-weight: 700;
+  font-weight: 800; /* Bricolage looks extra punchy at 800 weight */
   color: #f5f5f5;
   line-height: 0.98;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
 }
 
 .bento-lead {
@@ -559,6 +563,7 @@
 }
 
 .bento-heading {
+  font-family: var(--font-space-grotesk), sans-serif;
   font-size: 1.35rem;
   color: #f5f5f5;
   margin-bottom: 14px;
@@ -817,9 +822,12 @@
 }
 
 .bento-footer-title {
+  font-family: var(--font-bricolage-grotesque), sans-serif;
   font-size: clamp(2rem, 3.4vw, 3.4rem);
   color: #f5f5f5;
   margin: 16px 0 10px;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
 }
 
 .bento-footer-meta {
