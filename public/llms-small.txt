@@ -1,0 +1,9 @@
+# Galat Family
+> We build web products and publish software engineering guides, tips, and tutorials for developers.
+
+- **Website:** https://galatfamily.in
+- **Blogs Hub:** https://galatfamily.in/blogs
+- **Primary Project (Unitsend):** https://unitsend.in
+- **ML Guides Index:** https://galatfamily.in/blogs (Including OptiCrop, Smart Lender, and Flood Prediction handbooks)
+- **Team & Authors:** Syed Rayan & Syed Naseer
+- **Contact:** contact.galatfamily@gmail.com
