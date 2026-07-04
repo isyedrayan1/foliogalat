@@ -1,8 +1,8 @@
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Outfit, JetBrains_Mono } from 'next/font/google';
 
-// Main sans-serif font for the body and UI
-export const inter = Inter({
-  variable: "--font-inter",
+// Heading/UI font (Outfit)
+export const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
   display: "swap",
 });

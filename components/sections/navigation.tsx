@@ -1,6 +1,7 @@
 "use client";
 
 import CardNav from "@/components/CardNav";
+import Link from "next/link";
 
 const navItems = [
   {
@@ -35,10 +36,13 @@ const navItems = [
 ];
 
 const logoMark = (
-  <span className="flex items-center gap-2 text-[11px] tracking-[0.35em] text-neutral-200">
+  <Link 
+    href="/" 
+    className="flex items-center gap-2 text-[11px] tracking-[0.35em] text-neutral-200 hover:text-white transition-colors cursor-pointer no-underline decoration-0"
+  >
     <span className="h-2 w-2 rounded-sm bg-neutral-200 shadow-[0_0_12px_rgba(255,255,255,0.35)]" />
     Galat Family
-  </span>
+  </Link>
 );
 
 export const Navigation = () => {

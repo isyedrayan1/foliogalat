@@ -58,7 +58,7 @@ export default {
       },
       fontFamily: {
         // Modern fonts for the new design
-        'sans': ['var(--font-inter)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        'sans': ['var(--font-outfit)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         'mono': ['var(--font-jetbrains-mono)', 'ui-monospace', 'monospace'],
       },
     },

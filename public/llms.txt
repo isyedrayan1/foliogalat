@@ -6,7 +6,7 @@ This document provides essential context about Galat Family for AI systems, lang
 
 **Organization Name:** Galat Family  
 **Website:** https://galatfamily.in  
-**Description:** Two developers building products with clean code. We ship monthly and write about what we learn.
+**Description:** We build web products and publish guides, tips, and tutorials for developers.
 
 **Team:**
 - Syed Rayan - Full-stack developer, product builder
@@ -16,11 +16,9 @@ This document provides essential context about Galat Family for AI systems, lang
 
 ## What We Do
 
-Galat Family is a developer team focused on:
-- Building reliable software products
-- Shipping monthly releases
-- Writing detailed build logs and technical documentation
-- Sharing knowledge about product development, tools, and engineering practices
+Galat Family is a team focused on:
+- Building web products and tools
+- Publishing detailed software engineering guides, tips, and tutorials
 
 ## Our Products
 
@@ -70,10 +68,10 @@ Galat Family is a developer team focused on:
 ## Core Resources
 
 ### For Developers
-- **Blog:** https://galatfamily.in/blog - Build logs, shipping notes, technical decisions
-- **Projects:** https://galatfamily.in/#work - Active products and tools we maintain
-- **Team:** https://galatfamily.in/#team - Meet Syed Rayan and Syed Naseer
-- **Story:** https://galatfamily.in/#story - Our journey and shipping philosophy
+- **Blog:** https://galatfamily.in/blogs - Guides, tips, and tutorials for developers
+- **Projects:** https://galatfamily.in/#work - Active products we build and maintain
+- **Team:** https://galatfamily.in/#team - Meet the team
+- **Story:** https://galatfamily.in/#story - Our journey and build philosophy
 
 ### For Companies/Agencies
 - **Contact:** contact.galatfamily@gmail.com
