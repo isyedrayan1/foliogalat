@@ -17,7 +17,7 @@ export const Hero = () => {
             </Reveal>
 
             <Reveal delay={200} variant="blur-up">
-              <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tighter leading-[0.96]">
+              <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tighter leading-[0.96] font-display">
                 <span className="block hover:text-white transition-colors duration-500">WE ARE</span>
                 <span className="block text-signature">GALAT</span>
                 <span className="block">FAMILY<span className="text-neutral-200 animate-pulse">.</span></span>
