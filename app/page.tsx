@@ -12,18 +12,18 @@ export default function HomePage() {
       <main className="bento-shell">
         <div className="bento-frame">
           <section className="bento-card bento-hero bento-full">
-            <div className="bento-kicker">Two Developers</div>
+            <div className="bento-kicker">Galat Family</div>
             <h1 className="bento-title">
               WE ARE <span className="text-signature">GALAT</span> FAMILY.
             </h1>
             <p className="bento-lead">
-              We build products. We ship monthly. We write about how.
+              We build web products and publish guides, tips, and tutorials for developers.
             </p>
             <div className="bento-actions">
               <a className="bento-button" href="#work">
                 See our work
               </a>
-              <Link className="bento-button" href="/blog">
+              <Link className="bento-button" href="/blogs">
                 Read the blog
               </Link>
             </div>
@@ -32,9 +32,9 @@ export default function HomePage() {
 
           <section id="about" className="bento-about">
             <div className="bento-kicker">About</div>
-            <h2 className="bento-heading">Two developers, one name.</h2>
+            <h2 className="bento-heading">A team building software and sharing knowledge.</h2>
             <p className="bento-body">
-              We build products that work. We ship every month. The name sticks around because we're sticking around.
+              We build web tools that work. We also write detailed guides, tutorials, and tips to share what we know about software engineering.
             </p>
             <div className="bento-about-cards">
               <div className="bento-about-card group">
@@ -43,7 +43,7 @@ export default function HomePage() {
                   <div className="bento-kicker !mb-0">Identity</div>
                 </div>
                 <p className="bento-body">
-                  Galat Family isn't seasonal. We ship, we document, we stay. That's what the name means to us.
+                  We are here for the long run. We design software tools, write tutorials, and build a lasting library of developer knowledge.
                 </p>
               </div>
               <div className="bento-about-card group">
@@ -75,139 +75,124 @@ export default function HomePage() {
                 Products we build and maintain. Updated monthly.
               </p>
             </div>
-            <div className="bento-projects-grid">
-              <div className="bento-projects-main">
-                <a
-                  className="bento-project-card"
-                  href="https://unitsend.in"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Open Unitsend"
-                >
-                  <div className="bento-project-thumb bento-project-thumb-one" aria-hidden="true" />
-                  <div className="bento-project-copy">
-                    <div className="bento-work-title">UNITSEND</div>
-                    <p>Unitsend is an online file sharing tool built for quick, reliable transfers.</p>
-                    <div className="bento-tags">
-                      <span>FILE_SHARING</span>
-                      <span>WEB_APP</span>
-                    </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mt-6">
+              <a
+                className="bento-project-card"
+                href="https://unitsend.in"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Open Unitsend"
+              >
+                <div className="bento-project-thumb bento-project-thumb-one" aria-hidden="true" />
+                <div className="bento-project-copy">
+                  <div className="bento-work-title">UNITSEND</div>
+                  <p>Unitsend is an online file sharing tool built for quick, reliable transfers.</p>
+                  <div className="bento-tags">
+                    <span>FILE_SHARING</span>
+                    <span>WEB_APP</span>
                   </div>
-                </a>
-                <a
-                  className="bento-project-card"
-                  href="https://ffsal-ss.vercel.app"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Open FFSAL"
-                >
-                  <div className="bento-project-thumb bento-project-thumb-two" aria-hidden="true" />
-                  <div className="bento-project-copy">
-                    <div className="bento-work-title">FFSAL</div>
-                    <p>Freefire tournament management for organizing teams, matches, and results.</p>
-                    <div className="bento-tags">
-                      <span>TOURNAMENTS</span>
-                      <span>MANAGEMENT</span>
-                    </div>
-                  </div>
-                </a>
-                <a
-                  className="bento-project-card"
-                  href="https://thinkbotz.netlify.app"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Open Thinkbotz Association"
-                >
-                  <div className="bento-project-thumb bento-project-thumb-three" aria-hidden="true" />
-                  <div className="bento-project-copy">
-                    <div className="bento-work-title">THINKBOTZ</div>
-                    <p>A student association site for events, members, and technical initiatives.</p>
-                    <div className="bento-tags">
-                      <span>ASSOCIATION</span>
-                      <span>COMMUNITY</span>
-                    </div>
-                  </div>
-                </a>
-                <a
-                  className="bento-project-card"
-                  href="https://edufiles.netlify.app/"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Open Edu Notes"
-                >
-                  <div className="bento-project-thumb bento-project-thumb-one" aria-hidden="true" />
-                  <div className="bento-project-copy">
-                    <div className="bento-work-title">EDU NOTES</div>
-                    <p>Edunotes is a simple notes sharing tool for students and study groups.</p>
-                    <div className="bento-tags">
-                      <span>NOTES</span>
-                      <span>SHARING</span>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <aside className="bento-projects-side">
-                <div className="bento-side-card">
-                  <div className="bento-kicker">Status</div>
-                  <ul className="bento-list">
-                    <li>{`>`} Active: 2 products</li>
-                    <li>{`>`} Internal: 3 tools</li>
-                    <li>{`>`} Release: monthly</li>
-                  </ul>
                 </div>
-                <div className="bento-side-card">
-                  <div className="bento-kicker">Tech stack</div>
-                  <div className="bento-inline">
-                    <span>Next.js</span>
-                    <span>Postgres</span>
-                    <span>Rust</span>
+              </a>
+              <a
+                className="bento-project-card"
+                href="https://ffsal-ss.vercel.app"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Open FFSAL"
+              >
+                <div className="bento-project-thumb bento-project-thumb-two" aria-hidden="true" />
+                <div className="bento-project-copy">
+                  <div className="bento-work-title">FFSAL</div>
+                  <p>Freefire tournament management for organizing teams, matches, and results.</p>
+                  <div className="bento-tags">
+                    <span>TOURNAMENTS</span>
+                    <span>MANAGEMENT</span>
                   </div>
-                  <p className="bento-body">We use tools that are stable and well documented. Nothing fancy.</p>
                 </div>
-              </aside>
+              </a>
+              <a
+                className="bento-project-card"
+                href="https://thinkbotz.netlify.app"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Open Thinkbotz Association"
+              >
+                <div className="bento-project-thumb bento-project-thumb-three" aria-hidden="true" />
+                <div className="bento-project-copy">
+                  <div className="bento-work-title">THINKBOTZ</div>
+                  <p>A student association site for events, members, and technical initiatives.</p>
+                  <div className="bento-tags">
+                    <span>ASSOCIATION</span>
+                    <span>COMMUNITY</span>
+                  </div>
+                </div>
+              </a>
+              <a
+                className="bento-project-card"
+                href="https://edufiles.netlify.app/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Open Edu Notes"
+              >
+                <div className="bento-project-thumb bento-project-thumb-one" aria-hidden="true" />
+                <div className="bento-project-copy">
+                  <div className="bento-work-title">EDU NOTES</div>
+                  <p>Edunotes is a simple notes sharing tool for students and study groups.</p>
+                  <div className="bento-tags">
+                    <span>NOTES</span>
+                    <span>SHARING</span>
+                  </div>
+                </div>
+              </a>
             </div>
           </section>
 
           <section id="team" className="bento-team-row">
             <div className="bento-kicker">Meet us</div>
-            <h2 className="bento-heading">Two developers who build together.</h2>
+            <h2 className="bento-heading">The team behind the projects.</h2>
             <p className="bento-body">
-              We split the work. We stay aligned. Everything ships.
+              We write the code, publish the handbooks, and maintain the tools.
             </p>
             <div className="bento-team-row-grid">
-              <article className="bento-team-card">
-                <div className="bento-team-photo w-full h-[280px]">
+              <article className="bento-team-card !flex-col md:!flex-row items-center md:items-stretch gap-6">
+                <div className="bento-team-photo w-full max-w-[200px] md:w-[160px] aspect-[3/4] relative shrink-0 mx-auto md:mx-0">
                   <Image 
                     src="/Syed rayan.jpg" 
                     alt="Syed Rayan" 
                     fill 
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes="(max-width: 768px) 200px, 160px"
+                    style={{ objectFit: 'cover' }}
                     priority
                   />
                 </div>
-                <div className="bento-team-meta">
-                  <h3 className="bento-team-name">Syed Rayan</h3>
-                  <p>Full-stack development, architecture, and systems.</p>
-                  <div className="bento-team-socials">
+                <div className="bento-team-meta text-center md:text-left flex-1 flex flex-col justify-between py-1 gap-4 md:gap-0">
+                  <div>
+                    <h3 className="bento-team-name !mt-0">Syed Rayan</h3>
+                    <p className="bento-body !m-0">Full-stack development, architecture, and systems.</p>
+                  </div>
+                  <div className="bento-team-socials justify-center md:justify-start">
                     <a href="https://isyedrayan1.netlify.app" target="_blank" rel="noreferrer" className="hover:text-signature transition-colors">Portfolio</a>
                     <a href="https://linkedin.com/in/isyedrayan" target="_blank" rel="noreferrer" className="hover:text-signature transition-colors">LinkedIn</a>
                     <a href="https://instagram.com/isyedrayan" target="_blank" rel="noreferrer" className="hover:text-signature transition-colors">Instagram</a>
                   </div>
                 </div>
               </article>
-              <article className="bento-team-card">
-                <div className="bento-team-photo w-full h-[280px]">
+              <article className="bento-team-card !flex-col md:!flex-row items-center md:items-stretch gap-6">
+                <div className="bento-team-photo w-full max-w-[200px] md:w-[160px] aspect-[3/4] relative shrink-0 mx-auto md:mx-0">
                   <Image 
                     src="/syed naseer.png.jpg" 
                     alt="Syed Naseer" 
                     fill 
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes="(max-width: 768px) 200px, 160px"
+                    style={{ objectFit: 'cover' }}
                   />
                 </div>
-                <div className="bento-team-meta">
-                  <h3 className="bento-team-name">Syed Naseer</h3>
-                  <p>Product engineering, UI systems, and delivery flow.</p>
-                  <div className="bento-team-socials">
+                <div className="bento-team-meta text-center md:text-left flex-1 flex flex-col justify-between py-1 gap-4 md:gap-0">
+                  <div>
+                    <h3 className="bento-team-name !mt-0">Syed Naseer</h3>
+                    <p className="bento-body !m-0">Product engineering, UI systems, and delivery flow.</p>
+                  </div>
+                  <div className="bento-team-socials justify-center md:justify-start">
                     <a href="https://itsnaseersyed.dev" target="_blank" rel="noreferrer" className="hover:text-signature transition-colors">Portfolio</a>
                     <a href="https://www.linkedin.com/in/syed-naseer-66bb0231b" target="_blank" rel="noreferrer" className="hover:text-signature transition-colors">LinkedIn</a>
                   </div>
@@ -233,7 +218,7 @@ export default function HomePage() {
                   </div>
                   <h3 className="bento-heading">We started small, planned long.</h3>
                   <p className="bento-body">
-                    A few products. Clean code. Good docs. That was the plan from day one.
+                    A few products. Clean code. Open guides and tips. That was the plan from day one.
                   </p>
                 </div>
                 <div className="bento-inline relative z-10">
@@ -329,7 +314,7 @@ export default function HomePage() {
                   Build logs from shipping. Notes on decisions. Essays on what works and what doesn't.
                 </p>
                 <div className="bento-actions justify-center">
-                  <Link className="bento-button px-10 py-4 text-sm" href="/blog">Open blog</Link>
+                  <Link className="bento-button px-10 py-4 text-sm" href="/blogs">Open blog</Link>
                 </div>
               </div>
             </div>
@@ -370,7 +355,7 @@ export default function HomePage() {
               <a className="bento-email" href="mailto:contact.galatfamily@gmail.com">
                 contact.galatfamily@gmail.com
               </a>
-              <p className="bento-footer-meta">© 2024 Galat Family. We ship what we build.</p>
+              <p className="bento-footer-meta">© 2026 Galat Family. We ship what we build.</p>
             </div>
           </section>
         </div>

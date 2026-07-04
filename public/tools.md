@@ -229,8 +229,7 @@ Visit https://galatfamily.in to try our products.
 
 ### For Developers
 - GitHub: https://github.com/isyedrayan1
-- Documentation: https://galatfamily.in/docs
-- Blog: https://galatfamily.in/blog
+- Blog: https://galatfamily.in/blogs
 
 ### For Business Inquiries
 Email: contact.galatfamily@gmail.com

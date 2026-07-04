@@ -43,7 +43,7 @@ export default function BlogPage() {
                   Launches, builds, and engineering notes.
                 </h1>
                 <p className="bento-body text-base max-w-lg mx-auto text-neutral-400 mt-2">
-                  Written by builders, for builders. Raw documentation of our projects, stack details, and product philosophy.
+                  Guides, tips, and tutorials written by builders, for builders. Deep dives into software engineering, machine learning, and development knowledge.
                 </p>
               </div>
             </div>
@@ -69,7 +69,7 @@ export default function BlogPage() {
                       </div>
                     </div>
                     <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-snug mb-4 group-hover:text-signature transition-colors duration-300">
-                      <Link href={`/blog/${featuredPost.slug}`}>
+                      <Link href={`/blogs/${featuredPost.slug}`}>
                         {featuredPost.title}
                       </Link>
                     </h2>
@@ -88,7 +88,7 @@ export default function BlogPage() {
                       </div>
                     </div>
                     <Link 
-                      href={`/blog/${featuredPost.slug}`}
+                      href={`/blogs/${featuredPost.slug}`}
                       className="flex items-center gap-1.5 text-xs font-mono text-neutral-300 hover:text-white group/btn"
                     >
                       <span>READ_POST</span>
@@ -117,7 +117,7 @@ export default function BlogPage() {
                         </span>
                       </div>
                       <h3 className="text-lg font-bold text-white tracking-tight leading-snug mb-3 group-hover:text-signature transition-colors duration-300">
-                        <Link href={`/blog/${post.slug}`}>
+                        <Link href={`/blogs/${post.slug}`}>
                           {post.title}
                         </Link>
                       </h3>
@@ -133,7 +133,7 @@ export default function BlogPage() {
                         </div>
                       </div>
                       <Link 
-                        href={`/blog/${post.slug}`}
+                        href={`/blogs/${post.slug}`}
                         className="flex items-center gap-1 text-[10px] font-mono text-neutral-400 hover:text-white group/btn"
                       >
                         <span>READ_POST</span>
@@ -207,7 +207,7 @@ export default function BlogPage() {
               <a className="bento-email" href="mailto:contact.galatfamily@gmail.com">
                 contact.galatfamily@gmail.com
               </a>
-              <p className="bento-footer-meta">© 2024 Galat Family. Building one thing at a time.</p>
+              <p className="bento-footer-meta">© 2026 Galat Family. Building one thing at a time.</p>
             </div>
           </section>
         </div>

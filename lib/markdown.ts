@@ -16,7 +16,7 @@ export interface Post extends PostMetadata {
   contentHtml: string;
 }
 
-const docsDirectory = path.join(process.cwd(), 'docs');
+const docsDirectory = path.join(process.cwd(), 'blogs');
 
 export function parseFrontmatter(fileContent: string) {
   const frontmatterRegex = /^---\r?\n([\s\S]*?)\r?\n---/;

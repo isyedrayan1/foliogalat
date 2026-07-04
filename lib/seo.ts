@@ -8,7 +8,7 @@ import { Metadata } from "next";
 export const siteConfig = {
   name: "Galat Family",
   url: "https://galatfamily.in",
-  description: "Two developers building products. We ship monthly and share what we learn.",
+  description: "We build software projects and share guides, tips, and tutorials for developers.",
   image: "/galatfamily.jpg",
   creators: ["Syed Rayan", "Syed Naseer"],
   email: "contact.galatfamily@gmail.com",
@@ -159,7 +159,7 @@ export function generateArticleMetadata(
   updatedDate?: Date,
   authors?: string[]
 ): Metadata {
-  const url = `${siteConfig.url}/blog/${slug}/`;
+  const url = `${siteConfig.url}/blogs/${slug}/`;
 
   return {
     title: `${title} | ${siteConfig.name}`,

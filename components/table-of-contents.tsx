@@ -75,7 +75,7 @@ export function TableOfContents({ headings: propHeadings, slug }: TableOfContent
     setIsOpen(false);
     if (isRouteMode) {
       // route navigation
-      const routePath = id === 'introduction' ? `/blog/${slug}` : `/blog/${slug}/${id}`;
+      const routePath = id === 'introduction' ? `/blogs/${slug}` : `/blogs/${slug}/${id}`;
       router.push(routePath);
       return;
     }

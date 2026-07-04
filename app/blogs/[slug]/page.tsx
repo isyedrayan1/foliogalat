@@ -11,7 +11,7 @@ import { CodeCopy } from '@/components/code-copy';
 import type { Metadata } from 'next';
 
 interface BlogPostProps {
-  params: Promise<{ slug: string; part: string }>;
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateMetadata({ params }: BlogPostProps): Promise<Metadata> {
@@ -24,10 +24,7 @@ export async function generateMetadata({ params }: BlogPostProps): Promise<Metad
     };
   }
 
-  const activePart = post.parts.find((p) => p.slug === resolvedParams.part);
-  const partTitle = activePart ? activePart.title : resolvedParams.part;
-
-  const title = `${post.title} - ${partTitle} | Galat Family`;
+  const title = `${post.title} | Galat Family`;
   const description = post.excerpt || `Read "${post.title}", a guide and engineering log from the Galat Family team.`;
 
   return {
@@ -43,19 +40,9 @@ export async function generateMetadata({ params }: BlogPostProps): Promise<Metad
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
-  const paths: { slug: string; part: string }[] = [];
-
-  for (const post of posts) {
-    const fullPost = getPaginatedPost(post.slug);
-    if (fullPost && fullPost.parts.length > 1) {
-      // Exclude introduction (index 0) since it is resolved by base slug path
-      fullPost.parts.slice(1).forEach((p) => {
-        paths.push({ slug: post.slug, part: p.slug });
-      });
-    }
-  }
-
-  return paths;
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
 }
 
 export default async function BlogPostPage({ params }: BlogPostProps) {
@@ -66,18 +53,10 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
     notFound();
   }
 
-  // Resolve active part from part param
-  const activePartIndex = post.parts.findIndex((p) => p.slug === resolvedParams.part);
-
-  if (activePartIndex === -1) {
-    notFound();
-  }
-
+  // Base slug URL shows the first part (index 0)
+  const activePartIndex = 0;
   const activePart = post.parts[activePartIndex];
-
-  // Pagination navigation links
-  const prevPart = activePartIndex > 0 ? post.parts[activePartIndex - 1] : null;
-  const nextPart = activePartIndex < post.parts.length - 1 ? post.parts[activePartIndex + 1] : null;
+  const nextPart = post.parts.length > 1 ? post.parts[1] : null;
 
   return (
     <div className="bento-page font-sans antialiased text-neutral-300 selection:bg-neutral-200 selection:text-neutral-900">
@@ -87,21 +66,21 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
           {/* Back button and header info */}
           <div className="mb-6 flex items-center justify-between">
             <Link 
-              href="/blog" 
+              href="/blogs" 
               className="flex items-center gap-2 text-xs font-mono text-neutral-400 hover:text-white transition-colors py-2 px-4 border border-neutral-800/80 bg-neutral-950/40 rounded-xl hover:border-neutral-700/60"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>BACK_TO_LOGS</span>
             </Link>
             <span className="font-mono text-xs text-neutral-500">
-              {post.parts.length > 1 ? `// STEP_${activePartIndex + 1}_OF_${post.parts.length}` : '// READ_MODE'}
+              {post.parts.length > 1 ? `// STEP_1_OF_${post.parts.length}` : '// READ_MODE'}
             </span>
           </div>
 
           {/* Sticky Table of Contents Dropdown */}
           {post.parts.length > 1 && (
             <TableOfContents 
-              headings={post.parts.map((p) => ({ id: p.slug, text: p.title, active: p.slug === resolvedParams.part }))}
+              headings={post.parts.map((p) => ({ id: p.slug, text: p.title, active: p.slug === 'introduction' }))}
               slug={post.slug}
             />
           )}
@@ -148,31 +127,15 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
             />
 
             {/* Step Pagination Nav Row */}
-            {post.parts.length > 1 && (
-              <div className="mt-12 pt-8 border-t border-neutral-900 flex flex-row items-center justify-between gap-3 font-mono">
-                {prevPart ? (
-                  <Link
-                    href={activePartIndex === 1 ? `/blog/${post.slug}#blog-content` : `/blog/${post.slug}/${prevPart.slug}#blog-content`}
-                    className="flex-1 flex items-center justify-center gap-2 px-3 py-3 border border-neutral-850 bg-neutral-900/40 hover:border-neutral-750 rounded-xl text-xs text-neutral-300 hover:text-white transition-colors text-center truncate"
-                  >
-                    <ArrowLeft className="w-3.5 h-3.5 flex-shrink-0" />
-                    <span className="truncate">PREV: {prevPart.title.split(':')[0]}</span>
-                  </Link>
-                ) : (
-                  <div className="flex-1 hidden sm:block" />
-                )}
-
-                {nextPart ? (
-                  <Link
-                    href={`/blog/${post.slug}/${nextPart.slug}#blog-content`}
-                    className="flex-1 flex items-center justify-center gap-2 px-3 py-3 bg-neutral-200 hover:bg-white text-neutral-900 font-bold rounded-xl text-xs transition-colors text-center truncate"
-                  >
-                    <span className="truncate">NEXT: {nextPart.title.split(':')[0]}</span>
-                    <ArrowRight className="w-3.5 h-3.5 flex-shrink-0" />
-                  </Link>
-                ) : (
-                  <div className="flex-1 hidden sm:block" />
-                )}
+            {post.parts.length > 1 && nextPart && (
+              <div className="mt-12 pt-8 border-t border-neutral-900 flex justify-end font-mono">
+                <Link
+                  href={`/blogs/${post.slug}/${nextPart.slug}#blog-content`}
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3 bg-neutral-200 hover:bg-white text-neutral-900 font-bold rounded-xl text-xs md:text-xs transition-colors"
+                >
+                  <span>NEXT: {nextPart.title.split(':')[0]}</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
             )}
 
@@ -202,7 +165,7 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
               <a className="bento-email" href="mailto:contact.galatfamily@gmail.com">
                 contact.galatfamily@gmail.com
               </a>
-              <p className="bento-footer-meta">© 2024 Galat Family. Building one thing at a time.</p>
+              <p className="bento-footer-meta">© 2026 Galat Family. Building one thing at a time.</p>
             </div>
           </section>
         </div>

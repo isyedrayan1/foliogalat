@@ -242,7 +242,7 @@ on the blog."
 
 ### TASK 6: Blog Post Templates (1.5 hours)
 
-**Create `/docs/BLOG_POST_TEMPLATE.md`**
+**Create `/blogs/BLOG_POST_TEMPLATE.md`**
 
 **Template includes:**
 1. **Before you write:** Keyword research checklist
