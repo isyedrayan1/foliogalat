@@ -1,0 +1,23 @@
+# Galat Family - Robots Configuration
+# Allow all bots to crawl and index the site
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /.next/
+Disallow: /api/
+
+# Crawl delay
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://galatfamily.com/sitemap.xml
+
+# Allow specific bots
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1

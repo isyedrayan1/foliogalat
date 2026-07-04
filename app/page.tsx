@@ -12,59 +12,56 @@ export default function HomePage() {
       <main className="bento-shell">
         <div className="bento-frame">
           <section className="bento-card bento-hero bento-full">
-            <div className="bento-kicker">TEAM_BUILD</div>
+            <div className="bento-kicker">Two Developers</div>
             <h1 className="bento-title">
               WE ARE <span className="text-signature">GALAT</span> FAMILY.
             </h1>
             <p className="bento-lead">
-              We build reliable products and share what we learn along the way.
+              We build products. We ship monthly. We write about how.
             </p>
             <div className="bento-actions">
               <a className="bento-button" href="#work">
-                VIEW_BUILDS
+                See our work
               </a>
               <Link className="bento-button" href="/blog">
-                READ_BLOGS
+                Read the blog
               </Link>
             </div>
             <div className="bento-subline">{"// Plan. Build. Ship. Iterate."}</div>
           </section>
 
           <section id="about" className="bento-about">
-            <div className="bento-kicker">ABOUT_US</div>
-            <h2 className="bento-heading">We are Galat Family.</h2>
+            <div className="bento-kicker">About</div>
+            <h2 className="bento-heading">Two developers, one name.</h2>
             <p className="bento-body">
-              A small tech team that builds products, shares knowledge, and treats the name as a long-term identity.
+              We build products that work. We ship every month. The name sticks around because we're sticking around.
             </p>
             <div className="bento-about-cards">
               <div className="bento-about-card group">
                 <div className="flex items-center gap-2 mb-4">
                   <Heart className="w-5 h-5 text-signature" />
-                  <div className="bento-kicker !mb-0">IDENTITY</div>
+                  <div className="bento-kicker !mb-0">Identity</div>
                 </div>
                 <p className="bento-body">
-                  We are proud of the name. It stands for a team that ships, documents, and learns together. The identity
-                  is long-term, not seasonal.
+                  Galat Family isn't seasonal. We ship, we document, we stay. That's what the name means to us.
                 </p>
               </div>
               <div className="bento-about-card group">
                 <div className="flex items-center gap-2 mb-4">
                   <Cpu className="w-5 h-5 text-signature" />
-                  <div className="bento-kicker !mb-0">FOCUS</div>
+                  <div className="bento-kicker !mb-0">How we work</div>
                 </div>
                 <p className="bento-body">
-                  We build useful systems and keep them clean, reliable, and easy to operate. Our focus is on clarity,
-                  durability, and practical outcomes.
+                  Clean code. Good docs. Systems that don't break. We build things we can maintain and be proud of.
                 </p>
               </div>
               <div className="bento-about-card group">
                 <div className="flex items-center gap-2 mb-4">
                   <Zap className="w-5 h-5 text-signature" />
-                  <div className="bento-kicker !mb-0">STRATEGY</div>
+                  <div className="bento-kicker !mb-0">Our strategy</div>
                 </div>
                 <p className="bento-body">
-                  We do business when it makes sense, but we stay hands-on with the work. We prefer fewer projects with
-                  more depth over many shallow wins.
+                  We take fewer projects and go deeper. Less chasing. More depth. We build what we can actually support.
                 </p>
               </div>
             </div>
@@ -72,10 +69,10 @@ export default function HomePage() {
 
           <section id="work" className="bento-projects-row">
             <div className="bento-projects-header">
-              <div className="bento-kicker">[01] PROJECTS</div>
-              <h2 className="bento-heading">Selected products and internal builds.</h2>
+              <div className="bento-kicker">Our work</div>
+              <h2 className="bento-heading">What we've shipped.</h2>
               <p className="bento-body">
-                A small set of systems we maintain and improve over time.
+                Products we build and maintain. Updated monthly.
               </p>
             </div>
             <div className="bento-projects-grid">
@@ -151,31 +148,31 @@ export default function HomePage() {
               </div>
               <aside className="bento-projects-side">
                 <div className="bento-side-card">
-                  <div className="bento-kicker">PROJECT_STATUS</div>
+                  <div className="bento-kicker">Status</div>
                   <ul className="bento-list">
-                    <li>{`>`} Active builds: 2</li>
-                    <li>{`>`} Internal tools: 3</li>
-                    <li>{`>`} Release cadence: monthly</li>
+                    <li>{`>`} Active: 2 products</li>
+                    <li>{`>`} Internal: 3 tools</li>
+                    <li>{`>`} Release: monthly</li>
                   </ul>
                 </div>
                 <div className="bento-side-card">
-                  <div className="bento-kicker">CORE_STACK</div>
+                  <div className="bento-kicker">Tech stack</div>
                   <div className="bento-inline">
                     <span>Next.js</span>
                     <span>Postgres</span>
                     <span>Rust</span>
                   </div>
-                  <p className="bento-body">We prefer stable, well-documented tools and keep the stack tight.</p>
+                  <p className="bento-body">We use tools that are stable and well documented. Nothing fancy.</p>
                 </div>
               </aside>
             </div>
           </section>
 
           <section id="team" className="bento-team-row">
-            <div className="bento-kicker">[02] OUR_TEAM</div>
-            <h2 className="bento-heading">Two developers, one team.</h2>
+            <div className="bento-kicker">Meet us</div>
+            <h2 className="bento-heading">Two developers who build together.</h2>
             <p className="bento-body">
-              We build, ship, and maintain our products together.
+              We split the work. We stay aligned. Everything ships.
             </p>
             <div className="bento-team-row-grid">
               <article className="bento-team-card">
@@ -221,10 +218,10 @@ export default function HomePage() {
 
           <section id="story" className="bento-card bento-full bento-story">
             <div className="bento-story-header">
-              <div className="bento-kicker">[03] OUR_STORY</div>
-              <h2 className="bento-heading">A story told in releases, not slogans.</h2>
+              <div className="bento-kicker">Our story</div>
+              <h2 className="bento-heading">We tell our story with releases, not words.</h2>
               <p className="bento-body">
-                A record of the team&apos;s formation, shipping milestones, and current focus.
+                How we started. What we shipped. What we&apos;re building now.
               </p>
             </div>
             <div className="bento-story-grid">
@@ -232,15 +229,15 @@ export default function HomePage() {
                 <div className="relative z-10">
                   <div className="flex items-center gap-2 mb-4">
                     <Sparkles className="w-5 h-5 text-signature" />
-                    <div className="bento-kicker !mb-0">ORIGIN</div>
+                    <div className="bento-kicker !mb-0">Start</div>
                   </div>
-                  <h3 className="bento-heading">A small team with a long runway.</h3>
+                  <h3 className="bento-heading">We started small, planned long.</h3>
                   <p className="bento-body">
-                    We started with a handful of builds and a promise to keep the work clean and documented.
+                    A few products. Clean code. Good docs. That was the plan from day one.
                   </p>
                 </div>
                 <div className="bento-inline relative z-10">
-                  <span>FORMATION</span>
+                  <span>2024</span>
                 </div>
               </article>
 
@@ -248,24 +245,24 @@ export default function HomePage() {
                 <div className="relative z-10">
                   <div className="flex items-center gap-2 mb-4">
                     <Ship className="w-5 h-5 text-signature" />
-                    <div className="bento-kicker !mb-0">FIRST_SHIP</div>
+                    <div className="bento-kicker !mb-0">Shipping</div>
                   </div>
-                  <h3 className="bento-heading">Launches over pitches.</h3>
+                  <h3 className="bento-heading">We ship. We don't pitch.</h3>
                   <p className="bento-body">
-                    Early releases proved our rhythm: scoped projects, fast feedback, steady upkeep.
+                    Every month we release something. Scoped. Tested. Shipped.
                   </p>
                   <ul className="bento-list mt-8">
                     <li className="flex items-center gap-2">
                        <ArrowUpRight className="w-3 h-3 text-signature" />
-                       {`Internal tools shipped`}
+                       {`Internal tools first`}
                     </li>
                     <li className="flex items-center gap-2">
                        <ArrowUpRight className="w-3 h-3 text-signature" />
-                       {`First public release`}
+                       {`Public release next`}
                     </li>
                     <li className="flex items-center gap-2">
                        <ArrowUpRight className="w-3 h-3 text-signature" />
-                       {`Monthly cadence locked`}
+                       {`Monthly rhythm locked`}
                     </li>
                   </ul>
                 </div>
@@ -275,10 +272,10 @@ export default function HomePage() {
                 <div className="relative z-10">
                   <div className="flex items-center gap-2 mb-4">
                     <Settings className="w-5 h-5 text-signature" />
-                    <div className="bento-kicker !mb-0">SYSTEMS</div>
+                    <div className="bento-kicker !mb-0">Process</div>
                   </div>
-                  <h3 className="bento-heading">Process stays simple.</h3>
-                  <p className="bento-body">Discovery, design, build, launch.</p>
+                  <h3 className="bento-heading">We keep it simple.</h3>
+                  <p className="bento-body">Plan, build, ship, iterate. That's it.</p>
                 </div>
               </article>
 
@@ -286,10 +283,10 @@ export default function HomePage() {
                 <div className="relative z-10">
                   <div className="flex items-center gap-2 mb-4">
                     <Users className="w-5 h-5 text-signature" />
-                    <div className="bento-kicker !mb-0">COMMUNITY</div>
+                    <div className="bento-kicker !mb-0">Sharing</div>
                   </div>
-                  <h3 className="bento-heading">We share the learnings.</h3>
-                  <p className="bento-body">Notes, build logs, and short essays keep the system open.</p>
+                  <h3 className="bento-heading">We write about what works.</h3>
+                  <p className="bento-body">Build logs, decisions, and lessons learned. All in the open.</p>
                 </div>
               </article>
 
@@ -297,16 +294,16 @@ export default function HomePage() {
                 <div className="relative z-10">
                   <div className="flex items-center gap-2 mb-4">
                     <Activity className="w-5 h-5 text-signature" />
-                    <div className="bento-kicker !mb-0">NOW</div>
+                    <div className="bento-kicker !mb-0">Now</div>
                   </div>
-                  <h3 className="bento-heading">We build what we can support.</h3>
+                  <h3 className="bento-heading">We only build what we can support.</h3>
                   <p className="bento-body">
-                    Fewer projects, deeper focus, and a long-term identity behind every release.
+                    Fewer projects. Deeper work. The name stays because we're staying.
                   </p>
                 </div>
                 <div className="bento-inline relative z-10">
-                  <span>STABLE_STACK</span>
-                  <span>LONG_TERM</span>
+                  <span>Stable</span>
+                  <span>Long-term</span>
                 </div>
               </article>
             </div>
@@ -326,13 +323,13 @@ export default function HomePage() {
                 <div className="p-4 rounded-full bg-signature/10 border border-signature/20">
                   <Rss className="w-8 h-8 text-signature" />
                 </div>
-                <div className="bento-kicker !mb-0 text-center">READ_THE_BLOG</div>
-                <h2 className="bento-heading text-3xl md:text-5xl max-w-2xl mx-auto">Build logs, launches, and what we learned.</h2>
+                <div className="bento-kicker !mb-0 text-center">Read our blog</div>
+                <h2 className="bento-heading text-3xl md:text-5xl max-w-2xl mx-auto">How we build. What we learned.</h2>
                 <p className="bento-body text-lg max-w-xl mx-auto">
-                  Short reads from the team on shipping, tooling, and the decisions behind each release.
+                  Build logs from shipping. Notes on decisions. Essays on what works and what doesn't.
                 </p>
                 <div className="bento-actions justify-center">
-                  <Link className="bento-button px-10 py-4 text-sm" href="/blog">OPEN_BLOG</Link>
+                  <Link className="bento-button px-10 py-4 text-sm" href="/blog">Open blog</Link>
                 </div>
               </div>
             </div>
@@ -341,10 +338,10 @@ export default function HomePage() {
           <section id="social-cta" className="bento-card bento-full bento-social">
             <div className="bento-social-content relative z-10 text-center">
               <div className="flex flex-col items-center gap-8">
-                <div className="bento-kicker !mb-0 text-center">CONNECT</div>
-                <h2 className="bento-heading text-3xl md:text-5xl max-w-2xl mx-auto">See what we&apos;re working on.</h2>
+                <div className="bento-kicker !mb-0 text-center">Follow us</div>
+                <h2 className="bento-heading text-3xl md:text-5xl max-w-2xl mx-auto">See what we're building.</h2>
                 <p className="bento-body text-lg max-w-xl mx-auto">
-                  We share our progress, new releases, and occasional thoughts on building software.
+                  Progress updates. New releases. Real thoughts on shipping code.
                 </p>
                 
                 <div className="flex flex-wrap justify-center gap-6 md:gap-12 py-4">
@@ -368,12 +365,12 @@ export default function HomePage() {
               <NeuralBackground color="#7c83ff" trailOpacity={0.18} particleCount={420} speed={0.75} />
             </div>
             <div className="bento-footer-inner">
-              <div className="bento-kicker">START_A_PROJECT</div>
-              <h2 className="bento-footer-title">Start a conversation.</h2>
+              <div className="bento-kicker">Get in touch</div>
+              <h2 className="bento-footer-title">Let's talk.</h2>
               <a className="bento-email" href="mailto:contact.galatfamily@gmail.com">
                 contact.galatfamily@gmail.com
               </a>
-              <p className="bento-footer-meta">© 2024 Galat Family. Building one thing at a time.</p>
+              <p className="bento-footer-meta">© 2024 Galat Family. We ship what we build.</p>
             </div>
           </section>
         </div>
