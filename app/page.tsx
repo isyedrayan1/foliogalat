@@ -17,24 +17,27 @@ export default function HomePage() {
               WE ARE <span className="text-signature">GALAT</span> FAMILY.
             </h1>
             <p className="bento-lead">
-              We build web products and publish guides, tips, and tutorials for developers.
+              We create web tools, explain technical concepts, and document how things get built.
             </p>
-            <div className="bento-actions">
+            <div className="bento-actions flex flex-wrap gap-3">
               <a className="bento-button" href="#work">
                 See our work
               </a>
               <Link className="bento-button" href="/blogs">
                 Read the blog
               </Link>
+              <a className="bento-button" href="https://yt.galatfamily.in" target="_blank" rel="noreferrer">
+                YT Docs
+              </a>
             </div>
             <div className="bento-subline">{"// Plan. Build. Ship. Iterate."}</div>
           </section>
 
           <section id="about" className="bento-about">
             <div className="bento-kicker">About</div>
-            <h2 className="bento-heading">A team building software and sharing knowledge.</h2>
+            <h2 className="bento-heading">Building products & explaining tech.</h2>
             <p className="bento-body">
-              We build web tools that work. We also write detailed guides, tutorials, and tips to share what we know about software engineering.
+              We create web tools, explain technical concepts through videos, and document how things get built.
             </p>
             <div className="bento-about-cards">
               <div className="bento-about-card group">
@@ -95,6 +98,23 @@ export default function HomePage() {
               </a>
               <a
                 className="bento-project-card"
+                href="https://promptlab.galatfamily.in"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Open PromptLab"
+              >
+                <div className="bento-project-thumb bento-project-thumb-two" aria-hidden="true" />
+                <div className="bento-project-copy">
+                  <div className="bento-work-title">PROMPTLAB</div>
+                  <p>A workbench to run, compare, and evaluate LLM prompts securely across AI models.</p>
+                  <div className="bento-tags">
+                    <span>PROMPT_ENGINEERING</span>
+                    <span>AI_WORKBENCH</span>
+                  </div>
+                </div>
+              </a>
+              <a
+                className="bento-project-card"
                 href="https://ffsal-ss.vercel.app"
                 target="_blank"
                 rel="noreferrer"
@@ -127,7 +147,7 @@ export default function HomePage() {
                   </div>
                 </div>
               </a>
-              <a
+              {/* <a
                 className="bento-project-card"
                 href="https://edufiles.netlify.app/"
                 target="_blank"
@@ -143,7 +163,7 @@ export default function HomePage() {
                     <span>SHARING</span>
                   </div>
                 </div>
-              </a>
+              </a> */}
             </div>
           </section>
 
@@ -151,24 +171,26 @@ export default function HomePage() {
             <div className="bento-kicker">Meet us</div>
             <h2 className="bento-heading">The team behind the projects.</h2>
             <p className="bento-body">
-              We write the code, publish the handbooks, and maintain the tools.
+              We write the code, produce the content, and maintain the tools.
             </p>
             <div className="bento-team-row-grid">
-              <article className="bento-team-card !flex-col md:!flex-row items-center md:items-stretch gap-6">
+              <article className="bento-team-card !flex-col md:!flex-row items-center md:items-stretch gap-6" itemScope itemType="https://schema.org/Person">
                 <div className="bento-team-photo w-full max-w-[200px] md:w-[160px] aspect-[3/4] relative shrink-0 mx-auto md:mx-0">
                   <Image 
                     src="/Syed rayan.jpg" 
-                    alt="Syed Rayan" 
+                    alt="Syed Rayan - Founder & Vision Strategy Lead at Galat Family" 
+                    title="Syed Rayan - Founder & Vision Strategy Lead"
                     fill 
                     sizes="(max-width: 768px) 200px, 160px"
                     style={{ objectFit: 'cover' }}
                     priority
+                    itemProp="image"
                   />
                 </div>
                 <div className="bento-team-meta text-center md:text-left flex-1 flex flex-col justify-between py-1 gap-4 md:gap-0">
                   <div>
-                    <h3 className="bento-team-name !mt-0">Syed Rayan</h3>
-                    <p className="bento-body !m-0">Full-stack development, architecture, and systems.</p>
+                    <h3 className="bento-team-name !mt-0" itemProp="name">Syed Rayan</h3>
+                    <p className="bento-body !m-0" itemProp="jobTitle">Full-stack development, architecture, and systems.</p>
                   </div>
                   <div className="bento-team-socials justify-center md:justify-start">
                     <a href="https://isyedrayan1.netlify.app" target="_blank" rel="noreferrer" className="hover:text-signature transition-colors">Portfolio</a>
@@ -177,24 +199,72 @@ export default function HomePage() {
                   </div>
                 </div>
               </article>
-              <article className="bento-team-card !flex-col md:!flex-row items-center md:items-stretch gap-6">
+              <article className="bento-team-card !flex-col md:!flex-row items-center md:items-stretch gap-6" itemScope itemType="https://schema.org/Person">
                 <div className="bento-team-photo w-full max-w-[200px] md:w-[160px] aspect-[3/4] relative shrink-0 mx-auto md:mx-0">
                   <Image 
                     src="/syed naseer.png.jpg" 
-                    alt="Syed Naseer" 
+                    alt="Syed Naseer - Co-Founder & Operations Growth Lead at Galat Family" 
+                    title="Syed Naseer - Co-Founder & Operations Growth Lead"
                     fill 
                     sizes="(max-width: 768px) 200px, 160px"
                     style={{ objectFit: 'cover' }}
+                    itemProp="image"
                   />
                 </div>
                 <div className="bento-team-meta text-center md:text-left flex-1 flex flex-col justify-between py-1 gap-4 md:gap-0">
                   <div>
-                    <h3 className="bento-team-name !mt-0">Syed Naseer</h3>
-                    <p className="bento-body !m-0">Product engineering, UI systems, and delivery flow.</p>
+                    <h3 className="bento-team-name !mt-0" itemProp="name">Syed Naseer</h3>
+                    <p className="bento-body !m-0" itemProp="jobTitle">Product engineering, UI systems, and delivery flow.</p>
                   </div>
                   <div className="bento-team-socials justify-center md:justify-start">
                     <a href="https://itsnaseersyed.dev" target="_blank" rel="noreferrer" className="hover:text-signature transition-colors">Portfolio</a>
                     <a href="https://www.linkedin.com/in/syed-naseer-66bb0231b" target="_blank" rel="noreferrer" className="hover:text-signature transition-colors">LinkedIn</a>
+                  </div>
+                </div>
+              </article>
+              <article className="bento-team-card !flex-col md:!flex-row items-center md:items-stretch gap-6" itemScope itemType="https://schema.org/Person">
+                <div className="bento-team-photo w-full max-w-[200px] md:w-[160px] aspect-[3/4] relative shrink-0 mx-auto md:mx-0">
+                  <Image 
+                    src="/ayubphoto.jpeg" 
+                    alt="Shaik Ayub Hussain - Technical Development & Systems Engineer at Galat Family" 
+                    title="Shaik Ayub Hussain - Technical Development & Systems Engineer"
+                    fill 
+                    sizes="(max-width: 768px) 200px, 160px"
+                    style={{ objectFit: 'cover' }}
+                    itemProp="image"
+                  />
+                </div>
+                <div className="bento-team-meta text-center md:text-left flex-1 flex flex-col justify-between py-1 gap-4 md:gap-0">
+                  <div>
+                    <h3 className="bento-team-name !mt-0" itemProp="name">SHAIK AYUB HUSSAIN</h3>
+                    <p className="bento-body !m-0" itemProp="jobTitle">Core technical developer, backend logic, and systems architecture.</p>
+                  </div>
+                  <div className="bento-team-socials justify-center md:justify-start">
+                    <a href="https://github.com/ayubshaik01" target="_blank" rel="noreferrer" className="hover:text-signature transition-colors">GitHub</a>
+                    <a href="#" className="hover:text-signature transition-colors">LinkedIn</a>
+                  </div>
+                </div>
+              </article>
+              <article className="bento-team-card !flex-col md:!flex-row items-center md:items-stretch gap-6" itemScope itemType="https://schema.org/Person">
+                <div className="bento-team-photo w-full max-w-[200px] md:w-[160px] aspect-[3/4] relative shrink-0 mx-auto md:mx-0">
+                  <Image 
+                    src="/aslamphoto.jpeg" 
+                    alt="Shaik Aslam Hussain - Video Editing & Marketing Lead at Galat Family" 
+                    title="Shaik Aslam Hussain - Video Editing & Marketing Lead"
+                    fill 
+                    sizes="(max-width: 768px) 200px, 160px"
+                    style={{ objectFit: 'cover' }}
+                    itemProp="image"
+                  />
+                </div>
+                <div className="bento-team-meta text-center md:text-left flex-1 flex flex-col justify-between py-1 gap-4 md:gap-0">
+                  <div>
+                    <h3 className="bento-team-name !mt-0" itemProp="name">SHAIK ASLAM HUSSAIN</h3>
+                    <p className="bento-body !m-0" itemProp="jobTitle">Video editing, visual media production, and marketing.</p>
+                  </div>
+                  <div className="bento-team-socials justify-center md:justify-start">
+                    <a href="https://instagram.com/zmaxx.ofc" target="_blank" rel="noreferrer" className="hover:text-signature transition-colors">Instagram</a>
+                    <a href="#" className="hover:text-signature transition-colors">LinkedIn</a>
                   </div>
                 </div>
               </article>
@@ -336,7 +406,7 @@ export default function HomePage() {
                   <a href="#" className="bento-social-link group">
                     <span className="block text-sm tracking-widest text-neutral-500 group-hover:text-signature transition-colors">GITHUB</span>
                   </a>
-                  <a href="#" className="bento-social-link group">
+                  <a href="https://youtube.com/@teamgalatfamily1" target="_blank" rel="noreferrer" className="bento-social-link group">
                     <span className="block text-sm tracking-widest text-neutral-500 group-hover:text-signature transition-colors">YOUTUBE</span>
                   </a>
                 </div>

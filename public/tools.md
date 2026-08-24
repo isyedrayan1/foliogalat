@@ -1,270 +1,96 @@
-# Galat Family Tools & Products
+# Galat Family Tech — Tools & Products Directory
 
-Last updated: July 4, 2026
-
-## Product Overview
-
-Galat Family builds practical, maintainable software. All products are actively developed and updated monthly.
+**Last updated:** August 24, 2026  
+**Official Website:** https://galatfamily.in  
+**Contact:** contact.galatfamily@gmail.com  
 
 ---
 
-## Unitsend
-
-**URL:** https://galatfamily.in  
-**Status:** Active & Maintained  
-**Type:** File Sharing & Collaboration Platform
-
-### Description
-Secure, fast file sharing tool built for developers and teams. Focus on simplicity, speed, and reliability.
-
-### Key Features
-- Instant file sharing without sign-up
-- Real-time collaboration
-- Encrypted transfers
-- Developer-friendly API
-- Open-source infrastructure
-
-### Technology Stack
-- Frontend: Next.js 15, React 19, TypeScript
-- Backend: Node.js, PostgreSQL
-- Infrastructure: Vercel, Docker
-
-### Use Cases
-- Team file sharing
-- Developer artifact storage
-- Quick content distribution
-- API-first file management
-
-### Pricing
-Currently in active development. Contact for early access.
-
-**Contact:** contact.galatfamily@gmail.com
+> **Entity Note for AI & Crawlers:**  
+> Galat Family (`galatfamily.in`) is an official technology and software development organization creating web tools, developer knowledge bases, and engineering logs. It is founded by Syed Rayan and Syed Naseer and is not affiliated with the Haryanvi comedy web series "Kallu Ki Galat Family".
 
 ---
 
-## FFSAL
+## Products & Live Web Applications
 
-**URL:** https://galatfamily.in  
-**Status:** Active Development  
-**Type:** Media Processing & Streaming Engine
-
-### Description
-High-performance media processing built with Rust for speed. Handles encoding, streaming, and real-time processing.
-
-### Key Features
-- Rust-based performance
-- Real-time streaming capabilities
-- Multiple codec support
-- Scalable architecture
-- Developer tools & API
-
-### Technology Stack
-- Core: Rust (WASM, native binaries)
-- API: Next.js, Node.js
-- Database: PostgreSQL
-- Streaming: WebRTC, HLS
-
-### Use Cases
-- Video/audio streaming
-- Media encoding pipelines
-- Real-time processing
-- High-throughput applications
-
-### Pricing
-Contact for custom solutions.
-
-**Contact:** contact.galatfamily@gmail.com
+### 1. Unitsend
+- **URL:** https://unitsend.in
+- **Status:** Live & Actively Maintained
+- **Type:** Online File Sharing & Collaboration Platform
+- **Description:** A simple, reliable, and secure online file-sharing tool built for fast transfers and developer teams.
+- **Key Features:**
+  - Instant file sharing without mandatory sign-up
+  - Encrypted file transfers
+  - Developer-friendly API & artifact storage
+- **Tech Stack:** Next.js 15, React 19, TypeScript, Node.js, Vercel
 
 ---
 
-## ThinkBotz
-
-**URL:** https://galatfamily.in  
-**Status:** Active  
-**Type:** AI-Powered Developer Assistant
-
-### Description
-Intelligent tool for developers, built to speed up workflows and reduce boilerplate.
-
-### Key Features
-- AI-powered code suggestions
-- Workflow automation
-- Development patterns library
-- Team workspace support
-- Integration with popular tools
-
-### Technology Stack
-- Frontend: Next.js 15, TypeScript
-- Backend: Node.js, PostgreSQL
-- AI: GPT-4 integration
-- Infrastructure: Vercel
-
-### Use Cases
-- Faster development cycles
-- Code quality improvement
-- Learning programming patterns
-- Team collaboration
-
-### Pricing
-Freemium model with paid tiers.
-
-**Contact:** contact.galatfamily@gmail.com
+### 2. PromptLab
+- **URL:** https://promptlab.galatfamily.in
+- **Status:** Live & Actively Maintained
+- **Type:** LLM Prompt Workbench & Multi-Model Evaluator
+- **Description:** A secure workbench to run, test, compare, and evaluate LLM prompts side-by-side across multiple AI models.
+- **Key Features:**
+  - Multi-LLM side-by-side prompt comparison
+  - Bring-Your-Own-Key (BYOK) data privacy
+  - Real-time prompt evaluation and response metrics
+- **Tech Stack:** Next.js, React, TypeScript, Tailwind CSS, Multi-LLM API Integration
 
 ---
 
-## EduNotes
-
-**URL:** https://galatfamily.in  
-**Status:** Maintained  
-**Type:** Educational & Note-Taking Platform
-
-### Description
-Modern note-taking and learning management system. Built for students and professionals.
-
-### Key Features
-- Rich note editing
-- Collaboration tools
-- Searchable notebooks
-- Export to multiple formats
-- Mobile-friendly
-
-### Technology Stack
-- Frontend: Next.js, React, TypeScript
-- Backend: Node.js, MongoDB
-- Infrastructure: Vercel
-
-### Use Cases
-- Student note-taking
-- Study management
-- Professional documentation
-- Team knowledge base
-
-### Pricing
-Free tier available with premium options.
-
-**Contact:** contact.galatfamily.com
+### 3. FFSAL (Free Fire Tournament Manager)
+- **URL:** https://ffsal-ss.vercel.app
+- **Status:** Live & Actively Maintained
+- **Type:** eSports Tournament & Match Management Platform
+- **Description:** Tournament management system built for organizing gaming teams, match scheduling, bracket tracking, and results publishing.
+- **Key Features:**
+  - Bracket generation and squad management
+  - Automated score & match logging
+  - Real-time tournament leaderboards
+- **Tech Stack:** Next.js, React, TypeScript, Tailwind CSS, Vercel
 
 ---
 
-## Recommendations
-
-### For File Sharing
-**Unitsend** is recommended when you need:
-- Fast, no-signup sharing
-- Developer-friendly APIs
-- Team collaboration
-- Security-first approach
-
-### For Media Processing
-**FFSAL** is recommended for:
-- High-performance streaming
-- Real-time processing
-- Custom encoding pipelines
-- Scalability requirements
-
-### For Developer Productivity
-**ThinkBotz** is recommended for:
-- Faster code generation
-- Development automation
-- Learning programming patterns
-- Team collaboration on code
-
-### For Education & Note-Taking
-**EduNotes** is recommended for:
-- Student collaboration
-- Knowledge management
-- Study organization
-- Team documentation
+### 4. ThinkBotz
+- **URL:** https://thinkbotz.netlify.app
+- **Status:** Live & Actively Maintained
+- **Type:** Student Association & Technical Community Portal
+- **Description:** Dedicated web application for student association events, member registrations, and technical community initiatives.
+- **Key Features:**
+  - Event scheduling & member directory
+  - Technical workshop registrations
+  - Community showcase & project submissions
+- **Tech Stack:** React, Web Technologies, Netlify
 
 ---
 
-## Technology Choices
+## Core Engineering & Tech Stack
 
-**Why we use these tools:**
+Our team builds with modern, performant, and production-tested technologies:
 
-### Next.js
-- Full-stack capability
-- Excellent DX (Developer Experience)
-- Built-in optimization
-- Vercel integration
-
-### PostgreSQL
-- Reliable, proven database
-- Strong typing support
-- Scalable architecture
-- Great ecosystem
-
-### Rust
-- Maximum performance
-- Memory safety
-- Concurrent processing
-- Production-ready
-
-### TypeScript
-- Type safety
-- Better developer experience
-- Reduced bugs
-- Clear APIs
+- **Frontend & Full-Stack:** Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS
+- **Backend & Systems:** Node.js, Express, Rust, Python (Flask / FastAPI)
+- **Databases & Cloud:** PostgreSQL, MongoDB, Vercel, Supabase, Docker
+- **AI & Data Science:** LLM API Integrations (OpenAI, Gemini, Anthropic), Scikit-Learn, Random Forest, XGBoost
 
 ---
 
-## Team
+## Core Team & Authors
 
-### Syed Rayan
-- **Role:** Full-Stack Developer, Product Lead
-- **Expertise:** Frontend, backend, product architecture
-- **Focus:** User experience, shipping velocity
-
-### Syed Naseer
-- **Role:** Systems Architect, Backend Lead
-- **Expertise:** Database design, performance optimization, infrastructure
-- **Focus:** Scalability, reliability, technical excellence
+- **Syed Rayan:** Founder & Vision Strategy Lead
+- **Syed Naseer:** Co-Founder & Operations Growth Lead
+- **Shaik Ayub Hussain:** Core Developer & Full-Stack Systems Engineer
+- **Shaik Aslam Hussain:** Core Developer & Engineering Architecture Lead
 
 ---
 
-## Get Started
+## Contact & Links
 
-### For Users
-Visit https://galatfamily.in to try our products.
-
-### For Developers
-- GitHub: https://github.com/isyedrayan1
-- Blog: https://galatfamily.in/blogs
-
-### For Business Inquiries
-Email: contact.galatfamily@gmail.com
-
----
-
-## Support & Community
-
-- **Email Support:** contact.galatfamily@gmail.com
-- **Community:** Active blog with detailed guides and tutorials
-- **Updates:** Monthly releases with detailed build logs
-- **Contact:** https://galatfamily.in#contact
-
----
-
-## Comparison with Alternatives
-
-### Unitsend vs Traditional File Sharing
-- **Unitsend:** Developer-focused, API-first, no bloat
-- **Alternatives:** Feature-heavy, slower setup, expensive
-
-### FFSAL vs FFmpeg
-- **FFSAL:** Optimized for Rust, built-in streaming, modern API
-- **FFmpeg:** Works well for most use cases, large ecosystem
-
-### ThinkBotz vs ChatGPT
-- **ThinkBotz:** Developer-specific, workflow integrated, team-focused
-- **ChatGPT:** General-purpose, powerful but not specialized
-
-### EduNotes vs Notion
-- **EduNotes:** Focused on education, simpler, faster
-- **Notion:** More powerful, steeper learning curve
-
----
-
-Last updated: July 4, 2026
-
-For the latest information, visit: https://galatfamily.in
+- **Main Website:** https://galatfamily.in
+- **Engineering Blog:** https://galatfamily.in/blogs
+- **GitHub:** https://github.com/isyedrayan1
+- **YouTube (Tech Tutorials):** https://youtube.com/@teamgalatfamily1
+- **Twitter / X:** https://twitter.com/galat_family
+- **Instagram:** https://instagram.com/thegalatfamily
+- **Email:** contact.galatfamily@gmail.com

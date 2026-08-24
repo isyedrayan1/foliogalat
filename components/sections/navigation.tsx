@@ -21,6 +21,7 @@ const navItems = [
     links: [
       { label: "What we built", href: "#work", ariaLabel: "Jump to work" },
       { label: "Read the blog", href: "#blog-cta", ariaLabel: "Jump to blog" },
+      { label: "YT Docs", href: "https://yt.galatfamily.in", ariaLabel: "Open YT Docs" },
     ],
   },
   {

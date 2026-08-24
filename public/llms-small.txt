@@ -1,9 +1,8 @@
-# Galat Family
-> We build web products and publish software engineering guides, tips, and tutorials for developers.
+# Galat Family Tech
+> Official portal for Galat Family (https://galatfamily.in) - Building web tools, software products, and developer guides.
 
 - **Website:** https://galatfamily.in
 - **Blogs Hub:** https://galatfamily.in/blogs
-- **Primary Project (Unitsend):** https://unitsend.in
-- **ML Guides Index:** https://galatfamily.in/blogs (Including OptiCrop, Smart Lender, and Flood Prediction handbooks)
-- **Team & Authors:** Syed Rayan & Syed Naseer
+- **Primary Products:** [Unitsend](https://unitsend.in) | [PromptLab](https://promptlab.galatfamily.in) | [FFSAL](https://ffsal-ss.vercel.app) | [ThinkBotz](https://thinkbotz.netlify.app)
+- **Entity Note:** Technology studio founded by Syed Rayan & Syed Naseer. Not affiliated with the comedy series Kallu Ki Galat Family.
 - **Contact:** contact.galatfamily@gmail.com

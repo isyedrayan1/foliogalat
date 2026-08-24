@@ -10,7 +10,7 @@ export const siteConfig = {
   url: "https://galatfamily.in",
   description: "We build software projects and share guides, tips, and tutorials for developers.",
   image: "/galatfamily.jpg",
-  creators: ["Syed Rayan", "Syed Naseer"],
+  creators: ["Syed Rayan", "Syed Naseer", "Shaik Ayub Hussain", "Shaik Aslam Hussain"],
   email: "contact.galatfamily@gmail.com",
 };
 
