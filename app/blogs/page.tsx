@@ -2,7 +2,7 @@ import { Navigation } from '@/components/sections/navigation';
 import NeuralBackground from '@/components/ui/flow-field-background';
 import { getAllPosts } from '@/lib/markdown';
 import Link from 'next/link';
-import { ArrowRight, Clock, BookOpen } from 'lucide-react';
+import { ArrowRight, Clock, BookOpen, Layers } from 'lucide-react';
 import Dither from '@/components/Dither';
 import type { Metadata } from 'next';
 
@@ -14,16 +14,17 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   const posts = getAllPosts();
 
-  // Highlight the first post as the featured one
+  // Top Bento Section Posts
   const featuredPost = posts[0];
-  const regularPosts = posts.slice(1);
+  const topTwoPosts = posts.slice(1, 3);
+  const remainingPosts = posts.slice(3);
 
   return (
     <div className="bento-page font-sans antialiased text-neutral-300 selection:bg-neutral-200 selection:text-neutral-900 overflow-x-hidden">
       <Navigation />
       <main className="bento-shell">
-        {/* Page Header Card */}
         <div className="bento-frame">
+          {/* Header Card */}
           <section className="bento-card bento-full flex-grow flex flex-col justify-center items-center relative overflow-hidden bento-blog py-20 min-h-[300px]">
             <div className="bento-blog-bg" aria-hidden="true">
               <Dither
@@ -43,20 +44,57 @@ export default function BlogPage() {
                   Launches, builds, and engineering notes.
                 </h1>
                 <p className="bento-body text-base max-w-lg mx-auto text-neutral-400 mt-2">
-                  Guides, tips, and tutorials written by builders, for builders. Deep dives into software engineering, machine learning, and development knowledge.
+                  Guides, benchmarks, and tutorials written by builders, for builders. Deep dives into software engineering, machine learning, and web architecture.
                 </p>
               </div>
             </div>
           </section>
 
-          {/* Bento Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
-            
-            {/* Left/Middle Column - Content (Spans 2 columns) */}
-            <div className="md:col-span-2 flex flex-col gap-6">
-              {/* Featured Post Card */}
+          {/* Flexible Mobile / Desktop Grid Container */}
+          <div className="flex flex-col md:grid md:grid-cols-3 gap-6 mt-4 items-stretch">
+
+            {/* 1. Our Blogs / Studio Card: Mobile Order 1, Desktop Row 1 Right */}
+            <div className="order-1 md:order-2 md:col-span-1">
+              <div className="h-full border border-neutral-800/80 rounded-2xl bg-neutral-950/40 p-6 md:p-8 flex flex-col justify-between hover:border-neutral-700/60 transition-all duration-300 relative overflow-hidden group">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider flex items-center gap-1.5">
+                      <Layers className="w-3.5 h-3.5 text-signature" /> Our Blogs
+                    </span>
+                    <span className="text-xs text-neutral-500 font-mono">{posts.length} Blogs</span>
+                  </div>
+
+                  <h3 className="text-xl font-bold text-white tracking-tight mb-2">
+                    Built by Galat Family
+                  </h3>
+                  <p className="text-xs text-neutral-400 leading-relaxed mb-6">
+                    Open engineering notes, framework benchmarks, and architecture guides written by active software developers.
+                  </p>
+
+                  {/* Categories */}
+                  <div className="pt-4 border-t border-neutral-900">
+                    <span className="text-xs font-semibold text-neutral-400 block mb-3">Categories</span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {['Comparisons', 'Guides', 'Tutorials', 'Explanations', 'Tips', 'Tools'].map((cat) => (
+                        <span key={cat} className="text-xs px-2.5 py-1 rounded-md bg-neutral-900 border border-neutral-800 text-neutral-300 font-medium">
+                          {cat}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-neutral-900 mt-4 flex items-center justify-between text-xs text-neutral-500 font-mono">
+                  <span>galatfamily.in</span>
+                  <span className="text-signature font-sans font-medium">Updated Weekly</span>
+                </div>
+              </div>
+            </div>
+
+            {/* 2. Featured Post Card: Mobile Order 2, Desktop Row 1 Left (2 Cols) */}
+            <div className="order-2 md:order-1 md:col-span-2">
               {featuredPost && (
-                <div className="border border-neutral-800/80 rounded-2xl bg-neutral-950/40 p-6 md:p-8 flex flex-col justify-between hover:border-neutral-700/60 transition-all duration-300 relative overflow-hidden group">
+                <div className="h-full border border-neutral-800/80 rounded-2xl bg-neutral-950/40 p-6 md:p-8 flex flex-col justify-between hover:border-neutral-700/60 transition-all duration-300 relative overflow-hidden group">
                   <div className="absolute inset-0 bg-gradient-to-br from-signature/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                   <div>
                     <div className="flex items-center justify-between mb-6">
@@ -97,13 +135,61 @@ export default function BlogPage() {
                   </div>
                 </div>
               )}
+            </div>
 
-              {/* Regular Posts Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {regularPosts.map((post) => (
+            {/* 3. Top 2 Regular Posts: Mobile Order 3, Desktop Row 2 Left (2 Cols) */}
+            <div className="order-3 md:order-3 md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6 items-stretch">
+              {topTwoPosts.map((post) => (
+                <div 
+                  key={post.slug}
+                  className="h-full border border-neutral-800/80 rounded-2xl bg-neutral-950/40 p-6 flex flex-col justify-between hover:border-neutral-700/60 transition-all duration-300 relative overflow-hidden group"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-signature/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="font-mono text-[10px] text-signature tracking-widest px-2 py-0.5 bg-signature/10 border border-signature/20 rounded">
+                        {post.kicker || 'ARTICLE'}
+                      </span>
+                      <span className="text-[10px] text-neutral-500 font-mono flex items-center gap-1">
+                        <Clock className="w-3 h-3" />
+                        {post.readTime}
+                      </span>
+                    </div>
+                    <h3 className="text-lg font-bold text-white tracking-tight leading-snug mb-3 group-hover:text-signature transition-colors duration-300">
+                      <Link href={`/blogs/${post.slug}`}>
+                        {post.title}
+                      </Link>
+                    </h3>
+                    <p className="text-neutral-400 text-xs leading-relaxed mb-6">
+                      {post.excerpt}
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-between pt-4 border-t border-neutral-900 mt-auto">
+                    <div className="flex items-center gap-2">
+                      <div className="text-xs">
+                        <p className="text-neutral-400 font-medium font-mono text-[10px]">{post.author}</p>
+                        <p className="text-neutral-600 text-[9px] font-mono">{post.date}</p>
+                      </div>
+                    </div>
+                    <Link 
+                      href={`/blogs/${post.slug}`}
+                      className="flex items-center gap-1 text-[10px] font-mono text-neutral-400 hover:text-white group/btn"
+                    >
+                      <span>READ_POST</span>
+                      <ArrowRight className="w-3 h-3 group-hover/btn:translate-x-0.5 transition-transform" />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* 4. Remaining Blog Posts Grid: Mobile Order 4, Desktop Row 3+ (3 Cols) */}
+            {remainingPosts.length > 0 && (
+              <div className="order-4 md:order-5 md:col-span-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 items-stretch">
+                {remainingPosts.map((post) => (
                   <div 
                     key={post.slug}
-                    className="border border-neutral-800/80 rounded-2xl bg-neutral-950/40 p-6 flex flex-col justify-between hover:border-neutral-700/60 transition-all duration-300 relative overflow-hidden group"
+                    className="h-full border border-neutral-800/80 rounded-2xl bg-neutral-950/40 p-6 flex flex-col justify-between hover:border-neutral-700/60 transition-all duration-300 relative overflow-hidden group"
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-signature/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                     <div>
@@ -143,55 +229,32 @@ export default function BlogPage() {
                   </div>
                 ))}
               </div>
-            </div>
+            )}
 
-            {/* Right Column - Stats and Newsletter (Spans 1 column) */}
-            <div className="md:col-span-1 flex flex-col gap-6">
-              
-              {/* Quick Stats / Info Bento Card (TOP) */}
-              <div className="flex-1 border border-neutral-800/80 rounded-2xl bg-neutral-950/40 p-6 md:p-8 flex flex-col justify-between hover:border-neutral-700/60 transition-all duration-300 relative overflow-hidden group">
-                <div>
-                  <span className="font-mono text-xs text-neutral-500 tracking-widest block mb-4 uppercase">{"// STATISTICS"}</span>
-                  <div className="grid grid-cols-2 gap-4 my-2">
-                    <div className="bg-neutral-900/50 border border-neutral-800/60 rounded-xl p-3 text-center">
-                      <div className="text-2xl font-bold text-white font-mono">{posts.length}</div>
-                      <div className="text-[9px] text-neutral-500 font-mono tracking-wider mt-1">TOTAL_LOGS</div>
-                    </div>
-                    <div className="bg-neutral-900/50 border border-neutral-800/60 rounded-xl p-3 text-center">
-                      <div className="text-2xl font-bold text-signature font-mono">11 min</div>
-                      <div className="text-[9px] text-neutral-500 font-mono tracking-wider mt-1">READ_TIME</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="text-[10px] font-mono text-neutral-500 border-t border-neutral-900 pt-4 mt-4">
-                  <span>{`>`} SYSTEM STATUS: OPERATIONAL</span>
-                </div>
-              </div>
-
-              {/* Newsletter / CTA Card (BOTTOM) */}
-              <div className="flex-1 border border-neutral-800/80 rounded-2xl bg-neutral-950/40 p-6 md:p-8 flex flex-col justify-between hover:border-neutral-700/60 transition-all duration-300 relative overflow-hidden group">
+            {/* 5. Newsletter Card: Mobile Order 5 (LAST Card before Footer), Desktop Row 2 Right */}
+            <div className="order-5 md:order-4 md:col-span-1">
+              <div className="h-full border border-neutral-800/80 rounded-2xl bg-neutral-950/40 p-6 md:p-8 flex flex-col justify-between hover:border-neutral-700/60 transition-all duration-300 relative overflow-hidden group">
                 <div className="absolute inset-0 bg-gradient-to-tr from-neutral-900/50 via-transparent to-transparent pointer-events-none" />
                 <div>
-                  <span className="font-mono text-xs text-neutral-500 tracking-widest block mb-4 uppercase">{"// NEWSLETTER"}</span>
+                  <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wider block mb-4">Newsletter</span>
                   <h3 className="text-xl font-bold text-white tracking-tight leading-snug mb-3">
-                    Stay updated with our builds.
+                    Sign up to our newsletter to stay updated
                   </h3>
                   <p className="text-neutral-400 text-xs leading-relaxed mb-6">
-                    No spam. Just occasional newsletters covering software architecture, developer workflows, and our latest product releases.
+                    Deep dives into software development, project breakdowns, and product updates from Galat Family.
                   </p>
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-3 mt-auto">
                   <input 
                     type="email" 
                     placeholder="name@domain.com"
-                    className="w-full bg-neutral-900 border border-neutral-800/80 rounded px-3 py-2 text-xs font-mono text-white placeholder-neutral-600 focus:outline-none focus:border-signature/50 transition-colors"
+                    className="w-full bg-neutral-900 border border-neutral-800/80 rounded-lg px-3.5 py-2.5 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-signature/50 transition-colors"
                   />
-                  <button className="w-full py-2 bg-neutral-200 hover:bg-white text-neutral-900 rounded font-mono text-xs font-bold transition-all">
-                    SUBSCRIBE
+                  <button className="w-full py-2.5 bg-neutral-200 hover:bg-white text-neutral-900 rounded-lg text-xs font-bold transition-all">
+                    Subscribe
                   </button>
                 </div>
               </div>
-
             </div>
 
           </div>

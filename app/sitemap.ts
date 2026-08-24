@@ -3,7 +3,7 @@ import { getAllPosts } from '@/lib/markdown';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://galatfamily.in';
-  
+
   let blogUrls: MetadataRoute.Sitemap = [];
   try {
     const posts = getAllPosts();
