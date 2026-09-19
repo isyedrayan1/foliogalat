@@ -193,8 +193,7 @@ export default function HomePage() {
                     <p className="bento-body !m-0">Product engineering, UI systems, and delivery flow.</p>
                   </div>
                   <div className="bento-team-socials justify-center md:justify-start">
-                    <a href="https://itsnaseersyed.dev" target="_blank" rel="noreferrer" className="hover:text-signature transition-colors">Portfolio</a>
-                    <a href="https://www.linkedin.com/in/syed-naseer-66bb0231b" target="_blank" rel="noreferrer" className="hover:text-signature transition-colors">LinkedIn</a>
+                    <a href="https://Ayubshaik.pp.ua" target="_blank" rel="noreferrer" className="hover:text-signature transition-colors">Portfolio</a>
                   </div>
                 </div>
               </article>
