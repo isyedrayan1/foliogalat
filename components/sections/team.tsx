@@ -31,7 +31,7 @@ export const Team = () => {
       variant: "slide-right" as const,
     },
     {
-      name: "SHAIK AYUB HUSSAIN",
+      name: "Shaik Ayub Hussain",
       role: "ROLE: CORE TECHNICAL DEVELOPER",
       specialization: "Technical_Systems",
       description: "Core technical developer focused purely on software engineering, web systems architecture, and backend logic.",
@@ -43,13 +43,14 @@ export const Team = () => {
       variant: "slide-left" as const,
     },
     {
-      name: "SHAIK ASLAM HUSSAIN",
+      name: "Shaik Aslam Hussain",
       role: "ROLE: VIDEO EDITING & MARKETING",
       specialization: "VideoEditing_Marketing",
       description: "Creative media lead driving video editing, visual content production, brand storytelling, and growth marketing.",
       imageSrc: "/aslamphoto.jpeg",
       altText: "Shaik Aslam Hussain - Video Editor & Marketing Specialist at Galat Family",
       imageTitle: "Shaik Aslam Hussain - Video Editor & Marketing Specialist",
+      imagePosition: "object-top",
       github: "#",
       linkedin: "#",
       instagram: "https://instagram.com/zmaxx.ofc",
@@ -92,7 +93,7 @@ export const Team = () => {
                   loading="lazy"
                   decoding="async"
                   itemProp="image"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
+                  className={`w-full h-full object-cover ${member.imagePosition || 'object-center'} grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105`}
                 />
                 
                 <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 to-transparent z-20">

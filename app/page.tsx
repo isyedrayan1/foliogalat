@@ -236,7 +236,7 @@ export default function HomePage() {
                 </div>
                 <div className="bento-team-meta text-center md:text-left flex-1 flex flex-col justify-between py-1 gap-4 md:gap-0">
                   <div>
-                    <h3 className="bento-team-name !mt-0" itemProp="name">SHAIK AYUB HUSSAIN</h3>
+                    <h3 className="bento-team-name !mt-0" itemProp="name">Shaik Ayub Hussain</h3>
                     <p className="bento-body !m-0" itemProp="jobTitle">Core technical developer, backend logic, and systems architecture.</p>
                   </div>
                   <div className="bento-team-socials justify-center md:justify-start">
@@ -250,16 +250,16 @@ export default function HomePage() {
                   <Image 
                     src="/aslamphoto.jpeg" 
                     alt="Shaik Aslam Hussain - Video Editing & Marketing Lead at Galat Family" 
-                    title="Shaik Aslam Hussain - Video Editing & Marketing Lead"
+                    title="Shaik Aslam Hussain - Video Editing & Marketing Lead" 
                     fill 
                     sizes="(max-width: 768px) 200px, 160px"
-                    style={{ objectFit: 'cover' }}
+                    style={{ objectFit: 'cover', objectPosition: 'top' }}
                     itemProp="image"
                   />
                 </div>
                 <div className="bento-team-meta text-center md:text-left flex-1 flex flex-col justify-between py-1 gap-4 md:gap-0">
                   <div>
-                    <h3 className="bento-team-name !mt-0" itemProp="name">SHAIK ASLAM HUSSAIN</h3>
+                    <h3 className="bento-team-name !mt-0" itemProp="name">Shaik Aslam Hussain</h3>
                     <p className="bento-body !m-0" itemProp="jobTitle">Video editing, visual media production, and marketing.</p>
                   </div>
                   <div className="bento-team-socials justify-center md:justify-start">
